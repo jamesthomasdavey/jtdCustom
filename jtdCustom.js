@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         JTD Custom (Module)
 // @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  try to take over the world!
+// @version      0.2
+// @description  to make my life easier
 // @author       You
 // @match        *.levelaccess.net/public/reporting/view_module.php?module_id=*
 // @match        *.levelaccess.net/public/reporting/view_pattern.php?pattern_id=*
@@ -37,6 +37,17 @@ const bestPractices = [
       "[Issue]\nThe _____ field uses a _____ element that functions visually as a label, however their association is not rendered to assistive technology.\n\n[User Impact]\nWhen form fields do not have a programmatically associated label, assistive technologies may incorrectly render the label or provide no label at all to users. When labels are not present or are incorrect, users of assistive technologies may not be able to complete a form.\n\n[Code Reference]\n_____",
     issueDescription:
       "[Recommendation]\nDevelopers must provide an accessible label for all form fields. To associate a non-LABEL element to a form field, developers can add an aria-labelledby attribute to the input with the same value as the visual label's ID attribute.\n\n[Compliant Code Example]\n_____"
+  },
+  {
+    violationId: 362,
+    media: "Web",
+    bestPractice: "Provide alternative text for images",
+    specificIssue:
+      "Decorative images have no alt text and are revealed to assistive technology",
+    codeSnippet:
+      "[Issue]\nThe _____ is a decorative image that is rendered by assistive technology. In instances where the image does not contribute to the understanding of the content and is purely decorative, it needs to be marked in a way to indicate its purely decorative purpose.\n\n[User Impact]\nWhen a decorative image is rendered by assistive technology, users will encounter the image and will not be made aware that the image is intended to be decorative.\n\n[Code Reference]\n_____",
+    issueDescription:
+      '[Recommendation]\nDevelopers must ensure that decorative images are hidden from assistive technology. This is usually done by adding an attribute of alt="" to the image element.\n\n[Compliant Code Example]\n_____'
   },
   {
     violationId: 368,
