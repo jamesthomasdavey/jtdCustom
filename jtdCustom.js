@@ -12,6 +12,8 @@
 // http://www.nva11y.com/scripts/AMPHeaders.js
 // http://www.nva11y.com/scripts/AMPAddInstance.js
 
+"use strict";
+
 const bestPractices = [
   {
     violationId: 338,
@@ -323,75 +325,75 @@ const bestPractices = [
   }
 ];
 
+///
+const event = new Event("change");
+///
+
+const specificListContainer = document.createElement("div");
+specificListContainer.id = "specificListContainer";
+specificListContainer.style.width = "100%";
+const specificList = document.createElement("select");
+specificList.style.width = "100%";
+specificList.id = "specificList";
+specificListContainer.appendChild(specificList);
+const fillButton = document.createElement("button");
+fillButton.textContent = "Autofill";
+fillButton.classList.add("kpmFirstButton");
+fillButton.style.display = "block";
+specificListContainer.appendChild(specificList);
+specificListContainer.style.display = "none";
+
 const init = () => {
   if (!document.getElementById("1_violation_id")) {
     setTimeout(init, 50);
   } else {
-    (function() {
-      "use strict";
+    const selectList = document.getElementById("1_violation_id");
+    selectList.parentNode.appendChild(specificListContainer);
+    const codeSnippetField = document.getElementById("1_element");
+    const issueDescriptionField = document.getElementById("1_attribute");
 
-      const selectList = document.getElementById("1_violation_id");
-      const specificListContainer = document.createElement("div");
-      const codeSnippetField = document.getElementById("1_element");
-      const issueDescriptionField = document.getElementById("1_attribute");
-      specificListContainer.id = "specificListContainer";
-      specificListContainer.style.width = "100%";
-      selectList.parentNode.appendChild(specificListContainer);
-      const event = new Event("change");
+    const fillInputs = e => {
+      e.preventDefault();
+      const specificListValue = document.getElementById("specificList").value;
+      const chosenBestPractice = bestPractices.find(
+        bestPractice => bestPractice.specificIssue === specificListValue
+      );
+      codeSnippetField.value = chosenBestPractice.codeSnippet;
+      issueDescriptionField.value = chosenBestPractice.issueDescription;
+    };
 
-      const getSpecifics = violationId => {
-        const filteredSpecifics = bestPractices.filter(bestPractice => {
-          return bestPractice.violationId === violationId;
-        });
-        return filteredSpecifics;
-      };
+    fillButton.addEventListener("click", fillInputs);
 
-      const fillInputs = e => {
-        e.preventDefault();
-        const specificList = document.getElementById("specificList");
-        const chosenBestPractice = bestPractices.find(bestPractice => {
-          return bestPractice.specificIssue === specificList.value;
-        });
-        codeSnippetField.value = chosenBestPractice.codeSnippet;
-        issueDescriptionField.value = chosenBestPractice.issueDescription;
-      };
-
-      const renderSpecificList = specifics => {
-        specificListContainer.innerHTML = "";
-        let specificList;
-        if (specifics.length) {
-          specificList = document.createElement("select");
-          specificList.addEventListener("click", fillInputs);
-          specificList.style.width = "100%";
-          specificList.id = "specificList";
-          specifics.forEach(specific => {
-            const specificItem = document.createElement("option");
-            specificItem.textContent = specific.specificIssue;
-            specificList.appendChild(specificItem);
-          });
-        }
-        if (specificList) {
-          specificListContainer.appendChild(specificList);
-          const fillButton = document.createElement("button");
-          fillButton.textContent = "Autofill";
-          fillButton.classList.add("kpmFirstButton");
-          fillButton.style.display = "block";
-          fillButton.addEventListener("click", fillInputs);
-          specificListContainer.appendChild(fillButton);
-        }
-      };
-
-      selectList.addEventListener("change", e => {
-        const specifics = getSpecifics(Number(e.target.value));
-        renderSpecificList(specifics);
+    const getSpecifics = violationId => {
+      const filteredSpecifics = bestPractices.filter(bestPractice => {
+        return bestPractice.violationId === violationId;
       });
+      return filteredSpecifics;
+    };
 
-      document.getElementById("ChgBPNow").addEventListener("click", () => {
-        setTimeout(() => {
-          selectList.dispatchEvent(event);
-        }, 0);
-      });
-    })();
+    const renderSpecificList = specifics => {
+      if (specifics.length) {
+        specifics.forEach(specific => {
+          const specificItem = document.createElement("option");
+          specificItem.textContent = specific.specificIssue;
+          specificList.appendChild(specificItem);
+        });
+        specificListContainer.style.display = "block";
+      } else {
+        specificListContainer.style.display = "none";
+      }
+    };
+
+    selectList.addEventListener("change", e => {
+      const specifics = getSpecifics(Number(e.target.value));
+      renderSpecificList(specifics);
+    });
+
+    document.getElementById("ChgBPNow").addEventListener("click", () => {
+      setTimeout(() => {
+        selectList.dispatchEvent(event);
+      }, 0);
+    });
   }
 };
 
