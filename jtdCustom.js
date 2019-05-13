@@ -5,6 +5,7 @@
 // @description  try to take over the world!
 // @author       You
 // @match        *.levelaccess.net/public/reporting/view_module.php?module_id=*
+// @match        *.levelaccess.net/public/reporting/view_pattern.php?pattern_id=*
 // @grant        none
 // ==/UserScript==
 
@@ -343,13 +344,39 @@ fillButton.style.display = "block";
 specificListContainer.appendChild(fillButton);
 specificListContainer.style.display = "none";
 
+const url = window.location.href;
+
+const getPatternId = () => {
+  if (!url.includes("pattern_id")) return false;
+  const patternIdIndex = url.indexOf("pattern_id") + 11;
+  return url.substr(patternIdIndex);
+};
+
 const init = () => {
-  if (!document.getElementById("1_violation_id")) {
+  //
+
+  // insert better conditionals here
+
+  //
+
+  if (
+    !document.getElementById("1_violation_id") ||
+    !(
+      getPatternId() &&
+      !document.getElementById(`violation_${getPatternId()}--1`)
+    )
+  ) {
     setTimeout(init, 50);
   } else {
-    const selectList = document.getElementById("1_violation_id");
-    const codeSnippetField = document.getElementById("1_element");
-    const issueDescriptionField = document.getElementById("1_attribute");
+    const selectList =
+      document.getElementById("1_violation_id") ||
+      document.getElementById(`violation_${getPatternId()}--1`);
+    const codeSnippetField =
+      document.getElementById("1_element") ||
+      !document.getElementById(`element_${getPatternId()}--1`);
+    const issueDescriptionField =
+      document.getElementById("1_attribute") ||
+      !document.getElementById(`note_${getPatternId()}--1`);
 
     const fillInputs = e => {
       e.preventDefault();
