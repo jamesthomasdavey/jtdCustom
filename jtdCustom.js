@@ -340,7 +340,7 @@ const fillButton = document.createElement("button");
 fillButton.textContent = "Autofill";
 fillButton.classList.add("kpmFirstButton");
 fillButton.style.display = "block";
-specificListContainer.appendChild(specificList);
+specificListContainer.appendChild(fillButton);
 specificListContainer.style.display = "none";
 
 const init = () => {
