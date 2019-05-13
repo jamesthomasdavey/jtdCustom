@@ -370,6 +370,7 @@ const init = () => {
 
     const renderSpecificList = specifics => {
       if (specifics.length) {
+        specificList.innerHTML = "";
         specifics.forEach(specific => {
           const specificItem = document.createElement("option");
           specificItem.textContent = specific.specificIssue;
