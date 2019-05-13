@@ -348,7 +348,6 @@ const init = () => {
     setTimeout(init, 50);
   } else {
     const selectList = document.getElementById("1_violation_id");
-    selectList.parentNode.appendChild(specificListContainer);
     const codeSnippetField = document.getElementById("1_element");
     const issueDescriptionField = document.getElementById("1_attribute");
 
@@ -361,8 +360,6 @@ const init = () => {
       codeSnippetField.value = chosenBestPractice.codeSnippet;
       issueDescriptionField.value = chosenBestPractice.issueDescription;
     };
-
-    fillButton.addEventListener("click", fillInputs);
 
     const getSpecifics = violationId => {
       const filteredSpecifics = bestPractices.filter(bestPractice => {
@@ -384,6 +381,8 @@ const init = () => {
       }
     };
 
+    selectList.parentNode.appendChild(specificListContainer);
+
     selectList.addEventListener("change", e => {
       const specifics = getSpecifics(Number(e.target.value));
       renderSpecificList(specifics);
@@ -394,6 +393,8 @@ const init = () => {
         selectList.dispatchEvent(event);
       }, 0);
     });
+
+    fillButton.addEventListener("click", fillInputs);
   }
 };
 
