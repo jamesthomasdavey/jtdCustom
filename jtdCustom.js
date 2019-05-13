@@ -15,16 +15,18 @@
 const bestPractices = [
   {
     violationId: 338,
+    media: "Web",
     bestPractice: "Provide a valid label for form fields",
     specificIssue:
       "Input has corresponding label element, however they are not programmatically associated",
     codeSnippet:
-      "[Issue]\nThe _____ field has a corresponding LABEL element, however they are not programmatically associated with each other.\n\n[User Impact]\nWhen form fields do not have a programmatically associated label, assistive technologies may incorrectly render the label or provide no label at all to users. When labels are not present or are incorrect, users of assistive technologies may not be able to complete a form.\n\n[Code Reference]\n_____",
+      "[Issue]\nThe _____ field has a corresponding <label> element, however they are not programmatically associated with each other.\n\n[User Impact]\nWhen form fields do not have a programmatically associated label, assistive technologies may incorrectly render the label or provide no label at all to users. When labels are not present or are incorrect, users of assistive technologies may not be able to complete a form.\n\n[Code Reference]\n_____",
     issueDescription:
-      "[Recommendation]\nDevelopers must provide an accessible label for all form fields. To associate a label with a form field, the label must have a FOR attribute with the same value as the input's ID attribute.\n\n[Compliant Code Example]\n_____"
+      "[Recommendation]\nDevelopers must provide an accessible label for all form fields. To associate a <label> element with a form field, the <label> must have a FOR attribute with the same value as the input's ID attribute.\n\n[Compliant Code Example]\n_____"
   },
   {
     violationId: 338,
+    media: "Web",
     bestPractice: "Provide a valid label for form fields",
     specificIssue:
       "Input has text that functions visually as a label, however they are not programmatically associated",
@@ -35,6 +37,7 @@ const bestPractices = [
   },
   {
     violationId: 368,
+    media: "Web",
     bestPractice: "Ensure text and images of text provide sufficient contrast",
     specificIssue: "Text smaller than 14pt has insufficient contrast",
     codeSnippet:
@@ -44,6 +47,7 @@ const bestPractices = [
   },
   {
     violationId: 368,
+    media: "Web",
     bestPractice: "Ensure text and images of text provide sufficient contrast",
     specificIssue: "Text between 14pt and 18pt has insufficient contrast",
     codeSnippet:
@@ -53,6 +57,7 @@ const bestPractices = [
   },
   {
     violationId: 368,
+    media: "Web",
     bestPractice: "Ensure text and images of text provide sufficient contrast",
     specificIssue: "Text larger than 18pt has insufficient contrast",
     codeSnippet:
@@ -62,6 +67,7 @@ const bestPractices = [
   },
   {
     violationId: 369,
+    media: "Web",
     bestPractice:
       "Ensure color is not the sole means of communicating information",
     specificIssue:
@@ -73,6 +79,7 @@ const bestPractices = [
   },
   {
     violationId: 369,
+    media: "Web",
     bestPractice:
       "Ensure color is not the sole means of communicating information",
     specificIssue:
@@ -84,6 +91,7 @@ const bestPractices = [
   },
   {
     violationId: 387,
+    media: "Web",
     bestPractice:
       "Ensure heading level matches the heading's visual importance/level",
     specificIssue: "",
@@ -92,16 +100,18 @@ const bestPractices = [
   },
   {
     violationId: 490,
+    media: "Web",
     bestPractice:
       "Ensure all active elements receive keyboard focus or can be activated with the keyboard",
     specificIssue: "Anchor element does not receive keyboard focus",
     codeSnippet:
-      "[Issue]\nThe _____ anchor element does not receive keyboard with the Tab key and is not operable by keyboard. When an element is interactive, the element must also be focusable via the keyboard or a shortcut provided to activate the element.\n\n[User Impact]\nEnsuring keyboard access to a site or application's controls and features allows people who cannot use a mouse or other pointing device to utilize the site or application. For example, a person with a disability that affects dexterity may find it impossible to move or hold a pointing device with enough accuracy to activate desired features. A person who cannot see the screen, therefore relying on a screen reader, may have no problems moving the pointer but will be unable to determine what is being pointed to.\n\n[Code Reference]\n_____",
+      "[Issue]\nThe _____ is an <a> element that does not receive keyboard with the Tab key and is not operable by keyboard. When an element is interactive, the element must also be focusable via the keyboard or a shortcut provided to activate the element.\n\n[User Impact]\nEnsuring keyboard access to a site or application's controls and features allows people who cannot use a mouse or other pointing device to utilize the site or application. For example, a person with a disability that affects dexterity may find it impossible to move or hold a pointing device with enough accuracy to activate desired features. A person who cannot see the screen, therefore relying on a screen reader, may have no problems moving the pointer but will be unable to determine what is being pointed to.\n\n[Code Reference]\n_____",
     issueDescription:
-      "[Recommendation]\nDevelopers must ensure that all interactive elements are accessible from the keyboard. Standard HTML elements such as input fields, buttons, and anchor tags will automatically be placed in the tab order by the browser.\n\nAnchor tags require an HREF attribute to receive keyboard focus. Developers must ensure that no scripts are causing focus to skip over this element.\n\n[Compliant Code Example]\n_____"
+      "[Recommendation]\nDevelopers must ensure that all interactive elements are accessible from the keyboard. Standard HTML elements such as input fields, buttons, and anchor tags will automatically be placed in the tab order by the browser.\n\n<a> elements require an HREF attribute to receive keyboard focus. Developers must ensure that no scripts are causing focus to skip over this element.\n\n[Compliant Code Example]\n_____"
   },
   {
     violationId: 490,
+    media: "Web",
     bestPractice:
       "Ensure all active elements receive keyboard focus or can be activated with the keyboard",
     specificIssue:
@@ -113,17 +123,19 @@ const bestPractices = [
   },
   {
     violationId: 602,
+    media: "Web",
     bestPractice:
       "Ensure custom controls provide proper textual name, role, and state information",
     specificIssue:
       'Anchor element is used as a button and has an implicit role of "link',
     codeSnippet:
-      '[Issue]\nThe _____ is a custom control that was coded using an anchor element. Anchor elements have an implicit role of "link" and announces to assistive technology as such.\n\n[User Impact]\nUsing an anchor element as a button can be confusing for screen reader users. Anchor elements have an implicit role of "link", indicating to screen reader users that activating this element will redirect them to a new URL or otherwise change the browser context. This can be disorienting when the element does not behave as expected.\n\n[Code Reference]\n_____',
+      '[Issue]\nThe _____ is a custom control that was coded using an anchor element. Anchor elements have an implicit role of "link" and announces to assistive technology as such.\n\n[User Impact]\nUsing an <a> element as a button can be confusing for screen reader users. Anchor elements have an implicit role of "link", indicating to screen reader users that activating this element will redirect them to a new URL or otherwise change the browser context. This can be disorienting when the element does not behave as expected.\n\n[Code Reference]\n_____',
     issueDescription:
-      '[Recommendation]\nDevelopers must ensure that all custom controls provide an accurate textual role for assistive technology. Using the BUTTON element for button-like controls will automatically have an implicit role of "button" and is generally recommended.\n\nTo ensure that anchor elements are announced to screen readers as buttons, developers must add the attribute role="button" to the anchor element.\n\n[Compliant Code Example]\n_____'
+      '[Recommendation]\nDevelopers must ensure that all custom controls provide an accurate textual role for assistive technology. Using the <button> element for button-like controls will automatically have an implicit role of "button" and is generally recommended.\n\nTo ensure that <a> elements are announced to screen readers as buttons, developers must add the attribute role="button" to the anchor element.\n\n[Compliant Code Example]\n_____'
   },
   {
     violationId: 602,
+    media: "Web",
     bestPractice:
       "Ensure custom controls provide proper textual name, role, and state information",
     specificIssue:
@@ -135,6 +147,7 @@ const bestPractices = [
   },
   {
     violationId: 609,
+    media: "Web",
     bestPractice:
       "Ensure form field constraints and errors are associated with their corresponding field",
     specificIssue:
@@ -146,6 +159,7 @@ const bestPractices = [
   },
   {
     violationId: 1249,
+    media: "Web",
     bestPractice: "Ensure keyboard focus is indicated visually",
     specificIssue:
       "Interactive element does not visually indicate upon receiving focus",
@@ -155,7 +169,27 @@ const bestPractices = [
       "[Recommendation]\nDevelopers must ensure that keyboard focus is displayed visually to all interactive elements. Typically the browser will provide keyboard focus for all standard interactive HTML elements, however developers can use custom visual indicators such as outlines or underlines using the focus pseudo-class.\n\n[Compliant Code Example]\n_____"
   },
   {
+    violationId: 1578,
+    media: "iOS",
+    bestPractice:
+      "Ensure color and text formatting are not the sole means of communicating selection",
+    specificIssue: "",
+    codeSnippet: "",
+    issueDescription: ""
+  },
+  {
+    violationId: 1598,
+    media: "iOS",
+    bestPractice: "Provide valid labels for all form elements",
+    specificIssue: "Form element does not provide a valid label",
+    codeSnippet:
+      "[Issue]\nThe _____ is a form element that does not provide an accessible label.\n\n[User Impact]\nWhen form fields are not properly labeled, their identity will not be rendered properly by assistive technology to users with visual disabilities. The user may interact with the wrong form element or may not know which form field to interact with.",
+    issueDescription:
+      "[Recommendation]\nDevelopers need to ensure that accessibility labels provided for form elements are clear and concise. The accessibility label should generally match the visual label associated with input control. The accessibilityLabel property must be used to set the accessibility label."
+  },
+  {
     violationId: 1626,
+    media: "Web",
     bestPractice: "Ensure ARIA roles, states, and properties are valid",
     specificIssue:
       "Element contains an aria reference attribute with an invalid ID",
@@ -163,16 +197,49 @@ const bestPractices = [
     issueDescription: ""
   },
   {
+    violationId: 1905,
+    media: "iOS",
+    bestPractice:
+      "Ensure that applications do not interfere with assistive technology",
+    specificIssue: "",
+    codeSnippet: "",
+    issueDescription: ""
+  },
+  {
+    violationId: 1908,
+    media: "iOS",
+    bestPractice:
+      "Ensure non-decorative images provide informative alternative text",
+    specificIssue: "Image that conveys meaning does not have alternative text",
+    codeSnippet:
+      "[Issue]\nThe _____ is an image that conveys meaning, however it does not provide informative alternative text. Images in iOS are not accessibility enabled by default. Developers wishing to use images must enable accessibility on all relevant images in addition to providing an appropriate accessibility label.\n\n[User Impact]\nAlternative text that is default, or non-meaningful text, can negatively impact the accessibility of an image. The goal of the accessible text should be to present text which will provide the same level of understanding to those who cannot see the image as it does to those who can.",
+    issueDescription:
+      "[Recommendation]\nDevelopers must ensure to provide informative alternative text to all images that convey meaning. Developers should ensure that Accessible Label text is a concise and meaningful replacement for the image. It is strongly recommended that alt text should not exceed 80 characters."
+  },
+  {
+    violationId: 1909,
+    media: "iOS",
+    bestPractice:
+      "Provide textual equivalents for all non-text elements including sounds and images",
+    specificIssue: "Non-decorative element does not have a textual equivalent",
+    codeSnippet:
+      "[Issue]\nThe _____ is an element that conveys meaning, however it does not provide a textual equivalent. All non-text elements that are not considered decorative must have an Accessible Label.\n\n[User Impact]\nWhen an accessible label is not provided for the _____, users who cannot view the _____ will not understand the purpose of it.",
+    issueDescription:
+      "[Recommendation]\nAll non-decorative objects must have 'Accessibility Enabled' within the xCode development environment and minimally have an accessibilityLabel attribute assigned."
+  },
+  {
     violationId: 2440,
+    media: "Web",
     bestPractice: "Avoid use of placeholder values to label or explain input",
     specificIssue: "Form field uses a placeholder as its only label",
     codeSnippet:
       "[Issue]\nThe _____ is a form field that uses a placeholder attribute as its only label. The placeholder text should be a short hint intended to aid the user with data entry.\n\n[User Impact]\nThe placeholder may not be available to assistive technology and thus may not be relied upon to convey an accessible name.\n\n[Code Reference]\n_____",
     issueDescription:
-      "[Recommendation]\nDevelopers must ensure that the placeholder attribute is not a replacement for a label. It is recommended that developers use a programmatically associated LABEL element, using the FOR attribute with a value that matches the ID of its corresponding input. If the placeholder attribute is also used, it is advised that the placeholder text should not be identical or redundant to the label text.\n\n[Compliant Code Example]\n_____"
+      "[Recommendation]\nDevelopers must ensure that the placeholder attribute is not a replacement for a label. It is recommended that developers use a programmatically associated <label> element, using the FOR attribute with a value that matches the ID of its corresponding input. If the placeholder attribute is also used, it is advised that the placeholder text should not be identical or redundant to the label text.\n\n[Compliant Code Example]\n_____"
   },
   {
     violationId: 2440,
+    media: "Web",
     bestPractice: "Avoid use of placeholder values to label or explain input",
     specificIssue: "Form field uses placeholder text for a description.",
     codeSnippet:
@@ -182,6 +249,7 @@ const bestPractices = [
   },
   {
     violationId: 2445,
+    media: "Web",
     bestPractice: "Ensure link text provides sufficient contrast",
     specificIssue: "Link text smaller than 14pt has insufficient contrast",
     codeSnippet:
@@ -191,6 +259,7 @@ const bestPractices = [
   },
   {
     violationId: 2445,
+    media: "Web",
     bestPractice: "Ensure link text provides sufficient contrast",
     specificIssue: "Link text between 14pt and 18pt has insufficient contrast",
     codeSnippet:
@@ -200,6 +269,7 @@ const bestPractices = [
   },
   {
     violationId: 2445,
+    media: "Web",
     bestPractice: "Ensure link text provides sufficient contrast",
     specificIssue: "Link text larger than 18pt has insufficient contrast",
     codeSnippet:
@@ -208,7 +278,18 @@ const bestPractices = [
       "[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all link text. Developers should modify the foreground and/or the background color so that a sufficient contrast is attained, including focused and hover states as well.\n\nText smaller than 18pt or bold text smaller than 14pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/"
   },
   {
+    violationId: 2590,
+    media: "iOS",
+    bestPractice: "Ensure speech is not the only means to access content",
+    specificIssue: "Functionality requires that the user speaks",
+    codeSnippet:
+      "[Issue]\nThe _____ requires that the user speaks in order to _____. Systems must have an alternative means of accessing information other than user speech.\n\n[User Impact]\nSystems that require user speech, including biometric speech, input as the sole means of accessing information may not be accessible by persons who are unable to speak or who have speech impairments.",
+    issueDescription:
+      "[Recommendation]\nDevelopers must ensure that a system does not solely require voice recognition, speech control or voice activation to access the information. For systems that rely on user speech, additional methods must be provided for access. This includes when speech is used for biometric identification. Developers should provide an alternative method that does not require speech such as via another input device such as a keyboard."
+  },
+  {
     violationId: 2607,
+    media: "Web",
     bestPractice: "Provide text equivalents for icon fonts",
     specificIssue:
       "Anchor or BUTTON element uses an icon as its visual label, however it has no textual label",
@@ -219,6 +300,7 @@ const bestPractices = [
   },
   {
     violationId: 2607,
+    media: "Web",
     bestPractice: "Provide text equivalents for icon fonts",
     specificIssue:
       "Error messages uses an icon as its only method of indication",
@@ -229,6 +311,7 @@ const bestPractices = [
   },
   {
     violationId: 3159,
+    media: "Web",
     bestPractice:
       "Ensure all interactive functionality is operable with the keyboard",
     specificIssue:
