@@ -352,77 +352,76 @@ const getPatternId = () => {
   return url.substr(patternIdIndex);
 };
 
-const init = () => {
-  //
+const renderAll = patternId => {
+  const selectList = patternId
+    ? document.getElementById(`violation_${patternId}--1`)
+    : document.getElementById("1_violation_id");
 
-  // insert better conditionals here
+  const codeSnippetField = patternId
+    ? document.getElementById(`element_${patternId}--1`)
+    : document.getElementById("1_element");
+  const issueDescriptionField = patternId
+    ? document.getElementById(`note_${patternId}--1`)
+    : document.getElementById("1_attribute");
 
-  //
+  const fillInputs = e => {
+    e.preventDefault();
+    const specificListValue = document.getElementById("specificList").value;
+    const chosenBestPractice = bestPractices.find(
+      bestPractice => bestPractice.specificIssue === specificListValue
+    );
+    codeSnippetField.value = chosenBestPractice.codeSnippet;
+    issueDescriptionField.value = chosenBestPractice.issueDescription;
+  };
 
-  if (
-    !document.getElementById("1_violation_id") ||
-    !(
-      getPatternId() &&
-      !document.getElementById(`violation_${getPatternId()}--1`)
-    )
-  ) {
-    setTimeout(init, 50);
-  } else {
-    const selectList =
-      document.getElementById("1_violation_id") ||
-      document.getElementById(`violation_${getPatternId()}--1`);
-    const codeSnippetField =
-      document.getElementById("1_element") ||
-      !document.getElementById(`element_${getPatternId()}--1`);
-    const issueDescriptionField =
-      document.getElementById("1_attribute") ||
-      !document.getElementById(`note_${getPatternId()}--1`);
+  const getSpecifics = violationId => {
+    const filteredSpecifics = bestPractices.filter(bestPractice => {
+      return bestPractice.violationId === violationId;
+    });
+    return filteredSpecifics;
+  };
 
-    const fillInputs = e => {
-      e.preventDefault();
-      const specificListValue = document.getElementById("specificList").value;
-      const chosenBestPractice = bestPractices.find(
-        bestPractice => bestPractice.specificIssue === specificListValue
-      );
-      codeSnippetField.value = chosenBestPractice.codeSnippet;
-      issueDescriptionField.value = chosenBestPractice.issueDescription;
-    };
-
-    const getSpecifics = violationId => {
-      const filteredSpecifics = bestPractices.filter(bestPractice => {
-        return bestPractice.violationId === violationId;
+  const renderSpecificList = specifics => {
+    if (specifics.length) {
+      specificList.innerHTML = "";
+      specifics.forEach(specific => {
+        const specificItem = document.createElement("option");
+        specificItem.textContent = specific.specificIssue;
+        specificList.appendChild(specificItem);
       });
-      return filteredSpecifics;
-    };
+      specificListContainer.style.display = "block";
+    } else {
+      specificListContainer.style.display = "none";
+    }
+  };
 
-    const renderSpecificList = specifics => {
-      if (specifics.length) {
-        specificList.innerHTML = "";
-        specifics.forEach(specific => {
-          const specificItem = document.createElement("option");
-          specificItem.textContent = specific.specificIssue;
-          specificList.appendChild(specificItem);
-        });
-        specificListContainer.style.display = "block";
-      } else {
-        specificListContainer.style.display = "none";
-      }
-    };
+  selectList.parentNode.appendChild(specificListContainer);
 
-    selectList.parentNode.appendChild(specificListContainer);
+  selectList.addEventListener("change", e => {
+    const specifics = getSpecifics(Number(e.target.value));
+    renderSpecificList(specifics);
+  });
 
-    selectList.addEventListener("change", e => {
-      const specifics = getSpecifics(Number(e.target.value));
-      renderSpecificList(specifics);
-    });
+  document.getElementById("ChgBPNow").addEventListener("click", () => {
+    setTimeout(() => {
+      selectList.dispatchEvent(event);
+    }, 0);
+  });
 
-    document.getElementById("ChgBPNow").addEventListener("click", () => {
-      setTimeout(() => {
-        selectList.dispatchEvent(event);
-      }, 0);
-    });
+  fillButton.addEventListener("click", fillInputs);
+};
 
-    fillButton.addEventListener("click", fillInputs);
+const init = () => {
+  if (document.getElementById("1_violation_id")) {
+    renderAll();
+  } else if (getPatternId()) {
+    if (document.getElementById(`violation_${getPatternId()}--1`)) {
+      renderAll(getPatternId());
+    } else {
+      setTimeout(init, 50);
+    }
+  } else {
+    setTimeout(init, 50);
   }
 };
 
