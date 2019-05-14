@@ -422,14 +422,16 @@ const renderAll = () => {
   const changeBpButton = document.getElementById("ChgBPNow");
   const codeSnippetField = document.querySelectorAll("textarea")[0];
   const issueDescriptionField = document.querySelectorAll("textarea")[1];
-  const selectList =
-    codeSnippetField.parentNode.parentNode.previousSibling.lastChild.lastChild;
+  let selectList =
+    codeSnippetField.parentNode.parentNode.previousSibling.lastChild;
+  if (selectList.nodeName === "TD") {
+    selectList = selectList.lastChild;
+  }
   let patternName;
   if (isPattern()) {
     patternName = selectList.parentNode.parentNode.previousSibling.firstElementChild.firstElementChild.textContent.substring(
       18
     );
-    console.log(patternName);
   }
 
   const fillInputs = e => {
@@ -439,7 +441,7 @@ const renderAll = () => {
       bestPractice => bestPractice.specificIssue === specificListValue
     );
     codeSnippetField.value = "";
-    if (patternName) {
+    if (isPattern()) {
       codeSnippetField.value += `[Pattern: ${patternName}]
 
 `;
