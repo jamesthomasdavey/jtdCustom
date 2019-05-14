@@ -424,6 +424,13 @@ const renderAll = () => {
   const issueDescriptionField = document.querySelectorAll("textarea")[1];
   const selectList =
     codeSnippetField.parentNode.parentNode.previousSibling.lastChild.lastChild;
+  let patternName;
+  if (isPattern()) {
+    patternName = selectList.parentNode.parentNode.previousSibling.firstElementChild.firstElementChild.textContent.substring(
+      18
+    );
+    console.log(patternName);
+  }
 
   const fillInputs = e => {
     e.preventDefault();
@@ -431,7 +438,13 @@ const renderAll = () => {
     const chosenBestPractice = bestPractices.find(
       bestPractice => bestPractice.specificIssue === specificListValue
     );
-    codeSnippetField.value = chosenBestPractice.codeSnippet;
+    codeSnippetField.value = "";
+    if (patternName) {
+      codeSnippetField.value += `[Pattern: ${patternName}]
+
+`;
+    }
+    codeSnippetField.value += chosenBestPractice.codeSnippet;
     issueDescriptionField.value = chosenBestPractice.issueDescription;
   };
 
