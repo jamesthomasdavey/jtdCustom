@@ -39,6 +39,25 @@ const bestPractices = [
       "[Recommendation]\nDevelopers must provide an accessible label for all form fields. To associate a non-LABEL element to a form field, developers can add an aria-labelledby attribute to the input with the same value as the visual label's ID attribute.\n\n[Compliant Code Example]\n_____"
   },
   {
+    violationId: 361,
+    media: "Web",
+    bestPractice: "Ensure headers and cells are properly associated",
+    specificIssue:
+      'Table has <th> elements spanning multiple columns without scope="colgroup',
+    codeSnippet:
+      "[Issue]\nThe _____ table contains <th> elements which span multiple columns, however this is not indicated properly with the correct scope attribute.\n\n[User Impact]\nWhen tables do not programmatically indicate groupings of rows or columns, the additional layer of complexity in the table is only indicated visually, which can be confusing for users of assistive technology.\n\n[Code Reference]\n_____",
+    issueDescription:
+      '[Recommendation]\nWhen <th> element span multiple columns, developers must add an attribute of scope="colgroup" to indicate this grouping to assistive technology.\n\n[Compliant Code Example]\n_____'
+  },
+  {
+    violationId: 362,
+    media: "Web",
+    bestPractice: "Provide alternative text for images",
+    specificIssue: "Informative image has no alternative text",
+    codeSnippet: "",
+    issueDescription: ""
+  },
+  {
     violationId: 362,
     media: "Web",
     bestPractice: "Provide alternative text for images",
@@ -104,6 +123,17 @@ const bestPractices = [
       "[Recommendation]\nDevelopers must ensure that information communicated via color is also available through some other method. This provision does not prohibit the use of color to enhance the identification of the current item, however it is recommended to add additional visual indicators such as a border or underline."
   },
   {
+    violationId: 370,
+    media: "Web",
+    bestPractice: "Ensure images provide informative alternative text",
+    specificIssue:
+      "Image of text does not have an accessible equivalent of that text",
+    codeSnippet:
+      "[Issue]\nThe _____ image contains text with content that is not conveyed elsewhere on the page. Images of text should have alternative text that contains the same content.\n\n[User Impact]\nWhen images of text do not contain accessible equivalents of that text, screen reader users will miss content that has been provided visually. All informative content that is provided visually must also be accessible to assistive technology.\n\n[Code Reference]\n_____",
+    issueDescription:
+      "[Recommendation]\nDevelopers must ensure that if there are any images of text, that textual content must be made accessible. This is either done with redundant information outside of the image element (in which case the image can be considered decorative), or by adding an alt attribute to the image containing the same textual information.\n\n[Compliant Code Example]\n_____"
+  },
+  {
     violationId: 387,
     media: "Web",
     bestPractice:
@@ -111,6 +141,16 @@ const bestPractices = [
     specificIssue: "",
     codeSnippet: "",
     issueDescription: ""
+  },
+  {
+    violationId: 464,
+    media: "Web",
+    bestPractice: "Ensure list items are found in a list container",
+    specificIssue: "List items are not inside of a list container",
+    codeSnippet:
+      "[Issue]\nList items exist independent of a list container. All <li> elements should be nested inside a <ul>, <ol>, or <dl> element.\n\n[User Impact]\nList items which are orphaned or not found within a container are often not rendered properly in assistive technology.\n\n[Code Reference]\n_____",
+    issueDescription:
+      "[Recommendation]\nDevelopers must ensure that all <li> elements are nested inside of the appropriate list element. These list items should be nested inside a _____ element.\n\n[Compliant Code Example]\n_____"
   },
   {
     violationId: 490,
@@ -211,6 +251,17 @@ const bestPractices = [
     issueDescription: ""
   },
   {
+    violationId: 1626,
+    media: "Web",
+    bestPractice: "Ensure ARIA roles, states, and properties are valid",
+    specificIssue:
+      'Element contains role="heading" even though it is not utilized as a heading',
+    codeSnippet:
+      '[Issue]\nThe _____ has a role of "heading", which is not valid for this element. No related content follows this element, as is expected with heading elements.\n\n[User Impact]\nWhen a non-heading element has a role of "heading" that element may be rendered by assistive technology as a heading element. Headings may provide the user with a way to navigate section-by-section through content. By applying headings incorrectly, users of assistive technology may be stripped of this useful navigation technique.\n\n[Code Reference]\n_____',
+    issueDescription:
+      '[Recommendation]\nDevelopers must ensure that the role attribute corresponds with the element\'s purpose. Developers should remove the role="heading" attribute for all elements that do not function as a heading.\n\n[Compliant Code Example]\n_____'
+  },
+  {
     violationId: 1905,
     media: "iOS",
     bestPractice:
@@ -292,6 +343,18 @@ const bestPractices = [
       "[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all link text. Developers should modify the foreground and/or the background color so that a sufficient contrast is attained, including focused and hover states as well.\n\nText smaller than 18pt or bold text smaller than 14pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/"
   },
   {
+    violationId: 2519,
+    media: "Web",
+    bestPractice:
+      "Ensure ARIA regions, landmarks and HTML sections are identifiable",
+    specificIssue:
+      "Multiple navigation items exist, but one of them does not have a label, visually or programmatically",
+    codeSnippet:
+      "[Issue]\nThere are multiple elements on the page with a role of navigation, however _____ not have an accessible label. When two or more elements of the same region, landmark, or sections are used, they must all be identifiable among one another.\n\n[User Impact]\nWhen there are two or more regions, landmark, or sections of the same type without accessible labels, users of screen readers may have trouble locating the correct section or understanding its purpose.\n\n[Code Reference]\n_____",
+    issueDescription:
+      "[Recommendation]\nWhen there is ambiguity about an ARIA region, landmark or HTML section, developers must ensure that these elements contain meaningful accessible labels to assist users of screen readers to identify and distinguish the section, region or landmark. Developers can add an aria-label attribute to identify these regions.\n\n[Compliant Code Example]\n_____"
+  },
+  {
     violationId: 2590,
     media: "iOS",
     bestPractice: "Ensure speech is not the only means to access content",
@@ -343,9 +406,7 @@ const event = new Event("change");
 
 const specificListContainer = document.createElement("div");
 specificListContainer.id = "specificListContainer";
-specificListContainer.style.width = "100%";
 const specificList = document.createElement("select");
-specificList.style.width = "100%";
 specificList.id = "specificList";
 specificListContainer.appendChild(specificList);
 const fillButton = document.createElement("button");
@@ -355,25 +416,14 @@ fillButton.style.display = "block";
 specificListContainer.appendChild(fillButton);
 specificListContainer.style.display = "none";
 
-const url = window.location.href;
+const isPattern = () => window.location.href.includes("pattern_id");
 
-const getPatternId = () => {
-  if (!url.includes("pattern_id")) return false;
-  const patternIdIndex = url.indexOf("pattern_id") + 11;
-  return url.substr(patternIdIndex);
-};
-
-const renderAll = patternId => {
-  const selectList = patternId
-    ? document.getElementById(`violation_${patternId}--1`)
-    : document.getElementById("1_violation_id");
-
-  const codeSnippetField = patternId
-    ? document.getElementById(`element_${patternId}--1`)
-    : document.getElementById("1_element");
-  const issueDescriptionField = patternId
-    ? document.getElementById(`note_${patternId}--1`)
-    : document.getElementById("1_attribute");
+const renderAll = () => {
+  const changeBpButton = document.getElementById("ChgBPNow");
+  const codeSnippetField = document.querySelectorAll("textarea")[0];
+  const issueDescriptionField = document.querySelectorAll("textarea")[1];
+  const selectList =
+    codeSnippetField.parentNode.parentNode.previousSibling.lastChild.lastChild;
 
   const fillInputs = e => {
     e.preventDefault();
@@ -413,7 +463,7 @@ const renderAll = patternId => {
     renderSpecificList(specifics);
   });
 
-  document.getElementById("ChgBPNow").addEventListener("click", () => {
+  changeBpButton.addEventListener("click", () => {
     setTimeout(() => {
       selectList.dispatchEvent(event);
     }, 0);
@@ -423,14 +473,8 @@ const renderAll = patternId => {
 };
 
 const init = () => {
-  if (document.getElementById("1_violation_id")) {
+  if (document.getElementById("ChgBPNow")) {
     renderAll();
-  } else if (getPatternId()) {
-    if (document.getElementById(`violation_${getPatternId()}--1`)) {
-      renderAll(getPatternId());
-    } else {
-      setTimeout(init, 50);
-    }
   } else {
     setTimeout(init, 50);
   }
