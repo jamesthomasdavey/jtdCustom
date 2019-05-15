@@ -482,7 +482,7 @@ const renderAll = () => {
   const fillInputs = e => {
     e.preventDefault();
     const specificListValue = document.getElementById('specificList').value;
-    const chosenBestPractice = bestPractices.find(bestPractice => bestPractice.specificIssue === specificListValue);
+    const chosenBestPractice = bestPractices.find(bestPractice => bestPractice.specificissue === specificListValue);
     codeSnippetField.value = '';
     if (isPattern) {
       codeSnippetField.value += `[Pattern: ${patternName}]
@@ -500,7 +500,7 @@ const renderAll = () => {
       specificList.innerHTML = '';
       specifics.forEach(specific => {
         const specificItem = document.createElement('option');
-        specificItem.textContent = specific.specificIssue;
+        specificItem.textContent = specific.specificissue;
         specificList.appendChild(specificItem);
       });
       specificListContainer.style.display = 'block';
