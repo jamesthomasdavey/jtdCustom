@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         JTD Custom (Module)
+// @name         JTD Custom
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.3
 // @description  to make my life easier
 // @author       You
 // @match        *.levelaccess.net/public/reporting/view_module.php?module_id=*
@@ -20,8 +20,7 @@ const bestPractices = [
     violationid: 338,
     media: 'Web',
     bestpractice: 'Provide a valid label for form fields',
-    specificissue:
-      'Input has corresponding label element, however they are not programmatically associated',
+    specificissue: 'Input has corresponding label element, however they are not programmatically associated',
     codesnippet:
       '[Issue]\nThe _____ field has a corresponding <label> element, however they are not programmatically associated with each other.\n\n[User Impact]\nWhen form fields do not have a programmatically associated label, assistive technologies may incorrectly render the label or provide no label at all to users. When labels are not present or are incorrect, users of assistive technologies may not be able to complete a form.\n\n[Code Reference]\n_____',
     issuedescription:
@@ -31,8 +30,7 @@ const bestPractices = [
     violationid: 338,
     media: 'Web',
     bestpractice: 'Provide a valid label for form fields',
-    specificissue:
-      'Input has text that functions visually as a label, however they are not programmatically associated',
+    specificissue: 'Input has text that functions visually as a label, however they are not programmatically associated',
     codesnippet:
       '[Issue]\nThe _____ field uses a _____ element that functions visually as a label, however their association is not rendered to assistive technology.\n\n[User Impact]\nWhen form fields do not have a programmatically associated label, assistive technologies may incorrectly render the label or provide no label at all to users. When labels are not present or are incorrect, users of assistive technologies may not be able to complete a form.\n\n[Code Reference]\n_____',
     issuedescription:
@@ -48,8 +46,7 @@ const bestPractices = [
     violationid: 361,
     media: 'Web',
     bestpractice: 'Ensure headers and cells are properly associated',
-    specificissue:
-      'Table has <th> elements spanning multiple columns without scope="colgroup"',
+    specificissue: 'Table has <th> elements spanning multiple columns without scope="colgroup"',
     codesnippet:
       '[Issue]\nThe _____ table contains <th> elements which span multiple columns, however this is not indicated properly with the correct scope attribute.\n\n[User Impact]\nWhen tables do not programmatically indicate groupings of rows or columns, the additional layer of complexity in the table is only indicated visually, which can be confusing for users of assistive technology.\n\n[Code Reference]\n_____',
     issuedescription:
@@ -65,8 +62,7 @@ const bestPractices = [
     violationid: 362,
     media: 'Web',
     bestpractice: 'Provide alternative text for images',
-    specificissue:
-      'Decorative images have no alt text and are revealed to assistive technology',
+    specificissue: 'Decorative images have no alt text and are revealed to assistive technology',
     codesnippet:
       '[Issue]\nThe _____ is a decorative image that is rendered by assistive technology. In instances where the image does not contribute to the understanding of the content and is purely decorative, it needs to be marked in a way to indicate its purely decorative purpose.\n\n[User Impact]\nWhen a decorative image is rendered by assistive technology, users will encounter the image and will not be made aware that the image is intended to be decorative.\n\n[Code Reference]\n_____',
     issuedescription:
@@ -105,10 +101,8 @@ const bestPractices = [
   {
     violationid: 369,
     media: 'Web',
-    bestpractice:
-      'Ensure color is not the sole means of communicating information',
-    specificissue:
-      'Link or other interactive element uses color as the only differentiation from surrounding text',
+    bestpractice: 'Ensure color is not the sole means of communicating information',
+    specificissue: 'Link or other interactive element uses color as the only differentiation from surrounding text',
     codesnippet:
       '[Issue]\nThe _____ is an interactive element that uses an insufficient difference in color as its only method of indication within its surrounding text. Besides the use of color, this item is stylistically similar and requires an additional visual indicator.\n\n[User Impact]\nWhen color is used as the sole method for identifying an interactive element among its surrounding content, persons who are blind, color blind, or have low vision may find the web page unusable.\n\n[Code Reference]\n_____',
     issuedescription:
@@ -117,10 +111,8 @@ const bestPractices = [
   {
     violationid: 369,
     media: 'Web',
-    bestpractice:
-      'Ensure color is not the sole means of communicating information',
-    specificissue:
-      'The current item of a list uses color as the only differentiation from other items',
+    bestpractice: 'Ensure color is not the sole means of communicating information',
+    specificissue: 'The current item of a list uses color as the only differentiation from other items',
     codesnippet:
       '[Issue]\nWithin the _____ the current _____ is only differentiated from its surrounding items by a difference in color. Besides the use of color, this item is stylistically similar and requires an additional visual indicator.\n\n[User Impact]\nWhen color is used as the sole method for identifying the current item within a list, persons who are blind, color blind, or have low vision may find the web page unusable.\n\n[Code Reference]\n_____',
     issuedescription:
@@ -130,8 +122,7 @@ const bestPractices = [
     violationid: 370,
     media: 'Web',
     bestpractice: 'Ensure images provide informative alternative text',
-    specificissue:
-      'Image of text does not have an accessible equivalent of that text',
+    specificissue: 'Image of text does not have an accessible equivalent of that text',
     codesnippet:
       '[Issue]\nThe _____ image contains text with content that is not conveyed elsewhere on the page. Images of text should have alternative text that contains the same content.\n\n[User Impact]\nWhen images of text do not contain accessible equivalents of that text, screen reader users will miss content that has been provided visually. All informative content that is provided visually must also be accessible to assistive technology.\n\n[Code Reference]\n_____',
     issuedescription:
@@ -141,8 +132,7 @@ const bestPractices = [
     violationid: 372,
     media: 'Web',
     bestpractice: 'Ensure alternative text for image links is informative',
-    specificissue:
-      'Image link has alternative text that does not describe the destination',
+    specificissue: 'Image link has alternative text that does not describe the destination',
     codesnippet:
       "[Issue]\nThe _____ image is used as a link and contains alternative text that does not properly describe the expected destination.\n\n[User Impact]\nWhen an image is used as a link, assistive technology may use the image's alternative text as the link's accessible name value. When the image's alternative text does not describe the destination as if it were link text itself, its destination may not be apparent to screen reader users.\n\n[Code Reference]\n_____",
     issuedescription:
@@ -151,15 +141,13 @@ const bestPractices = [
   {
     violationid: 387,
     media: 'Web',
-    bestpractice:
-      "Ensure heading level matches the heading's visual importance/level"
+    bestpractice: "Ensure heading level matches the heading's visual importance/level"
   },
   {
     violationid: 524,
     media: 'Web',
     bestpractice: 'Avoid placing inactive elements in the focus order',
-    specificissue:
-      'Inactive items receive keyboard focus (not including <button> or <a> elements)',
+    specificissue: 'Inactive items receive keyboard focus (not including <button> or <a> elements)',
     codesnippet:
       '[Issue]\nSome inactive elements receive Tab keyboard focus, despite not featuring any interactive functionality. This can be seen _____.\n\n[User Impact]\nProviding focus to non-active elements may give users of assistive technology the impression that the element is interactive and cause keyboard users to have to use extra keystrokes to navigate.\n\n[Code Reference]\n_____',
     issuedescription:
@@ -179,8 +167,7 @@ const bestPractices = [
     violationid: 457,
     media: 'Web',
     bestpractice: 'Avoid the use of implicit headings',
-    specificissue:
-      'Heading is displayed visually but does not have heading markup',
+    specificissue: 'Heading is displayed visually but does not have heading markup',
     codesnippet:
       '[Issue]\nThe _____ text is utilized visually as a heading, however it does not have the correct heading markup.\n\n[User Impact]\nSince some users skim through a document by navigating its headings, it is important to use headings appropriately to convey document structure. When heading content is not created with proper markup the meaning conveyed by presentation will be lost when style sheets are turned off.\n\n[Code Reference]\n_____',
     issuedescription:
@@ -199,8 +186,7 @@ const bestPractices = [
   {
     violationid: 490,
     media: 'Web',
-    bestpractice:
-      'Ensure all active elements receive keyboard focus or can be activated with the keyboard',
+    bestpractice: 'Ensure all active elements receive keyboard focus or can be activated with the keyboard',
     specificissue: 'Anchor element does not receive keyboard focus',
     codesnippet:
       "[Issue]\nThe _____ is an <a> element that does not receive keyboard with the Tab key and is not operable by keyboard. When an element is interactive, the element must also be focusable via the keyboard or a shortcut provided to activate the element.\n\n[User Impact]\nEnsuring keyboard access to a site or application's controls and features allows people who cannot use a mouse or other pointing device to utilize the site or application. For example, a person with a disability that affects dexterity may find it impossible to move or hold a pointing device with enough accuracy to activate desired features. A person who cannot see the screen, therefore relying on a screen reader, may have no problems moving the pointer but will be unable to determine what is being pointed to.\n\n[Code Reference]\n_____",
@@ -210,10 +196,8 @@ const bestPractices = [
   {
     violationid: 490,
     media: 'Web',
-    bestpractice:
-      'Ensure all active elements receive keyboard focus or can be activated with the keyboard',
-    specificissue:
-      'Interactive generic element does not receive keyboard focus',
+    bestpractice: 'Ensure all active elements receive keyboard focus or can be activated with the keyboard',
+    specificissue: 'Interactive generic element does not receive keyboard focus',
     codesnippet:
       "[Issue]\nThe _____ is a generic container that does not receive keyboard with the Tab key and is not operable by keyboard. When an element is interactive, the element must also be focusable via the keyboard or a shortcut provided to activate the element.\n\n[User Impact]\nEnsuring keyboard access to a site or application's controls and features allows people who cannot use a mouse or other pointing device to utilize the site or application. For example, a person with a disability that affects dexterity may find it impossible to move or hold a pointing device with enough accuracy to activate desired features. A person who cannot see the screen, therefore relying on a screen reader, may have no problems moving the pointer but will be unable to determine what is being pointed to.\n\n[Code Reference]\n_____",
     issuedescription:
@@ -222,10 +206,8 @@ const bestPractices = [
   {
     violationid: 602,
     media: 'Web',
-    bestpractice:
-      'Ensure custom controls provide proper textual name, role, and state information',
-    specificissue:
-      '<a> element is used as a button and has an implicit role of "link"',
+    bestpractice: 'Ensure custom controls provide proper textual name, role, and state information',
+    specificissue: '<a> element is used as a button and has an implicit role of "link"',
     codesnippet:
       '[Issue]\nThe _____ is a custom control that was coded using an anchor element. <a> elements have an implicit role of "link" and announces to assistive technology as such.\n\n[User Impact]\nUsing an <a> element as a button can be confusing for screen reader users. Anchor elements have an implicit role of "link", indicating to screen reader users that activating this element will redirect them to a new URL or otherwise change the browser context. This can be disorienting when the element does not behave as expected.\n\n[Code Reference]\n_____',
     issuedescription:
@@ -234,10 +216,8 @@ const bestPractices = [
   {
     violationid: 602,
     media: 'Web',
-    bestpractice:
-      'Ensure custom controls provide proper textual name, role, and state information',
-    specificissue:
-      'Custom control that expands content does not indicate the fact',
+    bestpractice: 'Ensure custom controls provide proper textual name, role, and state information',
+    specificissue: 'Custom control that expands content does not indicate the fact',
     codesnippet:
       "[Issue]\nThe _____ is a custom control that expands content but does not properly indicate this information to assistive technology.\n\n[User Impact]\nWithout any indication of a custom control's expanded state, screen reader users will not be made aware that the element is intended to expand or collapse content upon activation, nor will they be made aware whether or not the content is currently in its expanded state.\n\n[Code Reference]\n_____",
     issuedescription:
@@ -246,8 +226,7 @@ const bestPractices = [
   {
     violationid: 609,
     media: 'Web',
-    bestpractice:
-      'Ensure form field constraints and errors are associated with their corresponding field',
+    bestpractice: 'Ensure form field constraints and errors are associated with their corresponding field',
     specificissue:
       'Error messages are displayed visually, however they are not programmatically associated with their corresponding inputs',
     codesnippet:
@@ -259,8 +238,7 @@ const bestPractices = [
     violationid: 887,
     media: 'Web',
     bestpractice: 'Ensure links that spawn dialogs indicate the fact',
-    specificissue:
-      'Link elements open a dialog without indicating this to screen reader users',
+    specificissue: 'Link elements open a dialog without indicating this to screen reader users',
     codesnippet:
       '[Issue]\nThe _____ element is a link that spawns a dialog without indicating this information to users of assistive technology.\n\n[User Impact]\nLink elements indicate to screen reader users that they will be redirected to a different page, or will experience a context change. Using links to open a dialog without informing screen reader users is unexpected and can be disorienting.\n\n[Code Reference]\n_____',
     issuedescription:
@@ -270,8 +248,7 @@ const bestPractices = [
     violationid: 1249,
     media: 'Web',
     bestpractice: 'Ensure keyboard focus is indicated visually',
-    specificissue:
-      'Interactive element does not visually indicate upon receiving focus',
+    specificissue: 'Interactive element does not visually indicate upon receiving focus',
     codesnippet:
       '[Issue]\nThe _____ receives keyboard focus with the Tab key, however there is no visual indication of this. A well-defined (highly visible) visual indication of keyboard focus needs to be provided for each active element.\n\n[User Impact]\nProviding a visual indication of the focus is particularly necessary for keyboard-only users who do not use the mouse and cannot simply click to place focus where they think it should be. The user must rely on the visual indication of focus to determine where an action will occur or determine what keystrokes to perform to move focus to the desired field.\n\n[Code Reference]\n_____',
     issuedescription:
@@ -280,8 +257,7 @@ const bestPractices = [
   {
     violationid: 1578,
     media: 'iOS',
-    bestpractice:
-      'Ensure color and text formatting are not the sole means of communicating selection'
+    bestpractice: 'Ensure color and text formatting are not the sole means of communicating selection'
   },
   {
     violationid: 1598,
@@ -297,15 +273,13 @@ const bestPractices = [
     violationid: 1626,
     media: 'Web',
     bestpractice: 'Ensure ARIA roles, states, and properties are valid',
-    specificissue:
-      'Element contains an aria reference attribute with an invalid ID'
+    specificissue: 'Element contains an aria reference attribute with an invalid ID'
   },
   {
     violationid: 1626,
     media: 'Web',
     bestpractice: 'Ensure ARIA roles, states, and properties are valid',
-    specificissue:
-      'Element contains role="heading" even though it is not utilized as a heading',
+    specificissue: 'Element contains role="heading" even though it is not utilized as a heading',
     codesnippet:
       '[Issue]\nThe _____ has a role of "heading", which is not valid for this element. No related content follows this element, as is expected with heading elements.\n\n[User Impact]\nWhen a non-heading element has a role of "heading" that element may be rendered by assistive technology as a heading element. Headings may provide the user with a way to navigate section-by-section through content. By applying headings incorrectly, users of assistive technology may be stripped of this useful navigation technique.\n\n[Code Reference]\n_____',
     issuedescription:
@@ -315,8 +289,7 @@ const bestPractices = [
     violationid: 1626,
     media: 'Web',
     bestpractice: 'Ensure ARIA roles, state, and properties are valid',
-    specificissue:
-      'Element contains an aria-expanded attribute even though it is being controlled by another element',
+    specificissue: 'Element contains an aria-expanded attribute even though it is being controlled by another element',
     codesnippet:
       '[Issue]\nThe _____ contains expandable content and has an aria-expanded attribute, even though its expanded state is being controlled by another element.\n\n[User Impact]\nScreen reader users may expect the element containing the aria-expanded attribute to change the expanded state upon interaction. The control element should have the aria-expanded attribute instead.\n\n[Code Reference]\n_____',
     issuedescription:
@@ -325,8 +298,7 @@ const bestPractices = [
   {
     violationid: 1871,
     media: 'Web',
-    bestpractice:
-      'Avoid inappropriate use of ARIA roles, states, and properties',
+    bestpractice: 'Avoid inappropriate use of ARIA roles, states, and properties',
     specificissue: 'Informative image is hidden with aria-hidden="true"',
     codesnippet:
       '[Issue]\r\nThe _____ image is hidden from assistive technology using the aria-hidden attribute. This image contains information that is neither decorative nor redundant, and should be available to assistive technology.\r\n\r\n[User Impact]\r\nWhen this image is hidden from assistive technology, screen reader users will not be made aware of the image or its contents. Any information conveyed on screen must also be rendered to assistive technology.\r\n\r\n[Code Reference]\r\n_____',
@@ -336,14 +308,12 @@ const bestPractices = [
   {
     violationid: 1905,
     media: 'iOS',
-    bestpractice:
-      'Ensure that applications do not interfere with assistive technology'
+    bestpractice: 'Ensure that applications do not interfere with assistive technology'
   },
   {
     violationid: 1908,
     media: 'iOS',
-    bestpractice:
-      'Ensure non-decorative images provide informative alternative text',
+    bestpractice: 'Ensure non-decorative images provide informative alternative text',
     specificissue: 'Image that conveys meaning does not have alternative text',
     codesnippet:
       '[Issue]\nThe _____ is an image that conveys meaning, however it does not provide informative alternative text. Images in iOS are not accessibility enabled by default. Developers wishing to use images must enable accessibility on all relevant images in addition to providing an appropriate accessibility label.\n\n[User Impact]\nAlternative text that is default, or non-meaningful text, can negatively impact the accessibility of an image. The goal of the accessible text should be to present text which will provide the same level of understanding to those who cannot see the image as it does to those who can.',
@@ -353,8 +323,7 @@ const bestPractices = [
   {
     violationid: 1909,
     media: 'iOS',
-    bestpractice:
-      'Provide textual equivalents for all non-text elements including sounds and images',
+    bestpractice: 'Provide textual equivalents for all non-text elements including sounds and images',
     specificissue: 'Non-decorative element does not have a textual equivalent',
     codesnippet:
       '[Issue]\nThe _____ is an element that conveys meaning, however it does not provide a textual equivalent. All non-text elements that are not considered decorative must have an Accessible Label.\n\n[User Impact]\nWhen an accessible label is not provided for the _____, users who cannot view the _____ will not understand the purpose of it.',
@@ -414,10 +383,8 @@ const bestPractices = [
   {
     violationid: 2519,
     media: 'Web',
-    bestpractice:
-      'Ensure ARIA regions, landmarks and HTML sections are identifiable',
-    specificissue:
-      'Multiple navigation items exist, but one of them does not have a label, visually or programmatically',
+    bestpractice: 'Ensure ARIA regions, landmarks and HTML sections are identifiable',
+    specificissue: 'Multiple navigation items exist, but one of them does not have a label, visually or programmatically',
     codesnippet:
       '[Issue]\nThere are multiple elements on the page with a role of navigation, however _____ not have an accessible label. When two or more elements of the same region, landmark, or sections are used, they must all be identifiable among one another.\n\n[User Impact]\nWhen there are two or more regions, landmark, or sections of the same type without accessible labels, users of screen readers may have trouble locating the correct section or understanding its purpose.\n\n[Code Reference]\n_____',
     issuedescription:
@@ -437,8 +404,7 @@ const bestPractices = [
     violationid: 2607,
     media: 'Web',
     bestpractice: 'Provide text equivalents for icon fonts',
-    specificissue:
-      'Anchor or BUTTON element uses an icon as its visual label, however it has no textual label',
+    specificissue: 'Anchor or BUTTON element uses an icon as its visual label, however it has no textual label',
     codesnippet:
       '[Issue]\nThe _____ is an interactive element that uses an icon as its visual label. There is no textual equivalent provided to label this element.\n\n[User Impact]\nScreen reader users will not have access to the information conveyed by the icon without text equivalents. When icon fonts are used, the icon may not be seen at all by assistive technology as CSS is purposely presentational and should not be used to provide content. Screen reader users may not know how to interact with this element.\n\n[Code Reference]\n_____',
     issuedescription:
@@ -448,8 +414,7 @@ const bestPractices = [
     violationid: 2607,
     media: 'Web',
     bestpractice: 'Provide text equivalents for icon fonts',
-    specificissue:
-      'Error messages uses an icon as its only method of indication',
+    specificissue: 'Error messages uses an icon as its only method of indication',
     codesnippet:
       '[Issue]\nAfter triggering an error with the _____, the resulting error message is only indicated to users with an icon.\n\n[User Impact]\nThe icon may not be seen at all by assistive technology as CSS is purposely presentational and should not be used to provide content. Because this icon is the only indication of the error message, it is considered informative.\n\n[Code Reference]\n_____',
     issuedescription:
@@ -458,18 +423,14 @@ const bestPractices = [
   {
     violationid: 2896,
     media: 'Web',
-    bestpractice:
-      'Ensure that content and functionality is available when the user overrides text spacing properties',
-    specificissue:
-      'Text moves outside container when overriding text spacing properties'
+    bestpractice: 'Ensure that content and functionality is available when the user overrides text spacing properties',
+    specificissue: 'Text moves outside container when overriding text spacing properties'
   },
   {
     violationid: 2909,
     media: 'Web',
-    bestpractice:
-      'Ensure active user interface components have sufficient contrast',
-    specificissue:
-      'Interface component does not have enough contrast against background',
+    bestpractice: 'Ensure active user interface components have sufficient contrast',
+    specificissue: 'Interface component does not have enough contrast against background',
     codesnippet:
       '[Issue]\nThe _____ is an active interface component that does not provide sufficient contrast against the adjacent background color.\n\nComponent color: _____\nAdjacent background color: _____\nContrast ratio: _____\n\n[User Impact]\nSufficient contrast ensures that people with low vision, people who are color blind, users viewing the page without color, and users of monochrome screens can understand page content.\n\n[Code Reference]\n_____',
     issuedescription:
@@ -478,10 +439,8 @@ const bestPractices = [
   {
     violationid: 3159,
     media: 'Web',
-    bestpractice:
-      'Ensure all interactive functionality is operable with the keyboard',
-    specificissue:
-      'Interactive generic element receives focus but cannot be activated with the keyboard',
+    bestpractice: 'Ensure all interactive functionality is operable with the keyboard',
+    specificissue: 'Interactive generic element receives focus but cannot be activated with the keyboard',
     codesnippet:
       '[Issue]\nThe _____ receives keyboard focus with the Tab key, however it does not function as expected upon activation.\n\n[User Impact]\nWhen interactive elements cannot be operated with the keyboard, users who rely on the keyboard such as mobility-impaired users and screen reader users may not be able to perform the intended function.\n\n[Code Reference]\n_____',
     issuedescription:
@@ -511,24 +470,19 @@ const renderAll = () => {
   const changeBpButton = document.getElementById('ChgBPNow');
   const codeSnippetField = document.querySelectorAll('textarea')[0];
   const issueDescriptionField = document.querySelectorAll('textarea')[1];
-  let selectList =
-    codeSnippetField.parentNode.parentNode.previousSibling.lastChild;
+  let selectList = codeSnippetField.parentNode.parentNode.previousSibling.lastChild;
   if (selectList.nodeName === 'TD') {
     selectList = selectList.lastChild;
   }
   let patternName;
   if (isPattern) {
-    patternName = selectList.parentNode.parentNode.previousSibling.firstElementChild.firstElementChild.textContent.substring(
-      18
-    );
+    patternName = selectList.parentNode.parentNode.previousSibling.firstElementChild.firstElementChild.textContent.substring(18);
   }
 
   const fillInputs = e => {
     e.preventDefault();
     const specificListValue = document.getElementById('specificList').value;
-    const chosenBestPractice = bestPractices.find(
-      bestPractice => bestPractice.specificIssue === specificListValue
-    );
+    const chosenBestPractice = bestPractices.find(bestPractice => bestPractice.specificIssue === specificListValue);
     codeSnippetField.value = '';
     if (isPattern) {
       codeSnippetField.value += `[Pattern: ${patternName}]
@@ -539,12 +493,7 @@ const renderAll = () => {
     issueDescriptionField.value = chosenBestPractice.issueDescription;
   };
 
-  const getSpecifics = violationId => {
-    const filteredSpecifics = bestPractices.filter(bestPractice => {
-      return bestPractice.violationId === violationId;
-    });
-    return filteredSpecifics;
-  };
+  const getSpecifics = violationid => bestPractices.filter(bestPractice => bestPractice.violationid === violationid);
 
   const renderSpecificList = specifics => {
     if (specifics.length) {
