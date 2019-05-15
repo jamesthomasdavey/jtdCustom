@@ -489,8 +489,8 @@ const renderAll = () => {
 
 `;
     }
-    codeSnippetField.value += chosenBestPractice.codeSnippet;
-    issueDescriptionField.value = chosenBestPractice.issueDescription;
+    codeSnippetField.value += chosenBestPractice.codesnippet;
+    issueDescriptionField.value = chosenBestPractice.issuedescription;
   };
 
   const getSpecifics = violationid => bestPractices.filter(bestPractice => bestPractice.violationid === violationid);
