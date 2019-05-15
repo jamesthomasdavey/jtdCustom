@@ -39,6 +39,14 @@ const bestPractices = [
       "[Recommendation]\nDevelopers must provide an accessible label for all form fields. To associate a non-LABEL element to a form field, developers can add an aria-labelledby attribute to the input with the same value as the visual label's ID attribute.\n\n[Compliant Code Example]\n_____"
   },
   {
+    violationId: 345,
+    media: "Web",
+    bestPractice: "Provide a mechanism for skipping past repetitive content",
+    specificIssue: "There is no skip link to circumvent navigation",
+    codeSnippet: "",
+    issueDescription: ""
+  },
+  {
     violationId: 361,
     media: "Web",
     bestPractice: "Ensure headers and cells are properly associated",
@@ -134,6 +142,16 @@ const bestPractices = [
       "[Recommendation]\nDevelopers must ensure that if there are any images of text, that textual content must be made accessible. This is either done with redundant information outside of the image element (in which case the image can be considered decorative), or by adding an alt attribute to the image containing the same textual information.\n\n[Compliant Code Example]\n_____"
   },
   {
+    violationId: 372,
+    media: "Web",
+    bestPractice: "Ensure alternative text for image links is informative",
+    specificIssue:
+      "Image link has alternative text that does not describe the destination",
+    codeSnippet:
+      "[Issue]\nThe _____ image is used as a link and contains alternative text that does not properly describe the expected destination.\n\n[User Impact]\nWhen an image is used as a link, assistive technology may use the image's alternative text as the link's accessible name value. When the image's alternative text does not describe the destination as if it were link text itself, its destination may not be apparent to screen reader users.\n\n[Code Reference]\n_____",
+    issueDescription: ""
+  },
+  {
     violationId: 387,
     media: "Web",
     bestPractice:
@@ -141,6 +159,17 @@ const bestPractices = [
     specificIssue: "",
     codeSnippet: "",
     issueDescription: ""
+  },
+  {
+    violationId: 457,
+    media: "Web",
+    bestPractice: "Avoid the use of implicit headings",
+    specificIssue:
+      "Heading is displayed visually but does not have heading markup",
+    codeSnippet:
+      "[Issue]\nThe _____ text is utilized visually as a heading, however it does not have the correct heading markup.\n\n[User Impact]\nSince some users skim through a document by navigating its headings, it is important to use headings appropriately to convey document structure. When heading content is not created with proper markup the meaning conveyed by presentation will be lost when style sheets are turned off.\n\n[Code Reference]\n_____",
+    issueDescription:
+      "[Recommendation]\nDevelopers must ensure that headers with proper markup are employed for any elements that solely use visual effect to convey a content/section heading. HTML heading elements such as h1,h2,h3,h4,h5, and h6 must be used to specifically mark up page content that visually appears as a heading.\n\n[Compliant Code Example]\n_____"
   },
   {
     violationId: 464,
@@ -181,9 +210,9 @@ const bestPractices = [
     bestPractice:
       "Ensure custom controls provide proper textual name, role, and state information",
     specificIssue:
-      'Anchor element is used as a button and has an implicit role of "link',
+      '<a> element is used as a button and has an implicit role of "link',
     codeSnippet:
-      '[Issue]\nThe _____ is a custom control that was coded using an anchor element. Anchor elements have an implicit role of "link" and announces to assistive technology as such.\n\n[User Impact]\nUsing an <a> element as a button can be confusing for screen reader users. Anchor elements have an implicit role of "link", indicating to screen reader users that activating this element will redirect them to a new URL or otherwise change the browser context. This can be disorienting when the element does not behave as expected.\n\n[Code Reference]\n_____',
+      '[Issue]\nThe _____ is a custom control that was coded using an anchor element. <a> elements have an implicit role of "link" and announces to assistive technology as such.\n\n[User Impact]\nUsing an <a> element as a button can be confusing for screen reader users. Anchor elements have an implicit role of "link", indicating to screen reader users that activating this element will redirect them to a new URL or otherwise change the browser context. This can be disorienting when the element does not behave as expected.\n\n[Code Reference]\n_____',
     issueDescription:
       '[Recommendation]\nDevelopers must ensure that all custom controls provide an accurate textual role for assistive technology. Using the <button> element for button-like controls will automatically have an implicit role of "button" and is generally recommended.\n\nTo ensure that <a> elements are announced to screen readers as buttons, developers must add the attribute role="button" to the anchor element.\n\n[Compliant Code Example]\n_____'
   },
@@ -210,6 +239,17 @@ const bestPractices = [
       "[Issue]\nThe _____ form field has an error message that appears after an invalid submission, however the error message and form field's association is not properly indicated to assistive technology.\n\n[User Impact]\nWhen an error is not programmatically associated with a form field, users of assistive technology may not understand the relationship of the error to the field and may make the form unusable.\n\n[Code Reference]\n_____",
     issueDescription:
       "[Recommendation]\nDevelopers must ensure that errors are programmatically associated with their form field. Developers can add an aria-describedby attribute to the form field, with a value that matches the ID attribute of the error message.\n\n[Compliant Code Example]\n_____"
+  },
+  {
+    violationId: 887,
+    media: "Web",
+    bestPractice: "Ensure links that spawn dialogs indicate the fact",
+    specificIssue:
+      "Link elements open a dialog without indicating this to screen reader users",
+    codeSnippet:
+      "[Issue]\nThe _____ element is a link that spawns a dialog without indicating this information to users of assistive technology.\n\n[User Impact]\nLink elements indicate to screen reader users that they will be redirected to a different page, or will experience a context change. Using links to open a dialog without informing screen reader users is unexpected and can be disorienting.\n\n[Code Reference]\n_____",
+    issueDescription:
+      "[Recommendation]\nDevelopers must ensure that all links that open a dialog indicate this fact to screen reader users. Developers should add text to the link alerting users that a dialog will be opened when the link is activated by adding a title attribute to supplement the current accessible name.\n\n[Compliant Code Example]\n_____"
   },
   {
     violationId: 1249,
@@ -398,6 +438,16 @@ const bestPractices = [
       "[Recommendation]\nDevelopers must ensure that text equivalents are provided for informative icon fonts. Errors must be explicitly indicated. This can be done by appending off-screen text to the beginning of the error message to communicate this information to screen-reader users.\n\n[Compliant Code Example]\n_____"
   },
   {
+    violationId: 2896,
+    media: "Web",
+    bestPractice:
+      "Ensure that content and functionality is available when the user overrides text spacing properties",
+    specificIssue:
+      "Text moves outside container when overriding text spacing properties",
+    codeSnippet: "",
+    issueDescription: ""
+  },
+  {
     violationId: 2909,
     media: "Web",
     bestPractice:
@@ -407,7 +457,7 @@ const bestPractices = [
     codeSnippet:
       "[Issue]\nThe _____ is an active interface component that does not provide sufficient contrast against the adjacent background color.\n\nComponent color: _____\nAdjacent background color: _____\nContrast ratio: _____\n\n[User Impact]\nSufficient contrast ensures that people with low vision, people who are color blind, users viewing the page without color, and users of monochrome screens can understand page content.\n\n[Code Reference]\n_____",
     issueDescription:
-      "[Recommendation]\nDevelopers must give identifying portions of buttons, form fields, and other user interface controls a contrast ratio of at least 3:1 with adjacent colors. In addition, developers need to make sure that states such as focus, hover, selected, current item, and other states, like checked, also provide sufficient contrast to identify that state."
+      "[Recommendation]\nDevelopers must give identifying portions of active user interface components a contrast ratio of at least 3:1 with adjacent colors, including states such as focus, hover, selected, and current item. It is not requires that controls have a visual boundary indicating the hit area, but that if there is an indicator, then it must have sufficient contrast."
   },
   {
     violationId: 3159,
