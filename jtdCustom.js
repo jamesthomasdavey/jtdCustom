@@ -463,10 +463,7 @@ const bestPractices = [
   }
 ];
 
-///
-const event = new Event('change');
-///
-
+// create container and elements
 const specificListContainer = document.createElement('div');
 specificListContainer.id = 'specificListContainer';
 const specificList = document.createElement('select');
@@ -479,8 +476,7 @@ fillButton.style.display = 'block';
 specificListContainer.appendChild(fillButton);
 specificListContainer.style.display = 'none';
 
-const isPattern = window.location.href.includes('pattern_id');
-
+// function render everything
 const renderAll = () => {
   const changeBpButton = document.getElementById('ChgBPNow');
   const codeSnippetField = document.querySelectorAll('textarea')[0];
@@ -489,23 +485,20 @@ const renderAll = () => {
   if (selectList.nodeName === 'TD') {
     selectList = selectList.lastChild;
   }
-  let patternName;
-  if (isPattern) {
-    patternName = selectList.parentNode.parentNode.previousSibling.firstElementChild.firstElementChild.textContent.substring(18);
-  }
+  const patternText = window.location.href.includes('pattern_id')
+    ? `[Pattern: ${selectList.parentNode.parentNode.previousSibling.firstElementChild.firstElementChild.textContent.substring(18)}]
+
+`
+    : '';
 
   const fillInputs = e => {
     e.preventDefault();
     const specificListValue = document.getElementById('specificList').value;
     const chosenBestPractice = bestPractices.find(bestPractice => bestPractice.specificissue === specificListValue);
-    codeSnippetField.value = '';
-    if (isPattern) {
-      codeSnippetField.value += `[Pattern: ${patternName}]
-
-`;
-    }
-    codeSnippetField.value += chosenBestPractice.codesnippet;
-    issueDescriptionField.value = chosenBestPractice.issuedescription;
+    codeSnippetField.textContent = '';
+    codeSnippetField.textContent += patternText;
+    codeSnippetField.textContent += chosenBestPractice.codesnippet;
+    issueDescriptionField.textContent = chosenBestPractice.issuedescription;
   };
 
   const getSpecifics = violationid => bestPractices.filter(bestPractice => bestPractice.violationid === violationid);
@@ -533,7 +526,7 @@ const renderAll = () => {
 
   changeBpButton.addEventListener('click', () => {
     setTimeout(() => {
-      selectList.dispatchEvent(event);
+      selectList.dispatchEvent(new Event('change'));
     }, 0);
   });
 
