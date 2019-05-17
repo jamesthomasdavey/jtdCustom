@@ -523,7 +523,7 @@ const renderAll = () => {
   });
 
   fillButton.addEventListener('click', fillInputs);
-  close();
+  // close();
 };
 
 const init = () => {
@@ -534,12 +534,12 @@ const init = () => {
   }
 };
 
-const close = () => {
-  if (!document.getElementById('ChgBPNow')) {
-    init();
-  } else {
-    setTimeout(close, 50);
-  }
-};
+// const close = () => {
+//   if (!document.getElementById('ChgBPNow')) {
+//     init();
+//   } else {
+//     setTimeout(close, 50);
+//   }
+// };
 
 init();
