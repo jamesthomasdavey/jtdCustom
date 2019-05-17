@@ -538,23 +538,23 @@ const renderAll = () => {
   });
 
   fillButton.addEventListener('click', fillInputs);
-  // close();
 };
 
-const init = () => {
+const listenForOpen = () => {
   if (document.getElementById('ChgBPNow')) {
     renderAll();
+    listenForClose();
   } else {
-    setTimeout(init, 50);
+    setTimeout(listenForOpen, 50);
   }
 };
 
-// const close = () => {
-//   if (!document.getElementById('ChgBPNow')) {
-//     init();
-//   } else {
-//     setTimeout(close, 50);
-//   }
-// };
+const listenForClose = () => {
+  if (document.getElementById('ChgBPNow')) {
+    setTimeout(listenForClose, 50);
+  } else {
+    listenForOpen();
+  }
+};
 
-init();
+listenForOpen();
