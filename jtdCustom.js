@@ -40,7 +40,11 @@ const bestPractices = [
     violationid: 345,
     media: 'Web',
     bestpractice: 'Provide a mechanism for skipping past repetitive content',
-    specificissue: 'There is no skip link to circumvent navigation'
+    specificissue: 'There is no skip link to circumvent navigation',
+    codesnippet:
+      "[Issue]\nThere is currently no mechanism to skip past the repetitive content of the module. Repetitive content found on a set of pages requires a method to allow a user to skip past it.\n\n[User Impact]\nEach time a keyboard user accesses a new page in the site, the user would be forced to navigate past e.g. tab through all of these navigation links (and other content) before getting to the main content area of the page. This makes it difficult to access the page's main/unique information efficiently.",
+    issuedescription:
+      '[Recommendation]\nDevelopers must include a mechanism allowing users to skip past content. When links appear at the top of the page, the skip link should be the first before repetitive content on the page (i.e. generally the first tab stop), and its target should be the beginning of the main content area that is unique to that page.'
   },
   {
     violationid: 361,
@@ -62,7 +66,7 @@ const bestPractices = [
     violationid: 362,
     media: 'Web',
     bestpractice: 'Provide alternative text for images',
-    specificissue: 'Decorative images have no alt text and are revealed to assistive technology',
+    specificissue: 'Decorative images lack null alt text and are revealed to assistive technology',
     codesnippet:
       '[Issue]\nThe _____ is a decorative image that is rendered by assistive technology. In instances where the image does not contribute to the understanding of the content and is purely decorative, it needs to be marked in a way to indicate its purely decorative purpose.\n\n[User Impact]\nWhen a decorative image is rendered by assistive technology, users will encounter the image and will not be made aware that the image is intended to be decorative.\n\n[Code Reference]\n_____',
     issuedescription:
@@ -136,18 +140,29 @@ const bestPractices = [
     codesnippet:
       "[Issue]\nThe _____ image is used as a link and contains alternative text that does not properly describe the expected destination.\n\n[User Impact]\nWhen an image is used as a link, assistive technology may use the image's alternative text as the link's accessible name value. When the image's alternative text does not describe the destination as if it were link text itself, its destination may not be apparent to screen reader users.\n\n[Code Reference]\n_____",
     issuedescription:
-      '[Recommendation]\nDevelopers should ensure descriptions are precise and meaningful. The alt description should effectively describe the target of the link. Developers should also avoid using vague attributes such as alt="Follow this link...".\n\n[Compliant Code Example]\n_____'
+      '[Recommendation]\nDevelopers must ensure that descriptions are precise and meaningful. The alt description should effectively describe the target of the link. Developers should also avoid using vague attributes such as alt="Follow this link...".\n\n[Compliant Code Example]\n_____'
   },
   {
     violationid: 387,
     media: 'Web',
-    bestpractice: "Ensure heading level matches the heading's visual importance/level"
+    bestpractice: "Ensure heading level matches the heading's visual importance/level",
+    specificissue: 'Headings skip a level',
+    codesnippet:
+      '[Issue]\nThe _____ heading is a heading level _____, while the preceding heading is a heading level _____.\n\n[User Impact]\nHeadings can be used to communicate structure for assistive technology. When levels are skipped, users may not understand the relationship of content.\n\n[Code Reference]\n_____',
+    issuedescription:
+      "[Recommendation]\nDevelopers must ensure that heading levels match the heading's visual importance/level. Developers should change the _____ heading from an _____ to an _____.\n\n[Compliant Code Example]\n_____"
+  },
+  {
+    violationid: 387,
+    media: 'Web',
+    bestpractice: "Ensure heading level matches the heading's visual importance/level",
+    specificissue: 'Headings are out of order'
   },
   {
     violationid: 524,
     media: 'Web',
     bestpractice: 'Avoid placing inactive elements in the focus order',
-    specificissue: 'Inactive items receive keyboard focus (not including <button> or <a> elements)',
+    specificissue: 'Inactive elements receive keyboard focus (not including <button> or <a> elements)',
     codesnippet:
       '[Issue]\nSome inactive elements receive Tab keyboard focus, despite not featuring any interactive functionality. This can be seen _____.\n\n[User Impact]\nProviding focus to non-active elements may give users of assistive technology the impression that the element is interactive and cause keyboard users to have to use extra keystrokes to navigate.\n\n[Code Reference]\n_____',
     issuedescription:
@@ -209,7 +224,7 @@ const bestPractices = [
     bestpractice: 'Ensure custom controls provide proper textual name, role, and state information',
     specificissue: '<a> element is used as a button and has an implicit role of "link"',
     codesnippet:
-      '[Issue]\nThe _____ is a custom control that was coded using an anchor element. <a> elements have an implicit role of "link" and announces to assistive technology as such.\n\n[User Impact]\nUsing an <a> element as a button can be confusing for screen reader users. Anchor elements have an implicit role of "link", indicating to screen reader users that activating this element will redirect them to a new URL or otherwise change the browser context. This can be disorienting when the element does not behave as expected.\n\n[Code Reference]\n_____',
+      '[Issue]\nThe _____ is a custom control that was coded using an anchor element. <a> elements have an implicit role of "link" and announce to assistive technology as such.\n\n[User Impact]\nUsing an <a> element as a button can be confusing for screen reader users. Anchor elements have an implicit role of "link", indicating to screen reader users that activating this element will redirect them to a new URL or otherwise change the browser context. This can be disorienting when the element does not behave as expected.\n\n[Code Reference]\n_____',
     issuedescription:
       '[Recommendation]\nDevelopers must ensure that all custom controls provide an accurate textual role for assistive technology. Using the <button> element for button-like controls will automatically have an implicit role of "button" and is generally recommended.\n\nTo ensure that <a> elements are announced to screen readers as buttons, developers must add the attribute role="button" to the anchor element.\n\n[Compliant Code Example]\n_____'
   },
