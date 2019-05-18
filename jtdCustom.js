@@ -1,16 +1,15 @@
 // ==UserScript==
 // @name         AMP - Insert James' Autofills
 // @namespace    http://tampermonkey.net/
-// @version      0.4
+// @version      0.5
 // @description  to make my life easier
-// @author       You
+// @author       James Thomas Davey
 // @match        *.levelaccess.net/public/reporting/view_module.php?module_id=*
 // @match        *.levelaccess.net/public/reporting/view_pattern.php?pattern_id=*
 // @grant        none
 // ==/UserScript==
 
-// This requires the use of Kevin Murphy's TamperMonkey Scripts:
-// http://www.nva11y.com/scripts/AMPHeaders.js
+// This requires the installation of Kevin's AMPAddInstance script:
 // http://www.nva11y.com/scripts/AMPAddInstance.js
 
 'use strict';
