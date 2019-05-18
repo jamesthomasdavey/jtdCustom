@@ -520,6 +520,7 @@ specificListContainer.style.display = 'none';
 
 // function render everything
 const renderAll = () => {
+  // cache necessary elements
   const changeBpButton = document.getElementById('ChgBPNow');
   const codeSnippetField = document.querySelectorAll('textarea')[0];
   const issueDescriptionField = document.querySelectorAll('textarea')[1];
@@ -527,6 +528,7 @@ const renderAll = () => {
   if (selectList.nodeName === 'TD') {
     selectList = selectList.lastChild;
   }
+  // create pattern text if it exists
   const patternText = window.location.href.includes('pattern_id')
     ? `[Pattern: ${selectList.parentNode.parentNode.previousSibling.firstElementChild.firstElementChild.textContent.substring(
         18
@@ -535,22 +537,8 @@ const renderAll = () => {
 `
     : '';
 
-  const fillInputs = e => {
-    e.preventDefault();
-    const specificListValue = document.getElementById('specificList').value;
-    const chosenBestPractice = bestPractices.find(
-      bestPractice => bestPractice.specificissue === specificListValue
-    );
-    codeSnippetField.textContent = '';
-    codeSnippetField.textContent += patternText;
-    codeSnippetField.textContent += chosenBestPractice.codesnippet;
-    issueDescriptionField.textContent = chosenBestPractice.issuedescription;
-  };
-
-  const getSpecifics = violationid =>
-    bestPractices.filter(bestPractice => bestPractice.violationid === violationid);
-
-  const renderSpecificList = specifics => {
+  // function to create the list of specifics
+  const createSpecificList = specifics => {
     if (specifics.length) {
       specificList.innerHTML = '';
       specifics.forEach(specific => {
@@ -563,20 +551,34 @@ const renderAll = () => {
       specificListContainer.style.display = 'none';
     }
   };
+  // function to fill all the inputs
+  const fillInputs = e => {
+    e.preventDefault();
+    const specificListValue = document.getElementById('specificList').value;
+    const chosenBestPractice = bestPractices.find(
+      bestPractice => bestPractice.specificissue === specificListValue
+    );
+    codeSnippetField.textContent = '';
+    codeSnippetField.textContent += patternText;
+    codeSnippetField.textContent += chosenBestPractice.codesnippet;
+    issueDescriptionField.textContent = chosenBestPractice.issuedescription;
+  };
 
+  // add components to DOM
   selectList.parentNode.appendChild(specificListContainer);
 
+  // add event listeners
   selectList.addEventListener('change', e => {
-    const specifics = getSpecifics(Number(e.target.value));
-    renderSpecificList(specifics);
+    const specifics = bestPractices.filter(
+      bestPractice => bestPractice.violationid === Number(e.target.value)
+    );
+    createSpecificList(specifics);
   });
-
   changeBpButton.addEventListener('click', () => {
     setTimeout(() => {
       selectList.dispatchEvent(new Event('change'));
     }, 0);
   });
-
   fillButton.addEventListener('click', fillInputs);
 };
 
