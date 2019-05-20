@@ -519,7 +519,7 @@ specificListContainer.appendChild(fillButton);
 const patternButton = document.createElement('button');
 patternButton.textContent = 'Patternize';
 patternButton.classList.add('kpmFirstButton');
-patternButton.style.display = none;
+patternButton.style.display = 'none';
 specificListContainer.appendChild(patternButton);
 specificListContainer.style.display = 'none';
 
