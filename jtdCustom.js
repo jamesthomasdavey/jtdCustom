@@ -520,6 +520,7 @@ const patternButton = document.createElement('button');
 patternButton.textContent = 'Patternize';
 patternButton.classList.add('kpmFirstButton');
 patternButton.style.display = none;
+specificListContainer.appendChild(patternButton);
 specificListContainer.style.display = 'none';
 
 const isPattern = window.location.href.includes('pattern_id');
