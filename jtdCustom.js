@@ -551,7 +551,7 @@ const renderAll = () => {
         specificItem.textContent = specific.specificissue;
         specificList.appendChild(specificItem);
       });
-      patternButton.style.display = 'block';
+      patternButton.style.display = isPattern ? 'block' : 'none';
       specificListContainer.style.display = 'block';
     } else {
       specificListContainer.style.display = 'none';
