@@ -567,7 +567,8 @@ const renderAll = () => {
     issueDescriptionField.textContent = chosenBestPractice.issuedescription;
   };
 
-  const patternize = () => {
+  const patternize = e => {
+    e.preventDefault();
     const issueIndex = codeSnippetField.textContent.indexOf('[Issue]');
     const replacementText = codeSnippetField.textContent.substr(issueIndex);
     codeSnippetField.textContent = patternText;
