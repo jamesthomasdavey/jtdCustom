@@ -506,22 +506,22 @@ const bestPractices = [
 ];
 
 // create container and elements
-const specificListContainer = document.createElement('div');
-specificListContainer.id = 'specificListContainer';
+const jamesContainer = document.createElement('div');
+jamesContainer.id = 'jamesContainer';
 const specificList = document.createElement('select');
 specificList.id = 'specificList';
-specificListContainer.appendChild(specificList);
+specificList.style.display = 'none';
+jamesContainer.appendChild(specificList);
 const fillButton = document.createElement('button');
 fillButton.textContent = 'Autofill';
 fillButton.classList.add('kpmFirstButton');
-fillButton.style.display = 'block';
-specificListContainer.appendChild(fillButton);
+fillButton.style.display = 'none';
+jamesContainer.appendChild(fillButton);
 const patternButton = document.createElement('button');
 patternButton.textContent = 'Patternize';
 patternButton.classList.add('kpmFirstButton');
 patternButton.style.display = 'none';
-specificListContainer.appendChild(patternButton);
-specificListContainer.style.display = 'none';
+jamesContainer.appendChild(patternButton);
 
 const isPattern = window.location.href.includes('pattern_id');
 
@@ -535,6 +535,7 @@ const renderAll = () => {
   if (selectList.nodeName === 'TD') {
     selectList = selectList.lastChild;
   }
+  patternButton.style.display = isPattern ? 'block' : 'none';
   // create pattern text if it exists
   const patternText = isPattern
     ? `[Pattern: ${selectList.parentNode.parentNode.previousSibling.firstElementChild.firstElementChild.textContent.substring(18)}]
@@ -551,10 +552,11 @@ const renderAll = () => {
         specificItem.textContent = specific.specificissue;
         specificList.appendChild(specificItem);
       });
-      patternButton.style.display = isPattern ? 'block' : 'none';
-      specificListContainer.style.display = 'block';
+      specificList.style.display = 'block';
+      fillButton.style.display = 'block';
     } else {
-      specificListContainer.style.display = 'none';
+      specificList.style.display = 'none';
+      fillButton.style.display = 'none';
     }
   };
   // function to fill all the inputs
@@ -576,7 +578,7 @@ const renderAll = () => {
   };
 
   // add components to DOM
-  selectList.parentNode.appendChild(specificListContainer);
+  selectList.parentNode.appendChild(jamesContainer);
 
   // add event listeners
   selectList.addEventListener('change', e => {
