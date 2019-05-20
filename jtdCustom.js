@@ -51,7 +51,7 @@ const bestPractices = [
     bestpractice: 'Avoid the sole use of device-dependent event handlers',
     specificissue: 'Interactive generic element does not receive keyboard focus and cannot be activated with the keyboard',
     codesnippet:
-      '[Issue]\nThe _____ does not receive keyboard focus with the Tab key, and it does not function as expected upon keyboard activation.\n\n[User Impact]\nWhen interactive elements cannot be operated with the keyboard, users who rely on the keyboard such as mobility-impaired users and screen reader users may not be able to perform the intended function.\n\n[Code Reference]\n_____',
+      '[Issue]\nThe _____ is an interactive generic element that does not receive keyboard focus with the Tab key, and it does not function as expected upon keyboard activation.\n\n[User Impact]\nWhen interactive elements cannot be operated with the keyboard, users who rely on the keyboard such as mobility-impaired users and screen reader users may not be able to perform the intended function.\n\n[Code Reference]\n_____',
     issuedescription:
       '[Recommendation]\nDevelopers must ensure that all interactive elements can be operated with the keyboard. Standard HTML elements such as input fields, buttons, and anchor tags will automatically be operable by keyboard, and are generally recommended when creating interactive elements.\n\nTo make a generic container element operable by keyboard, Developers must add a tabindex="0" attribute to ensure that the item. Developers must also add an additional handler for keyboard events, and ensure to add a proper role attribute to the element to be announced properly to assistive technology.\n\n[Compliant Code Example]\n_____'
   },
@@ -61,7 +61,7 @@ const bestPractices = [
     bestpractice: 'Avoid the sole use of device-dependent event handlers',
     specificissue: 'Interactive generic element receives focus but cannot be activated with the keyboard',
     codesnippet:
-      '[Issue]\nThe _____ receives keyboard focus with the Tab key, however it does not function as expected upon keyboard activation.\n\n[User Impact]\nWhen interactive elements cannot be operated with the keyboard, users who rely on the keyboard such as mobility-impaired users and screen reader users may not be able to perform the intended function.\n\n[Code Reference]\n_____',
+      '[Issue]\nThe _____ is an interactive generic element that receives keyboard focus with the Tab key, however it does not function as expected upon keyboard activation.\n\n[User Impact]\nWhen interactive elements cannot be operated with the keyboard, users who rely on the keyboard such as mobility-impaired users and screen reader users may not be able to perform the intended function.\n\n[Code Reference]\n_____',
     issuedescription:
       '[Recommendation]\nDevelopers must ensure that all interactive elements can be operated with the keyboard. Standard HTML elements such as input fields, buttons, and anchor tags will automatically be operable by keyboard, and are generally recommended when creating interactive elements.\n\nTo make a generic container element operable by keyboard, developers must add an additional handler for keyboard events. Developers must also ensure to add a proper role attribute to the element to be announced properly to assistive technology.\n\n[Compliant Code Example]\n_____'
   },
@@ -231,19 +231,15 @@ const bestPractices = [
     bestpractice: 'Ensure all active elements receive keyboard focus or can be activated with the keyboard',
     specificissue: 'Anchor element does not receive keyboard focus',
     codesnippet:
-      "[Issue]\nThe _____ is an <a> element that does not receive keyboard with the Tab key and is not operable by keyboard. When an element is interactive, the element must also be focusable via the keyboard or a shortcut provided to activate the element.\n\n[User Impact]\nEnsuring keyboard access to a site or application's controls and features allows people who cannot use a mouse or other pointing device to utilize the site or application. For example, a person with a disability that affects dexterity may find it impossible to move or hold a pointing device with enough accuracy to activate desired features. A person who cannot see the screen, therefore relying on a screen reader, may have no problems moving the pointer but will be unable to determine what is being pointed to.\n\n[Code Reference]\n_____",
+      "[Issue]\nThe _____ <a> element does not receive keyboard with the Tab key and is not operable by keyboard. When an element is interactive, the element must also be focusable via the keyboard or a shortcut provided to activate the element.\n\n[User Impact]\nEnsuring keyboard access to a site or application's controls and features allows people who cannot use a mouse or other pointing device to utilize the site or application. For example, a person with a disability that affects dexterity may find it impossible to move or hold a pointing device with enough accuracy to activate desired features. A person who cannot see the screen, therefore relying on a screen reader, may have no problems moving the pointer but will be unable to determine what is being pointed to.\n\n[Code Reference]\n_____",
     issuedescription:
-      '[Recommendation]\nDevelopers must ensure that all interactive elements are accessible from the keyboard. Standard HTML elements such as input fields, buttons, and anchor tags will automatically be placed in the tab order by the browser.\n\n<a> elements require an HREF attribute to receive keyboard focus. Developers must ensure that no scripts are causing focus to skip over this element.\n\n[Compliant Code Example]\n_____'
+      '[Recommendation]\nDevelopers must ensure that all interactive elements are accessible from the keyboard. Standard HTML elements such as input fields, buttons, and anchor tags will automatically be placed in the tab order by the browser.\n\n<a> elements require an HREF attribute to receive keyboard focus. Developers must also ensure that no scripts are causing focus to skip over this element.\n\n[Compliant Code Example]\n_____'
   },
   {
     violationid: 490,
     media: 'Web',
     bestpractice: 'Ensure all active elements receive keyboard focus or can be activated with the keyboard',
-    specificissue: 'Interactive generic element does not receive keyboard focus',
-    codesnippet:
-      "[Issue]\nThe _____ is a generic container that does not receive keyboard with the Tab key and is not operable by keyboard. When an element is interactive, the element must also be focusable via the keyboard or a shortcut provided to activate the element.\n\n[User Impact]\nEnsuring keyboard access to a site or application's controls and features allows people who cannot use a mouse or other pointing device to utilize the site or application. For example, a person with a disability that affects dexterity may find it impossible to move or hold a pointing device with enough accuracy to activate desired features. A person who cannot see the screen, therefore relying on a screen reader, may have no problems moving the pointer but will be unable to determine what is being pointed to.\n\n[Code Reference]\n_____",
-    issuedescription:
-      '[Recommendation]\nDevelopers must ensure that all interactive elements are accessible from the keyboard. Standard HTML elements such as input fields, buttons, and anchor tags will automatically be placed in the tab order by the browser and are recommended for all interactive elements.\n\nTo make a generic container element operable by keyboard, developers must add tabindex="0" to the element and add a handler for keyboard events. Developers must also ensure to add a proper role attribute to the element to be announced properly to assistive technology.\n\n[Compliant Code Example]\n_____'
+    specificissue: 'Interactive generic element does not receive keyboard focus but could be activated by keyboard'
   },
   {
     violationid: 602,
@@ -295,11 +291,11 @@ const bestPractices = [
     violationid: 1249,
     media: 'Web',
     bestpractice: 'Ensure keyboard focus is indicated visually',
-    specificissue: 'Interactive element does not visually indicate upon receiving focus',
+    specificissue: 'Interactive element does not have visual indication of keyboard focus',
     codesnippet:
-      '[Issue]\nThe _____ receives keyboard focus with the Tab key, however there is no visual indication of this. A well-defined (highly visible) visual indication of keyboard focus needs to be provided for each active element.\n\n[User Impact]\nProviding a visual indication of the focus is particularly necessary for keyboard-only users who do not use the mouse and cannot simply click to place focus where they think it should be. The user must rely on the visual indication of focus to determine where an action will occur or determine what keystrokes to perform to move focus to the desired field.\n\n[Code Reference]\n_____',
+      '[Issue]\nThe _____ receives keyboard focus with the Tab key without any visual indication of this. A well-defined (highly visible) visual indication of keyboard focus needs to be provided for each active element.\n\n[User Impact]\nProviding a visual indication of the focus is particularly necessary for keyboard-only users who do not use the mouse and cannot simply click to place focus where they think it should be. The user must rely on the visual indication of focus to determine where an action will occur or determine what keystrokes to perform to move focus to the desired field.\n\n[Code Reference]\n_____',
     issuedescription:
-      '[Recommendation]\nDevelopers must ensure that keyboard focus is displayed visually to all interactive elements. Typically the browser will provide keyboard focus for all standard interactive HTML elements, however developers can use custom visual indicators such as outlines or underlines using the focus pseudo-class.\n\n[Compliant Code Example]\n_____'
+      '[Recommendation]\nDevelopers must ensure that keyboard focus is displayed visually to all interactive elements. Typically the browser will provide keyboard focus for all standard interactive HTML elements, however developers can use custom visual indicators such as outlines or underlines using the focus pseudo-class.'
   },
   {
     violationid: 1578,
@@ -520,7 +516,13 @@ fillButton.textContent = 'Autofill';
 fillButton.classList.add('kpmFirstButton');
 fillButton.style.display = 'block';
 specificListContainer.appendChild(fillButton);
+const patternButton = document.createElement('button');
+patternButton.textContent = 'Patternize';
+patternButton.classList.add('kpmFirstButton');
+patternButton.style.display = none;
 specificListContainer.style.display = 'none';
+
+const isPattern = window.location.href.includes('pattern_id');
 
 // function render everything
 const renderAll = () => {
@@ -533,7 +535,7 @@ const renderAll = () => {
     selectList = selectList.lastChild;
   }
   // create pattern text if it exists
-  const patternText = window.location.href.includes('pattern_id')
+  const patternText = isPattern
     ? `[Pattern: ${selectList.parentNode.parentNode.previousSibling.firstElementChild.firstElementChild.textContent.substring(18)}]
 
 `
@@ -548,6 +550,7 @@ const renderAll = () => {
         specificItem.textContent = specific.specificissue;
         specificList.appendChild(specificItem);
       });
+      patternButton.style.display = 'block';
       specificListContainer.style.display = 'block';
     } else {
       specificListContainer.style.display = 'none';
@@ -558,10 +561,16 @@ const renderAll = () => {
     e.preventDefault();
     const specificListValue = document.getElementById('specificList').value;
     const chosenBestPractice = bestPractices.find(bestPractice => bestPractice.specificissue === specificListValue);
-    codeSnippetField.textContent = '';
-    codeSnippetField.textContent += patternText;
+    codeSnippetField.textContent = patternText;
     codeSnippetField.textContent += chosenBestPractice.codesnippet;
     issueDescriptionField.textContent = chosenBestPractice.issuedescription;
+  };
+
+  const patternize = () => {
+    const issueIndex = codeSnippetField.textContent.indexOf('[Issue]');
+    const replacementText = codeSnippetField.textContent.substr(issueIndex);
+    codeSnippetField.textContent = patternText;
+    codeSnippetField.textContent += replacementText;
   };
 
   // add components to DOM
@@ -578,6 +587,7 @@ const renderAll = () => {
     }, 0);
   });
   fillButton.addEventListener('click', fillInputs);
+  patternButton.addEventListener('click', patternize);
 };
 
 const listenForOpen = () => {
