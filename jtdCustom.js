@@ -141,7 +141,18 @@ const bestPractices = [
     bestpractice: 'Ensure color is not the sole means of communicating information',
     specificissue: 'The current item of a list uses color as the only differentiation from other items',
     codesnippet:
-      '[Issue]\nWithin the _____ the current _____ is only differentiated from its surrounding items by a difference in color. Besides the use of color, this item is stylistically similar and requires an additional visual indicator.\n\n[User Impact]\nWhen color is used as the sole method for identifying the current item within a list, persons who are blind, color blind, or have low vision may find the web page unusable.\n\n[Code Reference]\n_____',
+      '[Issue]\nWithin the _____ the current _____ is only differentiated from its surrounding items by a difference in color. Besides the use of color, this item is stylistically similar and requires an additional visual and programmatic indicator.\n\n[User Impact]\nWhen color is used as the sole method for identifying the current item within a list, persons who are blind, color blind, or have low vision may find the web page unusable.\n\n[Code Reference]\n_____',
+    issuedescription:
+      '[Recommendation]\nDevelopers must ensure that information communicated via color is also available through some other method both visually and programmatically. This provision does not prohibit the use of color to enhance the identification of the current item, however it is recommended to add additional visual indicators such as a border or underline.\n\nDevelopers should also add either SR-only text to indicate its current state, or add the appropriate aria-current attribute to the element.\n\n[Compliant Code Example]\n_____'
+  },
+  {
+    violationid: 369,
+    media: 'Web',
+    bestpractice: 'Ensure color is not the sole means of communicating information',
+    specificissue:
+      'The current item of a list uses color as the only visual differentiation from other items, but is indicated programmatically',
+    codesnippet:
+      '[Issue]\nWithin the _____ the current _____ is only visually differentiated from its surrounding items by a difference in color. Besides the use of color, this item is stylistically similar and requires an additional visual indicator.\n\n[User Impact]\nWhen color is used as the sole method for identifying the current item within a list, persons who are blind, color blind, or have low vision may find the web page unusable.\n\n[Code Reference]\n_____',
     issuedescription:
       '[Recommendation]\nDevelopers must ensure that information communicated via color is also available through some other method. This provision does not prohibit the use of color to enhance the identification of the current item, however it is recommended to add additional visual indicators such as a border or underline.'
   },
@@ -245,6 +256,16 @@ const bestPractices = [
     violationid: 602,
     media: 'Web',
     bestpractice: 'Ensure custom controls provide proper textual name, role, and state information',
+    specificissue: '<button> elements or elements with role="button" do not have a proper textual name',
+    codesnippet:
+      '[Issue]\nThe _____ buttons do not have a proper textual name available for assistive technology.\n\n[User Impact]\nWhen custom elements do not expose identifying information, users of assistive technology may not be able to identify and interact with the element.\n\n[Code Reference]\n_____',
+    issuedescription:
+      '[Recommendation]\nDevelopers must ensure that proper identifying information is provided for custom components. When buttons do not have visible inner text, developers should add a textual name by either adding SR-only text to the inner text or adding an appropriate aria-label attribute to the button.\n\n[Compliant Code Example]\n_____'
+  },
+  {
+    violationid: 602,
+    media: 'Web',
+    bestpractice: 'Ensure custom controls provide proper textual name, role, and state information',
     specificissue: '<a> element is used as a button and has an implicit role of "link"',
     codesnippet:
       '[Issue]\nThe _____ is a custom control that was coded using an anchor element. <a> elements have an implicit role of "link" and announce to assistive technology as such.\n\n[User Impact]\nUsing an <a> element as a button can be confusing for screen reader users. Anchor elements have an implicit role of "link", indicating to screen reader users that activating this element will redirect them to a new URL or otherwise change the browser context. This can be disorienting when the element does not behave as expected.\n\n[Code Reference]\n_____',
@@ -286,6 +307,16 @@ const bestPractices = [
     violationid: 889,
     media: 'Web',
     bestpractice: 'Ensure that when dialogs are activated focus moves appropriately'
+  },
+  {
+    violationid: 1233,
+    media: 'Web',
+    bestpractice: 'Ensure text is used instead of images of text when technology allows unless it is essential',
+    specificissue: 'Images of text are used in place where there could be regular text',
+    codesnippet:
+      '[Issue]\nThe _____ are images of text which can be replaced by regular text to be rendered by assistive technology and adjustable to custom styles.\n\n[User Impact]\nSome people require a particular visual presentation of text and this can not be adjusted when an image contains text. For example, some users may need to adjust the font family, font size, or color.\n\n[Code Reference]\n_____',
+    issuedescription:
+      '[Recommendation]\nDevelopers must ensure to convert images that contain text to text and style the text using CSS unless the images of text are essential. If the technology platform does not allow the same presentation of the text as it would appear in an image, the image of text can remain.'
   },
   {
     violationid: 1249,
@@ -386,6 +417,36 @@ const bestPractices = [
     media: 'Android',
     bestpractice: 'Provide valid labels for all form elements',
     specificissue: 'Form field does not have a label'
+  },
+  {
+    violationid: 2426,
+    media: 'Web',
+    bestpractice: 'Ensure sufficient contrast is provided when background images are not available',
+    specificissue: 'Text smaller than 14pt has insufficient contrast when background image is disabled',
+    codesnippet:
+      '[Issue]\nThe _____ does not provide sufficient contrast against its background color when its background image is not available. Text below 14pt in size must be bold with a contrast ratio of 4.5:1.\n\nForeground color: _____\nBackground color: _____\nContrast ratio: _____\n\n[User Impact]\nSufficient contrast ensures that people with low vision, people who are color blind, users viewing the page without color, and users of monochrome screens can understand page content.\n\n[Code Reference]\n_____',
+    issuedescription:
+      '[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all informative text and images of informative text. Developers should modify the foreground or the background color so that a sufficient contrast is attained if images are disabled..\n\nText smaller than 18pt or bold text smaller than 14pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/'
+  },
+  {
+    violationid: 2426,
+    media: 'Web',
+    bestpractice: 'Ensure sufficient contrast is provided when background images are not available',
+    specificissue: 'Text between 14pt and 18pt has insufficient contrast when background image is disabled',
+    codesnippet:
+      '[Issue]\nThe _____ does not provide sufficient contrast against its background color when its background image is not available. Text between 14pt and 18pt in size must have a contrast ratio of 4.5:1 or be bold with a contrast ratio of 3:1.\n\nForeground color: _____\nBackground color: _____\nContrast ratio: _____\n\n[User Impact]\nSufficient contrast ensures that people with low vision, people who are color blind, users viewing the page without color, and users of monochrome screens can understand page content.\n\n[Code Reference]\n_____',
+    issuedescription:
+      '[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all informative text and images of informative text. Developers should modify the foreground or the background color so that a sufficient contrast is attained if images are disabled..\n\nText smaller than 18pt or bold text smaller than 14pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/'
+  },
+  {
+    violationid: 2426,
+    media: 'Web',
+    bestpractice: 'Ensure sufficient contrast is provided when background images are not available',
+    specificissue: 'Text about 18pt has insufficient contrast when background image is disabled',
+    codesnippet:
+      '[Issue]\nThe _____ does not provide sufficient contrast against its background color when its background image is not available. Text above 18pt in size must have a contrast ratio of 3:1.\n\nForeground color: _____\nBackground color: _____\nContrast ratio: _____\n\n[User Impact]\nSufficient contrast ensures that people with low vision, people who are color blind, users viewing the page without color, and users of monochrome screens can understand page content.\n\n[Code Reference]\n_____',
+    issuedescription:
+      '[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all informative text and images of informative text. Developers should modify the foreground or the background color so that a sufficient contrast is attained if images are disabled..\n\nText smaller than 18pt or bold text smaller than 14pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/'
   },
   {
     violationid: 2440,
