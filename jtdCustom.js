@@ -19,8 +19,7 @@ const bestPractices = [
     violationid: 338,
     media: 'Web',
     bestpractice: 'Provide a valid label for form fields',
-    specificissue:
-      'Input has corresponding label element, however they are not programmatically associated',
+    specificissue: 'Input has corresponding label element, however they are not programmatically associated',
     codesnippet:
       '[Issue]\nThe _____ field has a corresponding <label> element, however they are not programmatically associated with each other.\n\n[User Impact]\nWhen form fields do not have a programmatically associated label, assistive technologies may incorrectly render the label or provide no label at all to users. When labels are not present or are incorrect, users of assistive technologies may not be able to complete a form.\n\n[Code Reference]\n_____',
     issuedescription:
@@ -30,8 +29,7 @@ const bestPractices = [
     violationid: 338,
     media: 'Web',
     bestpractice: 'Provide a valid label for form fields',
-    specificissue:
-      'Input has text that functions visually as a label, however they are not programmatically associated',
+    specificissue: 'Input has text that functions visually as a label, however they are not programmatically associated',
     codesnippet:
       '[Issue]\nThe _____ field uses a _____ element that functions visually as a label, however their association is not rendered to assistive technology.\n\n[User Impact]\nWhen form fields do not have a programmatically associated label, assistive technologies may incorrectly render the label or provide no label at all to users. When labels are not present or are incorrect, users of assistive technologies may not be able to complete a form.\n\n[Code Reference]\n_____',
     issuedescription:
@@ -46,6 +44,26 @@ const bestPractices = [
       "[Issue]\nThere is currently no mechanism to skip past the repetitive content of the module. Repetitive content found on a set of pages requires a method to allow a user to skip past it.\n\n[User Impact]\nEach time a keyboard user accesses a new page in the site, the user would be forced to navigate past e.g. tab through all of these navigation links (and other content) before getting to the main content area of the page. This makes it difficult to access the page's main/unique information efficiently.",
     issuedescription:
       '[Recommendation]\nDevelopers must include a mechanism allowing users to skip past content. When links appear at the top of the page, the skip link should be the first before repetitive content on the page (i.e. generally the first tab stop), and its target should be the beginning of the main content area that is unique to that page.'
+  },
+  {
+    violationid: 359,
+    media: 'Web',
+    bestpractice: 'Avoid the sole use of device-dependent event handlers',
+    specificissue: 'Interactive generic element does not receive keyboard focus and cannot be activated with the keyboard',
+    codesnippet:
+      '[Issue]\nThe _____ does not receive keyboard focus with the Tab key, and it does not function as expected upon keyboard activation.\n\n[User Impact]\nWhen interactive elements cannot be operated with the keyboard, users who rely on the keyboard such as mobility-impaired users and screen reader users may not be able to perform the intended function.\n\n[Code Reference]\n_____',
+    issuedescription:
+      '[Recommendation]\nDevelopers must ensure that all interactive elements can be operated with the keyboard. Standard HTML elements such as input fields, buttons, and anchor tags will automatically be operable by keyboard, and are generally recommended when creating interactive elements.\n\nTo make a generic container element operable by keyboard, Developers must add a tabindex="0" attribute to ensure that the item. Developers must also add an additional handler for keyboard events, and ensure to add a proper role attribute to the element to be announced properly to assistive technology.\n\n[Compliant Code Example]\n_____'
+  },
+  {
+    violationid: 359,
+    media: 'Web',
+    bestpractice: 'Avoid the sole use of device-dependent event handlers',
+    specificissue: 'Interactive generic element receives focus but cannot be activated with the keyboard',
+    codesnippet:
+      '[Issue]\nThe _____ receives keyboard focus with the Tab key, however it does not function as expected upon keyboard activation.\n\n[User Impact]\nWhen interactive elements cannot be operated with the keyboard, users who rely on the keyboard such as mobility-impaired users and screen reader users may not be able to perform the intended function.\n\n[Code Reference]\n_____',
+    issuedescription:
+      '[Recommendation]\nDevelopers must ensure that all interactive elements can be operated with the keyboard. Standard HTML elements such as input fields, buttons, and anchor tags will automatically be operable by keyboard, and are generally recommended when creating interactive elements.\n\nTo make a generic container element operable by keyboard, developers must add an additional handler for keyboard events. Developers must also ensure to add a proper role attribute to the element to be announced properly to assistive technology.\n\n[Compliant Code Example]\n_____'
   },
   {
     violationid: 361,
@@ -111,8 +129,7 @@ const bestPractices = [
     violationid: 369,
     media: 'Web',
     bestpractice: 'Ensure color is not the sole means of communicating information',
-    specificissue:
-      'Link or other interactive element uses color as the only differentiation from surrounding text',
+    specificissue: 'Link or other interactive element uses color as the only differentiation from surrounding text',
     codesnippet:
       '[Issue]\nThe _____ is an interactive element that uses an insufficient difference in color as its only method of indication within its surrounding text. Besides the use of color, this item is stylistically similar and requires an additional visual indicator.\n\n[User Impact]\nWhen color is used as the sole method for identifying an interactive element among its surrounding content, persons who are blind, color blind, or have low vision may find the web page unusable.\n\n[Code Reference]\n_____',
     issuedescription:
@@ -122,8 +139,7 @@ const bestPractices = [
     violationid: 369,
     media: 'Web',
     bestpractice: 'Ensure color is not the sole means of communicating information',
-    specificissue:
-      'The current item of a list uses color as the only differentiation from other items',
+    specificissue: 'The current item of a list uses color as the only differentiation from other items',
     codesnippet:
       '[Issue]\nWithin the _____ the current _____ is only differentiated from its surrounding items by a difference in color. Besides the use of color, this item is stylistically similar and requires an additional visual indicator.\n\n[User Impact]\nWhen color is used as the sole method for identifying the current item within a list, persons who are blind, color blind, or have low vision may find the web page unusable.\n\n[Code Reference]\n_____',
     issuedescription:
@@ -173,8 +189,7 @@ const bestPractices = [
     violationid: 524,
     media: 'Web',
     bestpractice: 'Avoid placing inactive elements in the focus order',
-    specificissue:
-      'Inactive elements receive keyboard focus (not including <button> or <a> elements)',
+    specificissue: 'Inactive elements receive keyboard focus (not including <button> or <a> elements)',
     codesnippet:
       '[Issue]\nSome inactive elements receive Tab keyboard focus, despite not featuring any interactive functionality. This can be seen _____.\n\n[User Impact]\nProviding focus to non-active elements may give users of assistive technology the impression that the element is interactive and cause keyboard users to have to use extra keystrokes to navigate.\n\n[Code Reference]\n_____',
     issuedescription:
@@ -213,8 +228,7 @@ const bestPractices = [
   {
     violationid: 490,
     media: 'Web',
-    bestpractice:
-      'Ensure all active elements receive keyboard focus or can be activated with the keyboard',
+    bestpractice: 'Ensure all active elements receive keyboard focus or can be activated with the keyboard',
     specificissue: 'Anchor element does not receive keyboard focus',
     codesnippet:
       "[Issue]\nThe _____ is an <a> element that does not receive keyboard with the Tab key and is not operable by keyboard. When an element is interactive, the element must also be focusable via the keyboard or a shortcut provided to activate the element.\n\n[User Impact]\nEnsuring keyboard access to a site or application's controls and features allows people who cannot use a mouse or other pointing device to utilize the site or application. For example, a person with a disability that affects dexterity may find it impossible to move or hold a pointing device with enough accuracy to activate desired features. A person who cannot see the screen, therefore relying on a screen reader, may have no problems moving the pointer but will be unable to determine what is being pointed to.\n\n[Code Reference]\n_____",
@@ -224,8 +238,7 @@ const bestPractices = [
   {
     violationid: 490,
     media: 'Web',
-    bestpractice:
-      'Ensure all active elements receive keyboard focus or can be activated with the keyboard',
+    bestpractice: 'Ensure all active elements receive keyboard focus or can be activated with the keyboard',
     specificissue: 'Interactive generic element does not receive keyboard focus',
     codesnippet:
       "[Issue]\nThe _____ is a generic container that does not receive keyboard with the Tab key and is not operable by keyboard. When an element is interactive, the element must also be focusable via the keyboard or a shortcut provided to activate the element.\n\n[User Impact]\nEnsuring keyboard access to a site or application's controls and features allows people who cannot use a mouse or other pointing device to utilize the site or application. For example, a person with a disability that affects dexterity may find it impossible to move or hold a pointing device with enough accuracy to activate desired features. A person who cannot see the screen, therefore relying on a screen reader, may have no problems moving the pointer but will be unable to determine what is being pointed to.\n\n[Code Reference]\n_____",
@@ -255,8 +268,7 @@ const bestPractices = [
   {
     violationid: 609,
     media: 'Web',
-    bestpractice:
-      'Ensure form field constraints and errors are associated with their corresponding field',
+    bestpractice: 'Ensure form field constraints and errors are associated with their corresponding field',
     specificissue:
       'Error messages are displayed visually, however they are not programmatically associated with their corresponding inputs',
     codesnippet:
@@ -292,8 +304,7 @@ const bestPractices = [
   {
     violationid: 1578,
     media: 'iOS',
-    bestpractice:
-      'Ensure color and text formatting are not the sole means of communicating selection'
+    bestpractice: 'Ensure color and text formatting are not the sole means of communicating selection'
   },
   {
     violationid: 1598,
@@ -325,8 +336,7 @@ const bestPractices = [
     violationid: 1626,
     media: 'Web',
     bestpractice: 'Ensure ARIA roles, state, and properties are valid',
-    specificissue:
-      'Element contains an aria-expanded attribute even though it is being controlled by another element',
+    specificissue: 'Element contains an aria-expanded attribute even though it is being controlled by another element',
     codesnippet:
       '[Issue]\nThe _____ contains expandable content and has an aria-expanded attribute, even though its expanded state is being controlled by another element.\n\n[User Impact]\nScreen reader users may expect the element containing the aria-expanded attribute to change the expanded state upon interaction. The control element should have the aria-expanded attribute instead.\n\n[Code Reference]\n_____',
     issuedescription:
@@ -360,8 +370,7 @@ const bestPractices = [
   {
     violationid: 1909,
     media: 'iOS',
-    bestpractice:
-      'Provide textual equivalents for all non-text elements including sounds and images',
+    bestpractice: 'Provide textual equivalents for all non-text elements including sounds and images',
     specificissue: 'Non-decorative element does not have a textual equivalent',
     codesnippet:
       '[Issue]\nThe _____ is an element that conveys meaning, however it does not provide a textual equivalent. All non-text elements that are not considered decorative must have an Accessible Label.\n\n[User Impact]\nWhen an accessible label is not provided for the _____, users who cannot view the _____ will not understand the purpose of it.',
@@ -436,8 +445,7 @@ const bestPractices = [
     violationid: 2519,
     media: 'Web',
     bestpractice: 'Ensure ARIA regions, landmarks and HTML sections are identifiable',
-    specificissue:
-      'Multiple navigation items exist, but one of them does not have a label, visually or programmatically',
+    specificissue: 'Multiple navigation items exist, but one of them does not have a label, visually or programmatically',
     codesnippet:
       '[Issue]\nThere are multiple elements on the page with a role of navigation, however _____ not have an accessible label. When two or more elements of the same region, landmark, or sections are used, they must all be identifiable among one another.\n\n[User Impact]\nWhen there are two or more regions, landmark, or sections of the same type without accessible labels, users of screen readers may have trouble locating the correct section or understanding its purpose.\n\n[Code Reference]\n_____',
     issuedescription:
@@ -457,8 +465,7 @@ const bestPractices = [
     violationid: 2607,
     media: 'Web',
     bestpractice: 'Provide text equivalents for icon fonts',
-    specificissue:
-      'Anchor or BUTTON element uses an icon as its visual label, however it has no textual label',
+    specificissue: 'Anchor or BUTTON element uses an icon as its visual label, however it has no textual label',
     codesnippet:
       '[Issue]\nThe _____ is an interactive element that uses an icon as its visual label. There is no textual equivalent provided to label this element.\n\n[User Impact]\nScreen reader users will not have access to the information conveyed by the icon without text equivalents. When icon fonts are used, the icon may not be seen at all by assistive technology as CSS is purposely presentational and should not be used to provide content. Screen reader users may not know how to interact with this element.\n\n[Code Reference]\n_____',
     issuedescription:
@@ -477,8 +484,7 @@ const bestPractices = [
   {
     violationid: 2896,
     media: 'Web',
-    bestpractice:
-      'Ensure that content and functionality is available when the user overrides text spacing properties',
+    bestpractice: 'Ensure that content and functionality is available when the user overrides text spacing properties',
     specificissue: 'Text moves outside container when overriding text spacing properties'
   },
   {
@@ -495,10 +501,9 @@ const bestPractices = [
     violationid: 3159,
     media: 'Web',
     bestpractice: 'Ensure all interactive functionality is operable with the keyboard',
-    specificissue:
-      'Interactive generic element receives focus but cannot be activated with the keyboard',
+    specificissue: 'Interactive generic element receives focus but cannot be activated with the keyboard',
     codesnippet:
-      '[Issue]\nThe _____ receives keyboard focus with the Tab key, however it does not function as expected upon activation.\n\n[User Impact]\nWhen interactive elements cannot be operated with the keyboard, users who rely on the keyboard such as mobility-impaired users and screen reader users may not be able to perform the intended function.\n\n[Code Reference]\n_____',
+      '[Issue]\nThe _____ receives keyboard focus with the Tab key, however it does not function as expected upon keyboard activation.\n\n[User Impact]\nWhen interactive elements cannot be operated with the keyboard, users who rely on the keyboard such as mobility-impaired users and screen reader users may not be able to perform the intended function.\n\n[Code Reference]\n_____',
     issuedescription:
       '[Recommendation]\nDevelopers must ensure that all interactive elements can be operated with the keyboard. Standard HTML elements such as input fields, buttons, and anchor tags will automatically be operable by keyboard, and are generally recommended when creating interactive elements.\n\nTo make a generic container element operable by keyboard, developers must add an additional handler for keyboard events. Developers must also ensure to add a proper role attribute to the element to be announced properly to assistive technology.\n\n[Compliant Code Example]\n_____'
   }
@@ -529,9 +534,7 @@ const renderAll = () => {
   }
   // create pattern text if it exists
   const patternText = window.location.href.includes('pattern_id')
-    ? `[Pattern: ${selectList.parentNode.parentNode.previousSibling.firstElementChild.firstElementChild.textContent.substring(
-        18
-      )}]
+    ? `[Pattern: ${selectList.parentNode.parentNode.previousSibling.firstElementChild.firstElementChild.textContent.substring(18)}]
 
 `
     : '';
@@ -554,9 +557,7 @@ const renderAll = () => {
   const fillInputs = e => {
     e.preventDefault();
     const specificListValue = document.getElementById('specificList').value;
-    const chosenBestPractice = bestPractices.find(
-      bestPractice => bestPractice.specificissue === specificListValue
-    );
+    const chosenBestPractice = bestPractices.find(bestPractice => bestPractice.specificissue === specificListValue);
     codeSnippetField.textContent = '';
     codeSnippetField.textContent += patternText;
     codeSnippetField.textContent += chosenBestPractice.codesnippet;
@@ -568,9 +569,7 @@ const renderAll = () => {
 
   // add event listeners
   selectList.addEventListener('change', e => {
-    const specifics = bestPractices.filter(
-      bestPractice => bestPractice.violationid === Number(e.target.value)
-    );
+    const specifics = bestPractices.filter(bestPractice => bestPractice.violationid === Number(e.target.value));
     createSpecificList(specifics);
   });
   changeBpButton.addEventListener('click', () => {
