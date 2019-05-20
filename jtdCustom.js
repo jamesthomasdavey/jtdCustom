@@ -562,17 +562,17 @@ const renderAll = () => {
     e.preventDefault();
     const specificListValue = document.getElementById('specificList').value;
     const chosenBestPractice = bestPractices.find(bestPractice => bestPractice.specificissue === specificListValue);
-    codeSnippetField.textContent = patternText;
-    codeSnippetField.textContent += chosenBestPractice.codesnippet;
-    issueDescriptionField.textContent = chosenBestPractice.issuedescription;
+    codeSnippetField.value = patternText;
+    codeSnippetField.value += chosenBestPractice.codesnippet;
+    issueDescriptionField.value = chosenBestPractice.issuedescription;
   };
 
   const patternize = e => {
     e.preventDefault();
-    const issueIndex = codeSnippetField.textContent.indexOf('[Issue]');
-    const replacementText = codeSnippetField.textContent.substr(issueIndex);
-    codeSnippetField.textContent = patternText;
-    codeSnippetField.textContent += replacementText;
+    const issueIndex = codeSnippetField.value.indexOf('[Issue]');
+    const replacementText = issueIndex !== -1 ? codeSnippetField.value.substr(issueIndex) : codeSnippetField.value;
+    codeSnippetField.value = patternText;
+    codeSnippetField.value += replacementText;
   };
 
   // add components to DOM
