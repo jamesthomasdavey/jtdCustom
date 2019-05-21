@@ -81,7 +81,7 @@ const bestPractices = [
     bestpractice: 'Provide alternative text for images',
     specificissue: 'Informative image has no alternative text',
     codesnippet:
-      '[Issue]\nThe _____ image does not have an accessible name. When images convey meaning that is not otherwise visible, they must have alternative text alternatives to users of assistive technology.\n\n[User Impact]\nAlternative text communicates the meaning of images to users who cannot perceive the image, such as users of screen readers.\n\n[Code Reference]\n_____',
+      '[Issue]\nThe _____ image does not have an accessible name. When images convey meaning that is not otherwise visible, they must have text alternatives for users of assistive technology.\n\n[User Impact]\nAlternative text communicates the meaning of images to users who cannot perceive the image, such as users of screen readers.\n\n[Code Reference]\n_____',
     issuedescription:
       '[Recommendation]\nDevelopers must add an appropriate alt attribute for meaningful images. An alt attribute should be a concise and meaningful replacement for the image.\n\n[Compliant Code Example]\n_____'
   },
@@ -103,7 +103,7 @@ const bestPractices = [
     codesnippet:
       '[Issue]\nThe _____ does not provide sufficient contrast against its background color. Text below 14pt in size must be bold with a contrast ratio of 4.5:1.\n\nForeground color: _____\nBackground color: _____\nContrast ratio: _____\n\n[User Impact]\nSufficient contrast ensures that people with low vision, people who are color blind, users viewing the page without color, and users of monochrome screens can understand page content.\n\n[Code Reference]\n_____',
     issuedescription:
-      '[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all informative text and images of informative text. Developers should modify the foreground and/or the background color so that a sufficient contrast is attained, including focused and hover states as well.\n\nText smaller than 18pt or bold text smaller than 14pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/'
+      '[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all informative text and images of informative text. Developers should modify the foreground and/or the background color so that a sufficient contrast ratio is attained, including focused and hover states as well.\n\nText smaller than 18pt or bold text smaller than 14pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/'
   },
   {
     violationid: 368,
@@ -113,7 +113,7 @@ const bestPractices = [
     codesnippet:
       '[Issue]\nThe _____ does not provide sufficient contrast against its background color. Text between 14pt and 18pt in size must have a contrast ratio of 4.5:1 or be bold with a contrast ratio of 3:1.\n\nForeground color: _____\nBackground color: _____\nContrast ratio: _____\n\n[User Impact]\nSufficient contrast ensures that people with low vision, people who are color blind, users viewing the page without color, and users of monochrome screens can understand page content.\n\n[Code Reference]\n_____',
     issuedescription:
-      '[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all informative text and images of informative text. Developers should modify the foreground and/or the background color so that a sufficient contrast is attained, including focused and hover states as well.\n\nText smaller than 18pt or bold text smaller than 14pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/'
+      '[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all informative text and images of informative text. Developers should modify the foreground and/or the background color so that a sufficient contrast ratio is attained, including focused and hover states as well.\n\nText smaller than 18pt or bold text smaller than 14pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/'
   },
   {
     violationid: 368,
@@ -123,7 +123,7 @@ const bestPractices = [
     codesnippet:
       '[Issue]\nThe _____ does not provide sufficient contrast against its background color. Text above 18pt in size must have a contrast ratio of 3:1.\n\nForeground color: _____\nBackground color: _____\nContrast ratio: _____\n\n[User Impact]\nSufficient contrast ensures that people with low vision, people who are color blind, users viewing the page without color, and users of monochrome screens can understand page content.\n\n[Code Reference]\n_____',
     issuedescription:
-      '[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all informative text and images of informative text. Developers should modify the foreground and/or the background color so that a sufficient contrast is attained, including focused and hover states as well.\n\nText smaller than 18pt or bold text smaller than 14pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/'
+      '[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all informative text and images of informative text. Developers should modify the foreground and/or the background color so that a sufficient contrast ratio is attained, including focused and hover states as well.\n\nText smaller than 18pt or bold text smaller than 14pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/'
   },
   {
     violationid: 369,
@@ -197,24 +197,14 @@ const bestPractices = [
       "[Recommendation]\nDevelopers must ensure that heading levels match the heading's visual importance/level. Developers should change the _____ heading from an _____ to an _____.\n\n[Compliant Code Example]\n_____"
   },
   {
-    violationid: 524,
+    violationid: 410,
     media: 'Web',
-    bestpractice: 'Avoid placing inactive elements in the focus order',
-    specificissue: 'Inactive elements receive keyboard focus (not including <button> or <a> elements)',
+    bestpractice: 'Ensure containing elements allow text resize without loss of functionality',
+    specificissue: 'Text gets cut off or obscured when text is enlarged',
     codesnippet:
-      '[Issue]\nSome inactive elements receive Tab keyboard focus, despite not featuring any interactive functionality. This can be seen _____.\n\n[User Impact]\nProviding focus to non-active elements may give users of assistive technology the impression that the element is interactive and cause keyboard users to have to use extra keystrokes to navigate.\n\n[Code Reference]\n_____',
+      '[Issue]\nWhen using the browser to enlarge the text, the _____ becomes _____.\n\n[User Impact]\nUsers with low vision or cognitive impairments may need to resize the text. When text becomes obscured upon being enlarged, these users may no longer be able to perceive this content.',
     issuedescription:
-      '[Recommendation]\nDevelopers must ensure that generally only interactive elements receive Tab keyboard focus. Elements that are inactive by default and are not intended to be active should not have a tabindex attribute. There should also be no scripts that direct keyboard focus to these elements.\n\n[Compliant Code Example]\n_____'
-  },
-  {
-    violationid: 524,
-    media: 'Web',
-    bestpractice: 'Avoid placing inactive elements in the focus order',
-    specificissue: 'Inactive links or buttons receive keyboard focus',
-    codesnippet:
-      '[Issue]\nSome inactive elements receive Tab keyboard focus, despite not featuring any interactive functionality. This can be seen _____.\n\n[User Impact]\nProviding focus to non-active elements may give users of assistive technology the impression that the element is interactive and cause keyboard users to have to use extra keystrokes to navigate.\n\n[Code Reference]\n_____',
-    issuedescription:
-      '[Recommendation]\nDevelopers must ensure that generally only interactive elements receive Tab keyboard focus. For interactive elements that are in the focus order but rendered inactive, tabindex="-1" can be used to remove them from the focus order. There should also be no scripts that direct keyboard focus to these elements.\n\n[Compliant Code Example]\n_____'
+      '[Recommendation]\nDevelopers must ensure that text can be enlarged up to 200%. Developers should convert all absolute units into relative units and allow proper scaling.'
   },
   {
     violationid: 457,
@@ -251,6 +241,26 @@ const bestPractices = [
     media: 'Web',
     bestpractice: 'Ensure all active elements receive keyboard focus or can be activated with the keyboard',
     specificissue: 'Interactive generic element does not receive keyboard focus but could be activated by keyboard'
+  },
+  {
+    violationid: 524,
+    media: 'Web',
+    bestpractice: 'Avoid placing inactive elements in the focus order',
+    specificissue: 'Inactive elements receive keyboard focus (not including <button> or <a> elements)',
+    codesnippet:
+      '[Issue]\nSome inactive elements receive Tab keyboard focus, despite not featuring any interactive functionality. This can be seen _____.\n\n[User Impact]\nProviding focus to non-active elements may give users of assistive technology the impression that the element is interactive and cause keyboard users to have to use extra keystrokes to navigate.\n\n[Code Reference]\n_____',
+    issuedescription:
+      '[Recommendation]\nDevelopers must ensure that generally only interactive elements receive Tab keyboard focus. Elements that are inactive by default and are not intended to be active should not have a tabindex attribute. There should also be no scripts that direct keyboard focus to these elements.\n\n[Compliant Code Example]\n_____'
+  },
+  {
+    violationid: 524,
+    media: 'Web',
+    bestpractice: 'Avoid placing inactive elements in the focus order',
+    specificissue: 'Inactive links or buttons receive keyboard focus',
+    codesnippet:
+      '[Issue]\nSome inactive elements receive Tab keyboard focus, despite not featuring any interactive functionality. This can be seen _____.\n\n[User Impact]\nProviding focus to non-active elements may give users of assistive technology the impression that the element is interactive and cause keyboard users to have to use extra keystrokes to navigate.\n\n[Code Reference]\n_____',
+    issuedescription:
+      '[Recommendation]\nDevelopers must ensure that generally only interactive elements receive Tab keyboard focus. For interactive elements that are in the focus order but rendered inactive, tabindex="-1" can be used to remove them from the focus order. There should also be no scripts that direct keyboard focus to these elements.\n\n[Compliant Code Example]\n_____'
   },
   {
     violationid: 602,
@@ -319,6 +329,16 @@ const bestPractices = [
       '[Recommendation]\nDevelopers must ensure to convert images that contain text to text and style the text using CSS unless the images of text are essential. If the technology platform does not allow the same presentation of the text as it would appear in an image, the image of text can remain.'
   },
   {
+    violationid: 1244,
+    media: 'Web',
+    bestpractice: 'Ensure auto-updating dynamic content can be paused, stopped, or hidden',
+    specificissue: 'Carousel does not have a pause mechanism',
+    codesnippet:
+      "[Issue]\nThe _____ carousel plays automatically and does not have a mechanism to be paused, stopped or hidden.\n\n[User Impact]\nWhen there is no method to pause, stop or hide the carousel's auto-updating content, it can be distracting to some users with disabilities.",
+    issuedescription:
+      '[Recommendation]\nDevelopers must provide a method for the user to pause, stop, hide, or control the frequency of auto-updating or moving/blinking/scrolling content that starts automatically. For carousels, it is generally recommended to include keyboard-accessible pause button with the carousel controls.'
+  },
+  {
     violationid: 1249,
     media: 'Web',
     bestpractice: 'Ensure keyboard focus is indicated visually',
@@ -329,15 +349,54 @@ const bestPractices = [
       '[Recommendation]\nDevelopers must ensure that keyboard focus is displayed visually to all interactive elements. Typically the browser will provide keyboard focus for all standard interactive HTML elements, however developers can use custom visual indicators such as outlines or underlines using the focus pseudo-class.'
   },
   {
+    violationid: 1352,
+    media: 'Web',
+    bestpractice: 'Ensure markup documents contain well-formed elements',
+    specificissue: 'Multiple elements have the same ID',
+    codesnippet:
+      '[Issue]\nElements on the page contain ID attributes that are not unique. Specific examples include the IDs: _____.\n\n[User Impact]\nWhen IDs are not unique, this can cause errors in reference attributes which assistive technology may depend on to render content properly.\n\n[Code Reference]\n_____',
+    issuedescription: '[Recommendation]\nDevelopers must ensure that the value of each ID attribute is unique on any given page.'
+  },
+  {
     violationid: 1578,
     media: 'iOS',
     bestpractice: 'Ensure color and text formatting are not the sole means of communicating selection'
   },
   {
+    violationid: 1581,
+    media: 'iOS',
+    bestpractice: 'Ensure text and images of text provide sufficient contrast',
+    specificissue: 'Text smaller than 14pt has insufficient contrast',
+    codesnippet:
+      '[Issue]\nThe _____ does not provide sufficient contrast against its background color. Text below 14pt in size must be bold with a contrast ratio of 4.5:1.\n\nForeground color: _____\nBackground color: _____\nContrast ratio: _____\n\n[User Impact]\nSufficient contrast ensures that people with low vision, people who are color blind, users viewing the page without color, and users of monochrome screens can understand page content.\n\n[Code Reference]\n_____',
+    issuedescription:
+      '[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all informative text and images of informative text. Developers should modify the foreground and/or the background color so that a sufficient contrast ratio is attained, including focused and hover states as well.\n\nText smaller than 18pt or bold text smaller than 14pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/'
+  },
+  {
+    violationid: 1581,
+    media: 'iOS',
+    bestpractice: 'Ensure text and images of text provide sufficient contrast',
+    specificissue: 'Text between 14pt and 18pt has insufficient contrast',
+    codesnippet:
+      '[Issue]\nThe _____ does not provide sufficient contrast against its background color. Text between 14pt and 18pt in size must have a contrast ratio of 4.5:1 or be bold with a contrast ratio of 3:1.\n\nForeground color: _____\nBackground color: _____\nContrast ratio: _____\n\n[User Impact]\nSufficient contrast ensures that people with low vision, people who are color blind, users viewing the page without color, and users of monochrome screens can understand page content.\n\n[Code Reference]\n_____',
+    issuedescription:
+      '[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all informative text and images of informative text. Developers should modify the foreground and/or the background color so that a sufficient contrast ratio is attained, including focused and hover states as well.\n\nText smaller than 18pt or bold text smaller than 14pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/'
+  },
+  {
+    violationid: 1581,
+    media: 'iOS',
+    bestpractice: 'Ensure text and images of text provide sufficient contrast',
+    specificissue: 'Text larger than 18pt has insufficient contrast',
+    codesnippet:
+      '[Issue]\nThe _____ does not provide sufficient contrast against its background color. Text above 18pt in size must have a contrast ratio of 3:1.\n\nForeground color: _____\nBackground color: _____\nContrast ratio: _____\n\n[User Impact]\nSufficient contrast ensures that people with low vision, people who are color blind, users viewing the page without color, and users of monochrome screens can understand page content.\n\n[Code Reference]\n_____',
+    issuedescription:
+      '[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all informative text and images of informative text. Developers should modify the foreground and/or the background color so that a sufficient contrast ratio is attained, including focused and hover states as well.\n\nText smaller than 18pt or bold text smaller than 14pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/'
+  },
+  {
     violationid: 1598,
     media: 'iOS',
     bestpractice: 'Provide valid labels for all form elements',
-    specificissue: 'Form element does not provide a valid label',
+    specificissue: 'Form element has a label visually but not programmatically',
     codesnippet:
       '[Issue]\nThe _____ is a form element that does not provide an accessible label.\n\n[User Impact]\nWhen form fields are not properly labeled, their identity will not be rendered properly by assistive technology to users with visual disabilities. The user may interact with the wrong form element or may not know which form field to interact with.',
     issuedescription:
@@ -405,6 +464,36 @@ const bestPractices = [
       "[Recommendation]\nAll non-decorative objects must have 'Accessibility Enabled' within the xCode development environment and minimally have an accessibilityLabel attribute assigned."
   },
   {
+    violationid: 1943,
+    media: 'Android',
+    bestpractice: 'Ensure text and images of text provide sufficient contrast',
+    specificissue: 'Text smaller than 14pt has insufficient contrast',
+    codesnippet:
+      '[Issue]\nThe _____ does not provide sufficient contrast against its background color. Text below 14pt in size must be bold with a contrast ratio of 4.5:1.\n\nForeground color: _____\nBackground color: _____\nContrast ratio: _____\n\n[User Impact]\nSufficient contrast ensures that people with low vision, people who are color blind, users viewing the page without color, and users of monochrome screens can understand page content.\n\n[Code Reference]\n_____',
+    issuedescription:
+      '[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all informative text and images of informative text. Developers should modify the foreground and/or the background color so that a sufficient contrast ratio is attained, including focused and hover states as well.\n\nText smaller than 18pt or bold text smaller than 14pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/'
+  },
+  {
+    violationid: 1943,
+    media: 'Android',
+    bestpractice: 'Ensure text and images of text provide sufficient contrast',
+    specificissue: 'Text between 14pt and 18pt has insufficient contrast',
+    codesnippet:
+      '[Issue]\nThe _____ does not provide sufficient contrast against its background color. Text between 14pt and 18pt in size must have a contrast ratio of 4.5:1 or be bold with a contrast ratio of 3:1.\n\nForeground color: _____\nBackground color: _____\nContrast ratio: _____\n\n[User Impact]\nSufficient contrast ensures that people with low vision, people who are color blind, users viewing the page without color, and users of monochrome screens can understand page content.\n\n[Code Reference]\n_____',
+    issuedescription:
+      '[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all informative text and images of informative text. Developers should modify the foreground and/or the background color so that a sufficient contrast ratio is attained, including focused and hover states as well.\n\nText smaller than 18pt or bold text smaller than 14pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/'
+  },
+  {
+    violationid: 1943,
+    media: 'Android',
+    bestpractice: 'Ensure text and images of text provide sufficient contrast',
+    specificissue: 'Text larger than 18pt has insufficient contrast',
+    codesnippet:
+      '[Issue]\nThe _____ does not provide sufficient contrast against its background color. Text above 18pt in size must have a contrast ratio of 3:1.\n\nForeground color: _____\nBackground color: _____\nContrast ratio: _____\n\n[User Impact]\nSufficient contrast ensures that people with low vision, people who are color blind, users viewing the page without color, and users of monochrome screens can understand page content.\n\n[Code Reference]\n_____',
+    issuedescription:
+      '[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all informative text and images of informative text. Developers should modify the foreground and/or the background color so that a sufficient contrast ratio is attained, including focused and hover states as well.\n\nText smaller than 18pt or bold text smaller than 14pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/'
+  },
+  {
     violationid: 1959,
     media: 'Android',
     bestpractice: 'Ensure focus is not forcibly shifted on input',
@@ -413,10 +502,28 @@ const bestPractices = [
       '[Issue]\nWhile _____, focus automatically shifts from _____ to _____ without any initiation from the user.\n\n[User Impact]\nWhen focus is forcibly shifted, users of assistive technology may have to use many gestures to return to their previous position. Forcibly shifted focus can be disorienting for users when they expect to be at a different location within the app.'
   },
   {
+    violationid: 1961,
+    media: 'Android',
+    bestpractice: 'Ensure navigation and input focus is indicated visually and programmatically',
+    specificissue: 'Item receives focus but does not have focus indicator',
+    codesnippet:
+      '[Issue]\nThe _____ receives focus but does not have a visual indication of this.\n\n[User Impact]\nProviding a visual indication of the focus allows someone who is viewing the screen to determine what action to take based on what element has focus.',
+    issuedescription:
+      '[Recommendation]\nDevelopers must ensure that navigation and input focus is indicated both on-screen and programmatically. Standard controls handle this automatically and assistive technologies provide a visual focus indicator to inform users of the location of the reading focus.'
+  },
+  {
+    violationid: 1965,
+    media: 'Android',
+    bestpractice: 'Ensure form field constraints are clearly indicated'
+  },
+  {
     violationid: 1968,
     media: 'Android',
     bestpractice: 'Provide valid labels for all form elements',
-    specificissue: 'Form field does not have a label'
+    specificissue: 'Form element has a label visually but not programmatically',
+    codesnippet:
+      '[Issue]\nThe _____ is a form element that does not provide an accessible label.\n\n[User Impact]\nWhen form fields are not properly labeled, their identity will not be rendered properly by assistive technology to users with visual disabilities. The user may interact with the wrong form element or may not know which form field to interact with.',
+    issuedescription: '[Recommendation]\n'
   },
   {
     violationid: 2426,
@@ -426,7 +533,7 @@ const bestPractices = [
     codesnippet:
       '[Issue]\nThe _____ does not provide sufficient contrast against its background color when its background image is not available. Text below 14pt in size must be bold with a contrast ratio of 4.5:1.\n\nForeground color: _____\nBackground color: _____\nContrast ratio: _____\n\n[User Impact]\nSufficient contrast ensures that people with low vision, people who are color blind, users viewing the page without color, and users of monochrome screens can understand page content.\n\n[Code Reference]\n_____',
     issuedescription:
-      '[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all informative text and images of informative text. Developers should modify the foreground or the background color so that a sufficient contrast is attained if images are disabled..\n\nText smaller than 18pt or bold text smaller than 14pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/'
+      '[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all informative text and images of informative text. Developers should modify the foreground or the background color so that a sufficient contrast ratio is attained if images are disabled..\n\nText smaller than 18pt or bold text smaller than 14pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/'
   },
   {
     violationid: 2426,
@@ -436,17 +543,17 @@ const bestPractices = [
     codesnippet:
       '[Issue]\nThe _____ does not provide sufficient contrast against its background color when its background image is not available. Text between 14pt and 18pt in size must have a contrast ratio of 4.5:1 or be bold with a contrast ratio of 3:1.\n\nForeground color: _____\nBackground color: _____\nContrast ratio: _____\n\n[User Impact]\nSufficient contrast ensures that people with low vision, people who are color blind, users viewing the page without color, and users of monochrome screens can understand page content.\n\n[Code Reference]\n_____',
     issuedescription:
-      '[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all informative text and images of informative text. Developers should modify the foreground or the background color so that a sufficient contrast is attained if images are disabled..\n\nText smaller than 18pt or bold text smaller than 14pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/'
+      '[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all informative text and images of informative text. Developers should modify the foreground or the background color so that a sufficient contrast ratio is attained if images are disabled..\n\nText smaller than 18pt or bold text smaller than 14pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/'
   },
   {
     violationid: 2426,
     media: 'Web',
     bestpractice: 'Ensure sufficient contrast is provided when background images are not available',
-    specificissue: 'Text about 18pt has insufficient contrast when background image is disabled',
+    specificissue: 'Text larger than 18pt has insufficient contrast when background image is disabled',
     codesnippet:
       '[Issue]\nThe _____ does not provide sufficient contrast against its background color when its background image is not available. Text above 18pt in size must have a contrast ratio of 3:1.\n\nForeground color: _____\nBackground color: _____\nContrast ratio: _____\n\n[User Impact]\nSufficient contrast ensures that people with low vision, people who are color blind, users viewing the page without color, and users of monochrome screens can understand page content.\n\n[Code Reference]\n_____',
     issuedescription:
-      '[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all informative text and images of informative text. Developers should modify the foreground or the background color so that a sufficient contrast is attained if images are disabled..\n\nText smaller than 18pt or bold text smaller than 14pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/'
+      '[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all informative text and images of informative text. Developers should modify the foreground or the background color so that a sufficient contrast ratio is attained if images are disabled..\n\nText smaller than 18pt or bold text smaller than 14pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/'
   },
   {
     violationid: 2440,
@@ -476,7 +583,7 @@ const bestPractices = [
     codesnippet:
       '[Issue]\nThe _____ link does not provide sufficient contrast against its background color. Link text below 14pt in size must be bold with a contrast ratio of 4.5:1, including focus and hover states.\n\nForeground color: _____\nBackground color: _____\nContrast ratio: _____\n\n[User Impact]\nSufficient contrast ensures that people with low vision, people who are color blind, users viewing the page without color, and users of monochrome screens can understand page content.\n\n[Code Reference]\n_____',
     issuedescription:
-      '[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all link text. Developers should modify the foreground and/or the background color so that a sufficient contrast is attained, including focused and hover states as well.\n\nText smaller than 18pt or bold text smaller than 14pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/'
+      '[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all link text. Developers should modify the foreground and/or the background color so that a sufficient contrast ratio is attained, including focused and hover states as well.\n\nText smaller than 18pt or bold text smaller than 14pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/'
   },
   {
     violationid: 2445,
@@ -486,7 +593,7 @@ const bestPractices = [
     codesnippet:
       '[Issue]\nThe _____ link does not provide sufficient contrast against its background color. Link text between 14pt and 18pt in size must have a contrast ratio of 4.5:1 or be bold with a contrast ratio of 3:1, including focus and hover states.\n\nForeground color: _____\nBackground color: _____\nContrast ratio: _____\n\n[User Impact]\nSufficient contrast ensures that people with low vision, people who are color blind, users viewing the page without color, and users of monochrome screens can understand page content.\n\n[Code Reference]\n_____',
     issuedescription:
-      '[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all link text. Developers should modify the foreground and/or the background color so that a sufficient contrast is attained, including focused and hover states as well.\n\nText smaller than 18pt or bold text smaller than 14pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/'
+      '[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all link text. Developers should modify the foreground and/or the background color so that a sufficient contrast ratio is attained, including focused and hover states as well.\n\nText smaller than 18pt or bold text smaller than 14pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/'
   },
   {
     violationid: 2445,
@@ -496,7 +603,7 @@ const bestPractices = [
     codesnippet:
       '[Issue]\nThe _____ link does not provide sufficient contrast against its background color. Link text above 18pt in size must have a contrast ratio of 3:1, including focus and hover states.\n\nForeground color: _____\nBackground color: _____\nContrast ratio: _____\n\n[User Impact]\nSufficient contrast ensures that people with low vision, people who are color blind, users viewing the page without color, and users of monochrome screens can understand page content.\n\n[Code Reference]\n_____',
     issuedescription:
-      '[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all link text. Developers should modify the foreground and/or the background color so that a sufficient contrast is attained, including focused and hover states as well.\n\nText smaller than 18pt or bold text smaller than 14pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/'
+      '[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all link text. Developers should modify the foreground and/or the background color so that a sufficient contrast ratio is attained, including focused and hover states as well.\n\nText smaller than 18pt or bold text smaller than 14pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/'
   },
   {
     violationid: 2519,
