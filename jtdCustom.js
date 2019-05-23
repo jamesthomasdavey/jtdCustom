@@ -36,6 +36,16 @@ const bestPractices = [
       "[Recommendation]\nDevelopers must provide an accessible label for all form fields. To associate a non-LABEL element to a form field, developers can add an aria-labelledby attribute to the input with the same value as the visual label's ID attribute.\n\n[Compliant Code Example]\n_____"
   },
   {
+    violationid: 341,
+    media: 'Web',
+    bestpractice: 'Provide fieldsets for groups of form controls',
+    specificissue: 'Group of radio buttons is not contained in a fieldset element',
+    codesnippet:
+      '[Issue]\nThe _____ group of radio buttons is not contained in a <fieldset> element.\n\n[User Impact]\nBy grouping radio buttons properly, users of assistive technology can understand the relationship of the inputs. When the question text and radio buttons are not properly constructed in a fieldset, screen reader users may only be aware of the answers and not the question.\n\n[Code Reference]\n_____',
+    issuedescription:
+      '[Recommendation]\nDevelopers must group related radio buttons together into a <fieldset> element, and ensure that a <legend> element is defined as the first child of the <fieldset>. If desired, CSS may be used to modify or suppress the default rectangle appearance of fieldsets and visual position of the legend text.\n\n[Compliant Code Example]\n_____'
+  },
+  {
     violationid: 345,
     media: 'Web',
     bestpractice: 'Provide a mechanism for skipping past repetitive content',
