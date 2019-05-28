@@ -1,12 +1,10 @@
 // ==UserScript==
 // @name         AMP - JTD
 // @namespace    http://tampermonkey.net/
-// @version      0.6
-// @description  to make my life easier
+// @version      0.7
 // @author       James Thomas Davey
 // @match        *.levelaccess.net/public/reporting/view_module.php?module_id=*
 // @match        *.levelaccess.net/public/reporting/view_pattern.php?pattern_id=*
-// @grant        none
 // ==/UserScript==
 
 'use strict';
@@ -717,23 +715,27 @@ const init = () => {
   fillButton.addEventListener('click', fillInputs);
   patternButton.addEventListener('click', insertPatternText);
 
+  const closeScript = () => {
+    // remove event listeners
+    bestPracticeSelectList.removeEventListener('change', e => {
+      const violations = bestPractices.filter(bestPractice => bestPractice.violationid === Number(e.target.value));
+      renderScenarioSelectList(violations);
+    });
+    changeBpButton.removeEventListener('click', () => {
+      setTimeout(() => {
+        bestPracticeSelectList.dispatchEvent(new Event('change'));
+      }, 0);
+    });
+    fillButton.removeEventListener('click', fillInputs);
+    patternButton.removeEventListener('click', insertPatternText);
+    listenForOpen();
+  };
+
   const listenForClose = () => {
     if (document.getElementById('ChgBPNow')) {
       setTimeout(listenForClose, 50);
     } else {
-      // remove event listeners
-      bestPracticeSelectList.removeEventListener('change', e => {
-        const violations = bestPractices.filter(bestPractice => bestPractice.violationid === Number(e.target.value));
-        renderScenarioSelectList(violations);
-      });
-      changeBpButton.removeEventListener('click', () => {
-        setTimeout(() => {
-          bestPracticeSelectList.dispatchEvent(new Event('change'));
-        }, 0);
-      });
-      fillButton.removeEventListener('click', fillInputs);
-      patternButton.removeEventListener('click', insertPatternText);
-      listenForOpen();
+      closeScript();
     }
   };
 
