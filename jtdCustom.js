@@ -628,9 +628,10 @@ const init = () => {
   patternButton.style.display = 'none';
   jamesContainer.appendChild(patternButton);
   selectList.parentNode.appendChild(jamesContainer);
-  // render pattern button if it's a pattern
+  // render pattern button and pattern text if it's a pattern
   const isPattern = window.location.href.includes('pattern_id');
   patternButton.style.display = isPattern ? 'block' : 'none';
+  const patternText = isPattern ? `[Pattern: ${selectList.parentNode.parentNode.previousSibling.firstElementChild.firstElementChild.textContent.substring(18)}]${'\n\n'}` : '';
 
   // function to create the list of specifics
   const renderSpecificList = specifics => {
@@ -660,7 +661,6 @@ const init = () => {
 
   const addPatternText = e => {
     e.preventDefault();
-    const patternText = isPattern ? `[Pattern: ${selectList.parentNode.parentNode.previousSibling.firstElementChild.firstElementChild.textContent.substring(18)}]${'\n\n'}` : '';
     const issueIndex = codeSnippetField.value.indexOf('[Issue]');
     const replacementText = issueIndex !== -1 ? codeSnippetField.value.substr(issueIndex) : codeSnippetField.value;
     codeSnippetField.value = patternText;
