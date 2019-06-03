@@ -198,14 +198,16 @@ const bestPractices = [
     violationid: 409,
     media: 'Web',
     bestpractice: 'Ensure text can be resized',
-    scenario: 'Text cannot be resized'
+    scenario: 'Text stays the same size upon zooming with the browser',
+    codesnippet: '[Issue]\r\nThe _____ text on the page cannot be resized. Attempting to resize the content of the page to 200 percent results in no visual for this content.\r\n\r\n[User Impact]\r\nWhen absolute font sizes are used, low vision users may not be able to increase or decrease the size of the font, or the font may become unreadable or overlap other content.',
+    issuedescription: '[Recommendation]\r\nDevelopers must ensure that all text can be resized up to 200 percent without the use of assistive technology. Typically this is done by ensuring that for all declarations of font size, the declaration is stated in relative units - em units, percentages, or keywords.\r\n\r\nResponsive web design can be helpful in creating sites that allow for text resized without loss of content or functionality but use of responsive web design alone is not enough, as fixed container sizes can still break when the page is zoomed.'
   },
   {
     violationid: 410,
     media: 'Web',
     bestpractice: 'Ensure containing elements allow text resize without loss of functionality',
     scenario: 'Text gets cut off or obscured when text is enlarged',
-    codesnippet: '[Issue]\nWhen using the browser to enlarge the text, the _____ becomes _____.\n\n[Impact]\nUsers with low vision or cognitive impairments may need to resize the text. When text becomes obscured upon being enlarged, these users may no longer be able to perceive this content.',
+    codesnippet: '[Issue]\nWhen using the browser to enlarge the text, the _____ text becomes _____.\n\n[Impact]\nUsers with low vision or cognitive impairments may need to resize the text. When text becomes obscured upon being enlarged, these users may no longer be able to perceive this content.',
     issuedescription: '[Recommendation]\nDevelopers must ensure that text can be enlarged up to 200%. Developers should convert all absolute units into relative units and allow proper scaling.'
   },
   {
@@ -236,7 +238,9 @@ const bestPractices = [
     violationid: 490,
     media: 'Web',
     bestpractice: 'Ensure all active elements receive keyboard focus or can be activated with the keyboard',
-    scenario: 'Interactive generic element does not receive keyboard focus but could be activated by keyboard'
+    scenario: 'Interactive generic element does not receive keyboard focus but could be activated by keyboard',
+    codesnippet: '[Issue]\nThe _____ is an interactive generic element that does not receive keyboard focus with the Tab key.\n\n[Impact]\nWhen interactive elements do not receive keyboard focus, users who rely on the keyboard such as mobility-impaired users and screen reader users may not be able to perform the intended function.\n\n[Code Sample]\n_____',
+    issuedescription: '[Recommendation]\nDevelopers must ensure that all interactive elements can be operated with the keyboard. Standard HTML elements such as input fields, buttons, and anchor tags will automatically be operable by keyboard, and are generally recommended when creating interactive elements.\n\nTo make a generic container element operable by keyboard, Developers must add a tabindex="0" attribute to ensure that the item.\n\n[Code Sample]\n_____'
   },
   {
     violationid: 524,
@@ -330,7 +334,33 @@ const bestPractices = [
     violationid: 796,
     media: 'Web',
     bestpractice: 'Ensure the focus order of interactive elements on the page is logical',
-    scenario: 'Interactive elements do not focus in a logical order'
+    scenario: 'Interactive elements do not focus in a logical order',
+    codesnippet: '[Issue]\nWhen using the Tab key to focus on different items on the page, focus _____.\n\n[Impact]\nWhen the tab order of the page is illogical, filling out forms or navigating through the page can be confusing for screen reader users and other keyboard users.',
+    issuedescription: '[Recommendation]\nDevelopers must ensure that the focus order of interactive elements on the page matches the visual layout of the page, or at least follows a logical order.'
+  },
+  {
+    violationid: 808,
+    media: 'Web',
+    bestpractice: 'Ensure CSS background images that convey meaning have textual and visible equivalents',
+    scenario: 'CSS background image conveys meaning and has no textual or visual equivalent',
+    codesnippet: '[Issue]\nThe _____ uses a background image and conveys meaning to the user. There is no textual or visual equivalent for this background image.\n\n[User Impact]\nUsers who cannot see background images include screen reader users and users with low vision such as those who turn on high contrast mode or turn off web page colors. The meaning conveyed by the background image will not be conveyed to users who cannot see the image.\n\n[Code Sample]\n_____',
+    issuedescription: '[Recommendation]\r\nDevelopers must ensure that background images conveying meaning contain both textual and visual alternatives, because background images are unavailable during high contrast mode or when web page colors are disabled. Textual alternatives can be added using adjacent off-screen text. Visual alternatives would need to be added in nearby content of the page or imposed where the image is using CSS.\r\n\r\nIt is often recommended to use <img> elements for meaningful images, because <img> elements persist during high contrast mode and when web page colors are disabled.\n\n[Code Sample]\n_____'
+  },
+  {
+    violationid: 808,
+    media: 'Web',
+    bestpractice: 'Ensure CSS background images that convey meaning have textual and visible equivalents',
+    scenario: 'CSS background image conveys meaning and has no textual equivalent',
+    codesnippet: '[Issue]\nThe _____ uses a background image and conveys meaning to the user. There is no textual equivalent for this background image.\n\n[User Impact]\nThe meaning conveyed by the background image will not be conveyed to screen reader users.\n\n[Code Sample]\n_____',
+    issuedescription: '[Recommendation]\nDevelopers must ensure that background images conveying meaning contain textual alternatives. This can be added using adjacent off-screen text or with a proper aria-label attribute.\n\n[Code Sample]\n_____'
+  },
+  {
+    violationid: 808,
+    media: 'Web',
+    bestpractice: 'Ensure CSS background images that convey meaning have textual and visible equivalents',
+    scenario: 'CSS background image conveys meaning and has no visual equivalent',
+    codesnippet: '[Issue]\nThe _____ uses a background image and conveys meaning to the user. There is no visual equivalent for this background image.\n\n[User Impact]\nThe meaning conveyed by the background image will not be conveyed to wsers with low vision such as those who turn on high contrast mode or turn off web page colors. \n\n[Code Sample]\n_____',
+    issuedescription: '[Recommendation]\nDevelopers must ensure that background images conveying meaning contain visual alternatives, because background images are unavailable during high contrast mode or when web page colors are disabled. Visual alternatives would need to be added in nearby content of the page or imposed where the image is using CSS.\n\nIt is often recommended to use <img> elements for meaningful images, because <img> elements persist during high contrast mode and when web page colors are disabled.\n\n[Code Sample]\n_____'
   },
   {
     violationid: 887,
@@ -344,13 +374,17 @@ const bestPractices = [
     violationid: 889,
     media: 'Web',
     bestpractice: 'Ensure that when dialogs are activated focus moves appropriately',
-    scenario: 'Focus does not move into dialog after it has been opened'
+    scenario: 'Focus does not move into dialog after it has been opened',
+    codesnippet: "[Issue]\nAfter the _____ dialog opens, focus does not move into the dialog element.\n\n[Impact]\nWhen focus is not moved appropriately, screen reader users may not be able to efficiently locate the new content or may miss portions of the dialog's content.",
+    issuedescription: '[Recommendation]\nDevelopers must ensure that when a dialog is opened, focus moves appropriately to the first content element inside the dialog or to the first control. Developers can use the tabindex attribute with a value of -1 on any non-focusable element that contains the content to set focus (using the javaScript focus() method).'
   },
   {
     violationid: 948,
     media: 'Web',
     bestpractice: 'Ensure charts and graphs provide an informative and visible alternative description',
-    scenario: 'Alternative description for chart or graph differs from content'
+    scenario: 'Alternative description for chart or graph differs from content',
+    codesnippet: '[Issue]\nThe _____ provides a visible alternative description that differs from its content.\n\n[Impact]\nWhen the content of the alternative description for charts and graphs does not match their actual content, screen reader users will not be able to perceive the same information available to other users.\r\n\r\n[Code Sample]\n_____',
+    issuedescription: '[Recommendation]\nThe _____ legend must match the contents of the image. Developers should change either the image or image description so that the content matches.\n\n[Code Sample]\n_____'
   },
   {
     violationid: 971,
@@ -380,9 +414,9 @@ const bestPractices = [
     violationid: 1244,
     media: 'Web',
     bestpractice: 'Ensure auto-updating dynamic content can be paused, stopped, or hidden',
-    scenario: 'Carousel does not have a pause mechanism',
-    codesnippet: "[Issue]\nThe _____ carousel plays automatically and does not have a mechanism to be paused, stopped or hidden.\n\n[Impact]\nWhen there is no method to pause, stop or hide the carousel's auto-updating content, it can be distracting to some users with disabilities.",
-    issuedescription: '[Recommendation]\nDevelopers must provide a method for the user to pause, stop, hide, or control the frequency of auto-updating or moving/blinking/scrolling content that starts automatically. For carousels, it is generally recommended to include keyboard-accessible pause button with the carousel controls.'
+    scenario: 'Slideshow does not have a pause mechanism',
+    codesnippet: "[Issue]\nThe _____ slideshow plays automatically and does not have a mechanism to be paused, stopped or hidden.\n\n[Impact]\nWhen there is no method to pause, stop or hide the slideshow's auto-updating content, it can be distracting to some users with disabilities.",
+    issuedescription: '[Recommendation]\nDevelopers must provide a method for the user to pause, stop, hide, or control the frequency of auto-updating or moving/blinking/scrolling content that starts automatically. For slideshows, it is generally recommended to include keyboard-accessible pause button with the slideshow controls.'
   },
   {
     violationid: 1249,
@@ -435,20 +469,22 @@ const bestPractices = [
     bestpractice: 'Provide valid labels for all form elements',
     scenario: 'Form element has a label visually but not programmatically',
     codesnippet: '[Issue]\nThe _____ is a form element that does not provide an accessible label.\n\n[Impact]\nWhen form fields are not properly labeled, their identity will not be rendered properly by assistive technology to users with visual disabilities. The user may interact with the wrong form element or may not know which form field to interact with.',
-    issuedescription: '[Recommendation]\nDevelopers need to ensure that accessibility labels provided for form elements are clear and concise. The accessibility label should generally match the visual label associated with input control. The accessibilityLabel property must be used to set the accessibility label.'
+    issuedescription: '[Recommendation]\nDevelopers must ensure that accessibility labels provided for form elements are clear and concise. The accessibility label should generally match the visual label associated with input control. The accessibilityLabel property must be used to set the accessibility label.'
   },
   {
     violationid: 1626,
     media: 'Web',
     bestpractice: 'Ensure ARIA roles, states, and properties are valid',
-    scenario: 'Element contains an aria reference attribute with an invalid ID'
+    scenario: 'Element contains an aria reference attribute with an invalid ID',
+    codesnippet: '[Issue]\nThe _____ element contains an attribute of _____, however the value does not match the ID of any element on the page.\n\n[Impact]\nWhen reference attribute values are invalid, assistive technology may not correctly function as expected.\n\n[Code Sample]\n_____',
+    issuedescription: '[Recommendation]\nDevelopers must ensure that reference attributes contain the ID of a corresponding element.'
   },
   {
     violationid: 1626,
     media: 'Web',
     bestpractice: 'Ensure ARIA roles, states, and properties are valid',
     scenario: 'Non-heading element has role="heading"',
-    codesnippet: '[Issue]\nThe _____ text has a role of "heading", which is not valid for this element. The _____ text is not utilized properly as a heading.\n\n[Impact]\nWhen a non-heading element has a role of "heading" that element may be rendered by assistive technology as a heading element. Headings may provide the user with a way to navigate section-by-section through content. By applying headings incorrectly, users of assistive technology may be stripped of this useful navigation technique.\n\n[Code Sample]\n_____',
+    codesnippet: '[Issue]\nThe _____ text has a role of "heading", which is not valid for this element. The _____ text is not utilized properly as a heading.\n\n[Impact]\nWhen a non-heading element has a role of "heading", that element may be rendered by assistive technology as a heading element. Headings may provide the user with a way to navigate section-by-section through content. By applying headings incorrectly, users of assistive technology may be stripped of this useful navigation technique.\n\n[Code Sample]\n_____',
     issuedescription: '[Recommendation]\r\nDevelopers must ensure that the role attribute corresponds with the element\'s purpose. Developers should remove the role="heading" attribute for all elements that do not function as a heading.\n\n[Code Sample]\n_____'
   },
   {
@@ -528,7 +564,8 @@ const bestPractices = [
     media: 'Android',
     bestpractice: 'Ensure focus is not forcibly shifted on input',
     scenario: 'Focus unexpectedly shifts to a different element while doing something else',
-    codesnippet: '[Issue]\nWhile _____, focus automatically shifts from _____ to _____ without any initiation from the user.\n\n[Impact]\nWhen focus is forcibly shifted, users of assistive technology may have to use many gestures to return to their previous position. Forcibly shifted focus can be disorienting for users when they expect to be at a different location within the app.'
+    codesnippet: '[Issue]\nWhile _____, focus automatically shifts from _____ to _____ without any initiation from the user.\n\n[Impact]\nWhen focus is forcibly shifted, users of assistive technology may have to use many gestures to return to their previous position. Forcibly shifted focus can be disorienting for users when they expect to be at a different location within the app.',
+    issuedescription: '[Recommendation]\nDevelopers must remove keyboard focus shifts that the user does not control.'
   },
   {
     violationid: 1961,
@@ -651,7 +688,9 @@ const bestPractices = [
     violationid: 2896,
     media: 'Web',
     bestpractice: 'Ensure that content and functionality is available when the user overrides text spacing properties',
-    scenario: 'Text moves outside container when overriding text spacing properties'
+    scenario: 'Text gets cut off or obscured when overriding text spacing properties',
+    codesnippet: '[Issue]\nWhen using custom text spacing properties to , the _____ text becomes _____.\n\n[Impact]\nUsers with low vision or cognitive impairments may need to use custom text spacing properties. When text becomes obscured upon its spacing properties being overridden, these users may no longer be able to perceive this content.',
+    issuedescription: '[Recommendation]\nDevelopers must ensure that text spacing can be increased without obscurity. Line height must be able to adapt to 1.5 times the font size, letter spacing must be able to adapt to 0.12 times the font size, word spacing must be able to adapt to 0.16 times the font size, and spacing underneath paragraphs must be able to adapt to 2 times the font size.'
   },
   {
     violationid: 2903,
