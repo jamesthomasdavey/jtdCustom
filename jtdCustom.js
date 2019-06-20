@@ -1,8 +1,9 @@
 // ==UserScript==
 // @name         AMP - JTD
 // @namespace    http://tampermonkey.net/
-// @version      0.7
+// @version      0.8
 // @author       James Thomas Davey
+// @description  Everybody who's anybody.
 // @match        *.levelaccess.net/public/reporting/view_module.php?module_id=*
 // @match        *.levelaccess.net/public/reporting/view_pattern.php?pattern_id=*
 // ==/UserScript==
@@ -111,7 +112,7 @@ const bestPractices = [
     media: 'Web',
     bestpractice: 'Ensure color is not the sole means of communicating information',
     scenario: 'Content uses color as the only method of differentiating from surrounding content',
-    codesnippet: '[Issue]\nThe _____ uses color as the only indication of differentiating from _____.\n\n[Impact]\r\nWhen color is used as the sole method for identifying different types of content among their surrounding content, persons who are blind, color blind, or have low vision may find the web page unusable.\n\n[Code Sample]\n_____',
+    codesnippet: '[Issue]\nThe _____ uses color as the only indication of differentiating from _____.\n\n[Impact]\nWhen color is used as the sole method for identifying different types of content among their surrounding content, persons who are blind, color blind, or have low vision may find the web page unusable.\n\n[Code Sample]\n_____',
     issuedescription: '[Recommendation]\nDevelopers must ensure that information communicated via color is also available through some other method. This provision does not prohibit the use of color to enhance the identification of interactive elements, however it is recommended to add additional visual indicators such as a border or underline.\n\nDevelopers must also ensure that a textual indication also exists, for example by adding a heading, an aria-label, or SR-only text.'
   },
   {
@@ -207,7 +208,7 @@ const bestPractices = [
     media: 'Web',
     bestpractice: 'Ensure sub-lists are marked up properly',
     scenario: 'List element contains direct children that are not list items',
-    codesnippet: '[Issue]\nThe _____ consists of _____ nested directly inside a _____ element.\n\n...',
+    codesnippet: '[Issue]\nThe _____ consists of _____ nested directly inside a _____ element.\n\n[Impact]\nImproper nesting of non-list items in list elements results in elements not being rendered properly to assistive technology.\n\n[Code Sample]\n_____',
     issuedescription: '[Recommendation]\nDevelopers must ensure that _____ elements only contain _____ elements as direct children.\n\n[Code Sample]\n_____'
   },
   {
@@ -248,38 +249,38 @@ const bestPractices = [
     bestpractice: 'Ensure list items are found in a list container',
     scenario: 'List items are not inside of a list container',
     codesnippet: '[Issue]\nList items exist independent of a list container. All <li> elements should be nested inside a <ul>, <ol>, or <menu> element.\n\n[Impact]\nList items which are orphaned or not found within a container are often not rendered properly in assistive technology.\n\n[Code Sample]\n_____',
-    issuedescription: '[Recommendation]\nDevelopers must ensure that all <li> elements are nested inside of the appropriate list element. These list items should be nested inside a _____ element.\n\n[Code Sample]\n_____'
+    issuedescription: '[Recommendation]\nEnsure that all <li> elements are nested inside of the appropriate list element. These list items should be nested inside a _____ element.\n\n[Code Sample]\n_____'
   },
   {
     violationid: 490,
     media: 'Web',
     bestpractice: 'Ensure all active elements receive keyboard focus or can be activated with the keyboard',
-    scenario: 'Anchor element does not receive keyboard focus',
-    codesnippet: "[Issue]\nThe _____ <a> element does not receive keyboard with the Tab key and is not operable by keyboard. When an element is interactive, the element must also be focusable via the keyboard or a shortcut provided to activate the element.\n\n[Impact]\nEnsuring keyboard access to a site or application's controls and features allows people who cannot use a mouse or other pointing device to utilize the site or application. For example, a person with a disability that affects dexterity may find it impossible to move or hold a pointing device with enough accuracy to activate desired features. A person who cannot see the screen, therefore relying on a screen reader, may have no problems moving the pointer but will be unable to determine what is being pointed to.\n\n[Code Sample]\n_____",
-    issuedescription: '[Recommendation]\nDevelopers must ensure that all interactive elements are accessible from the keyboard. Standard HTML elements such as input fields, buttons, and anchor tags will automatically be placed in the tab order by the browser.\n\n<a> elements require an HREF attribute to receive keyboard focus. Developers must also ensure that no scripts are causing focus to skip over this element.\n\n[Code Sample]\n_____'
-  },
-  {
-    violationid: 490,
-    media: 'Web',
-    bestpractice: 'Ensure all active elements receive keyboard focus or can be activated with the keyboard',
-    scenario: 'Interactive generic element does not receive keyboard focus and cannot be activated with the keyboard',
-    codesnippet: '[Issue]\nThe _____ is an interactive generic element that does not receive keyboard focus with the Tab key, and it cannot be activated with the keyboard.\n\n[Impact]\nWhen interactive elements cannot be operated with the keyboard, users who rely on the keyboard such as mobility-impaired users and screen reader users may not be able to perform the intended function.\n\n[Code Sample]\n_____',
-    issuedescription: '[Recommendation]\nDevelopers must ensure that all interactive elements can be operated with the keyboard. Standard HTML elements such as input fields, buttons, and anchor tags will automatically be operable by keyboard, and are generally recommended when creating interactive elements.\n\nTo make a generic container element operable by keyboard, Developers must add a tabindex="0" attribute to ensure that the item. Developers must also add an additional handler for keyboard events, and ensure to add a proper role attribute to the element to be announced properly to assistive technology.\n\n[Code Sample]\n_____'
+    scenario: 'Anchor element does not receive keyboard focus but could be activated by keyboard',
+    codesnippet: '[Issue]\nThe _____ does not receive keyboard focus with the Tab key.\n\n[Impact]\nWhen anchor elements cannot be operated with the keyboard, users who rely on the keyboard such as mobility-impaired users and screen reader users may not be able to perform the intended function.\n\n[Code Sample]\n_____',
+    issuedescription: '[Recommendation]\nAnchor elements require an HREF attribute to receive keyboard focus. Ensure that no scripts are causing focus to skip over this element.\n\n[Code Sample]\n_____'
   },
   {
     violationid: 490,
     media: 'Web',
     bestpractice: 'Ensure all active elements receive keyboard focus or can be activated with the keyboard',
     scenario: 'Interactive generic element does not receive keyboard focus but could be activated by keyboard',
-    codesnippet: '[Issue]\nThe _____ is an interactive generic element that does not receive keyboard focus with the Tab key.\n\n[Impact]\nWhen interactive elements do not receive keyboard focus, users who rely on the keyboard such as mobility-impaired users and screen reader users may not be able to perform the intended function.\n\n[Code Sample]\n_____',
-    issuedescription: '[Recommendation]\nDevelopers must ensure that all interactive elements can be operated with the keyboard. Standard HTML elements such as input fields, buttons, and anchor tags will automatically be operable by keyboard, and are generally recommended when creating interactive elements.\n\nTo make a generic container element operable by keyboard, Developers must add a tabindex="0" attribute to ensure that the item.\n\n[Code Sample]\n_____'
+    codesnippet: '[Issue]\nThe _____ does not receive keyboard focus with the Tab key.\n\n[Impact]\nWhen interactive elements do not receive keyboard focus, users who rely on the keyboard such as mobility-impaired users and screen reader users may not be able to perform the intended function.\n\n[Code Sample]\n_____',
+    issuedescription: '[Recommendation]\nEnsure that all interactive elements are focusable by keyboard. Standard HTML elements such as <button> and <a> are automatically focusable by keyboard, and are generally recommended when creating interactive elements.\n\nTo allow keyboard focus on a generic container element, developers must add an attribute of tabindex="0" to the element.\n\n[Code Sample]\n_____'
+  },
+  {
+    violationid: 490,
+    media: 'Web',
+    bestpractice: 'Ensure all active elements receive keyboard focus or can be activated with the keyboard',
+    scenario: 'Interactive generic element does not receive keyboard focus and cannot be activated with the keyboard',
+    codesnippet: '[Issue]\nThe _____ does not receive keyboard focus with the Tab key and cannot be activated with the keyboard.\n\n[Impact]\nWhen interactive elements cannot be operated with the keyboard, users who rely on the keyboard such as mobility-impaired users and screen reader users may not be able to perform the intended function.\n\n[Code Sample]\n_____',
+    issuedescription: '[Recommendation]\nEnsure that all interactive elements are focusable and operable by keyboard. Standard HTML elements such as <button> and <a> are automatically focusable and operable by keyboard, and are generally recommended when creating interactive elements.\n\nTo allow keyboard focus on a generic container element, developers must add an attribute of tabindex="0" to the element. To allow keyboard activation on this element, developers must also add an additional event handler for keyboard events.\n\n[Code Sample]\n_____'
   },
   {
     violationid: 523,
     media: 'Web',
     bestpractice: 'Ensure frame titles are meaningful',
     scenario: 'Frame title is not meaningful',
-    codesnippet: '[Issue]\nThe title for the Student Tour expanded <iframe> element is _____, which does not meaningfully describe its content.\n\n[Impact]\nWhen frames are not titled or have non-meaningful titles, it becomes difficult for users of assistive technologies to move between frames in order to access the page content they wish to view.\n\n[Code Sample]\n_____',
+    codesnippet: '[Issue]\nThe title for the _____ <iframe> element is _____, which does not meaningfully describe its content.\n\n[Impact]\nWhen frames are not titled or have non-meaningful titles, it becomes difficult for users of assistive technologies to move between frames in order to access the page content they wish to view.\n\n[Code Sample]\n_____',
     issuedescription: '[Recommendation]\nFrames should contain meaningful and concise titles that directly reflect the content they represent and/or action to be performed by that frame.\n\n[Code Sample]\n_____'
   },
   {
@@ -297,6 +298,14 @@ const bestPractices = [
     scenario: 'Inactive links or buttons receive keyboard focus',
     codesnippet: '[Issue]\nSome inactive elements receive Tab keyboard focus, despite not featuring any interactive functionality. This can be seen _____.\n\n[Impact]\nProviding focus to non-active elements may give users of assistive technology the impression that the element is interactive and cause keyboard users to have to use extra keystrokes to navigate.\n\n[Code Sample]\n_____',
     issuedescription: '[Recommendation]\nDevelopers must ensure that generally only interactive elements receive Tab keyboard focus. For interactive elements that are in the focus order but rendered inactive, tabindex="-1" can be used to remove them from the focus order. There should also be no scripts that direct keyboard focus to these elements.\n\n[Code Sample]\n_____'
+  },
+  {
+    violationid: 525,
+    media: 'Web',
+    bestpractice: 'Ensure color is not the sole means of indicating error messages',
+    scenario: 'Error messages are only indicated by their difference in color',
+    codesnippet: '[Issue]\nAfter triggering error messages with an invalid submission, the only distinction that these are error messages is their use of color.\n\n[Impact]\nThe purpose of these error messages may not be apparent to users who are color blind or have low vision.\n\n[Code Sample]\n_____',
+    issuedescription: '[Recommendation]\nAdd a secondary visual indication to the error message that is also programmatically available, such as a warning images with appropriate alternative text, or simply the text "Error: ".\r\n\n[Code Sample]\n_____'
   },
   {
     violationid: 542,
@@ -327,29 +336,31 @@ const bestPractices = [
     media: 'Web',
     bestpractice: 'Ensure keyboard and programmatic focus moves to opened menus',
     scenario: 'Focus does not move to the first menu item',
-    codesnippet: '[Issue]\nUpon activating the menu with the keyboard, focus does not move to the first menu item.\n\n[Impact]\nWhen focus does not move into the opened menu, keyboard-only users will not be able to navigate through the menu items using the expected controls.',
-    issuedescription: '[Recommendation]\nEnsure that when an item provides a menu, context, standalone, or attached menu that the menu properly allows focus to be set on the first item within the menu. This can be accomplished by calling the JavaScript focus() method on the element in question.'
+    codesnippet: '[Issue]\nUpon activating the _____ menu with the keyboard, focus does not move to the first menu item.\n\n[Impact]\nWhen focus does not move into the opened menu, keyboard-only users will not be able to navigate through the menu items using the expected controls.',
+    issuedescription: '[Recommendation]\nEnsure that when an item provides a menu, context, standalone, or attached menu that the menu properly allows focus to be set on the first item within the menu. This can be accomplished by calling the JavaScript .focus() method on the element in question.'
   },
   {
     violationid: 598,
     media: 'Web',
     bestpractice: 'Ensure sub-menu items are keyboard accessible and communicate sub menu structure',
-    scenario: 'role="menu" and role="menuitem" are not used'
+    scenario: 'Role="menu" and role="menuitem" are not used',
+    codesnippet: '[Issue]\nThe _____ menu and menu items to not have the correct roles assigned to indicate their purpose.\n\n[Impact]\nUsing the correct roles of "menu" and "menuitem" will allow screen reader users to understand the purpose of the elements as well as the their current position in the total number of menu items.\n\n[Code Sample]\n_____',
+    issuedescription: '[Recommendation]\nEnsure that the container element has an attribute of role="menu" and that the nested interactive elements have an attribute of role="menuitem".\n\n[Code Sample]\n_____'
   },
   {
     violationid: 598,
     media: 'Web',
     bestpractice: 'Ensure sub-menu items are keyboard accessible and communicate sub menu structure',
-    scenario: 'role="menu" is used, but role="menuitem" is not used',
-    codesnippet: '[Issue]\nThe expanded menu contains interactive items that do not have the correct role of "menuitem"\n\n[Impact]\nWhen role="menu" is used, screen readers will communicate to users the number of menu items as the user cycles through them. When role="menuitem" is not used, screen readers may communicate false information.',
-    issuedescription: '[Recommendation]\nensure that nested interactive elements have an attribute of role="menuitem".'
+    scenario: 'Role="menu" is used, but role="menuitem" is not used',
+    codesnippet: '[Issue]\nThe _____ menu contains interactive items that do not have the correct role of "menuitem"\n\n[Impact]\nWhen role="menu" is used, screen readers will communicate to users the number of menu items as the user cycles through them. When role="menuitem" is not used, screen readers may communicate false information.\n\n[Code Sample]\n_____',
+    issuedescription: '[Recommendation]\nEnsure that the nested interactive elements have an attribute of role="menuitem".\n\n[Code Sample]\n_____'
   },
   {
     violationid: 598,
     media: 'Web',
     bestpractice: 'Ensure sub-menu items are keyboard accessible and communicate sub menu structure',
-    scenario: 'Arrow keys cannot control focus in an expanded menu',
-    codesnippet: '[Issue]\nIn the expanded menu, pressing the up and down arrow keys do not cycle through menu items.\n\n[Impact]\nWhen menu authoring practices are used, screen reader users will be informed that they can control focus with the arrow keys. When these keys do not function properly, keyboard only users will not be able to easily navigate through these items.',
+    scenario: 'Arrow keys cannot control focus in a menu',
+    codesnippet: '[Issue]\nIn the _____ menu, pressing the up and down arrow keys do not cycle through menu items.\n\n[Impact]\nWhen menu authoring practices are used, screen reader users will be informed that they can control focus with the arrow keys. When these keys do not function properly, keyboard only users will not be able to easily navigate through these items.',
     issuedescription: '[Recommendation]\r\nEnsure that users can cycle through menu items by using the up and down arrows, can activate menu items with the spacebar or enter key, and can exit the menu with the Tab key.'
   },
   {
@@ -636,19 +647,27 @@ const bestPractices = [
     issuedescription: '[Recommendation]\r\nDevelopers must ensure that all information intended for all users is also rendered to assistive technology. For any informative images, developers should remove the aria-hidden="true" attribute to ensure that screen reader users are able to access the alternative text.\r\n\r\n[Code Sample]\r\n_____'
   },
   {
+    violationid: 1893,
+    media: 'Web',
+    bestpractice: 'Provide a descriptive dialog title',
+    scenario: 'Dialog element or element with role="dialog" does not have an aria-label or aria-labelledby attribute',
+    codesnippet: "[Issue]\nThe _____ dialog does not have an accessible title.\n\n[Impact]\nThe dialog's purpose may be visually apparent but can be difficult to understand using assistive technology such as screen readers.\n\n[Code Sample]\n_____",
+    issuedescription: '[Recommendation]\nEnsure that all elements with a role of "dialog" have an appropriate aria-label or aria-labelledby attribute to provide an accessible title.\n\n[Code Sample]\n_____'
+  },
+  {
     violationid: 1908,
     media: 'iOS',
     bestpractice: 'Ensure non-decorative images provide informative alternative text',
     scenario: 'Image that conveys meaning does not have alternative text',
-    codesnippet: '[Issue]\nThe _____ is an image that conveys meaning, however it does not provide informative alternative text. Images in iOS are not accessibility enabled by default. Developers wishing to use images must enable accessibility on all relevant images in addition to providing an appropriate accessibility label.\n\n[Impact]\nAlternative text that is default, or non-meaningful text, can negatively impact the accessibility of an image. The goal of the accessible text should be to present text which will provide the same level of understanding to those who cannot see the image as it does to those who can.',
+    codesnippet: '[Issue]\nThe _____ is an image that conveys meaning, however it does not provide informative alternative text. Images in iOS are not accessibility enabled by default.\n\n[Impact]\nAlternative text that is default, or non-meaningful text, can negatively impact the accessibility of an image. The goal of the accessible text should be to present text which will provide the same level of understanding to those who cannot see the image as it does to those who can.',
     issuedescription: '[Recommendation]\nDevelopers must ensure to provide informative alternative text to all images that convey meaning. Developers should ensure that Accessible Label text is a concise and meaningful replacement for the image. It is strongly recommended that alt text should not exceed 80 characters.'
   },
   {
     violationid: 1909,
     media: 'iOS',
     bestpractice: 'Provide textual equivalents for all non-text elements including sounds and images',
-    scenario: 'Non-decorative element does not have a textual equivalent',
-    codesnippet: '[Issue]\nThe _____ is an element that conveys meaning, however it does not provide a textual equivalent. All non-text elements that are not considered decorative must have an Accessible Label.\n\n[Impact]\nWhen an accessible label is not provided for the _____, users who cannot view the _____ will not understand the purpose of it.',
+    scenario: 'Element that conveys meaning does not have a textual equivalent',
+    codesnippet: '[Issue]\nThe _____ is an element that conveys meaning, however it does not provide a textual equivalent.\n\n[Impact]\nWhen an accessible label is not provided for the _____, users who cannot view the _____ will not understand the purpose of it.',
     issuedescription: "[Recommendation]\nAll non-decorative objects must have 'Accessibility Enabled' within the xCode development environment and minimally have an accessibilityLabel attribute assigned."
   },
   {
