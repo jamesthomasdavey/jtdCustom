@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMP - JTD
 // @namespace    http://tampermonkey.net/
-// @version      0.802
+// @version      0.803
 // @author       James Thomas Davey
 // @description  Everybody who's anybody.
 // @match        *.levelaccess.net/public/reporting/view_module.php?module_id=*
@@ -216,7 +216,7 @@ const bestPractices = [
     media: 'Web',
     bestpractice: 'Ensure text can be resized',
     scenario: 'Text stays the same size upon zooming with the browser',
-    codesnippet: '[Issue]\r\nThe _____ text on the page cannot be resized. Attempting to resize the content of the page to 200 percent results in no visual for this content.\r\n\r\n[Impact]\r\nWhen absolute font sizes are used, low vision users may not be able to increase or decrease the size of the font, or the font may become unreadable or overlap other content.',
+    codesnippet: '[Issue]\nThe _____ text on the page cannot be resized. Attempting to resize the content of the page to 200 percent results in no visual change for this content.\n\n[Impact]\nWhen absolute font sizes are used, low vision users may not be able to increase or decrease the size of the font, or the font may become unreadable or overlap other content.',
     issuedescription: '[Recommendation]\r\nDevelopers must ensure that all text can be resized up to 200 percent without the use of assistive technology. Typically this is done by ensuring that for all declarations of font size, the declaration is stated in relative units - em units, percentages, or keywords.\r\n\r\nResponsive web design can be helpful in creating sites that allow for text resized without loss of content or functionality but use of responsive web design alone is not enough, as fixed container sizes can still break when the page is zoomed.'
   },
   {
@@ -250,6 +250,18 @@ const bestPractices = [
     scenario: 'List items are not inside of a list container',
     codesnippet: '[Issue]\nList items exist independent of a list container. All <li> elements should be nested inside a <ul>, <ol>, or <menu> element.\n\n[Impact]\nList items which are orphaned or not found within a container are often not rendered properly in assistive technology.\n\n[Code Sample]\n_____',
     issuedescription: '[Recommendation]\nEnsure that all <li> elements are nested inside of the appropriate list element. These list items should be nested inside a _____ element.\n\n[Code Sample]\n_____'
+  },
+  {
+    violationid: 476,
+    media: 'Web',
+    bestpractice: 'Ensure embedded elements and canvas elements provide a meaningful text equivalent',
+    scenario: '<canvas> element does not have an accessible name'
+  },
+  {
+    violationid: 476,
+    media: 'Web',
+    bestpractice: 'Ensure embedded elements and canvas elements provide a meaningful text equivalent',
+    scenario: '<video> element does not have an accessible name'
   },
   {
     violationid: 479,
@@ -407,6 +419,12 @@ const bestPractices = [
     violationid: 609,
     media: 'Web',
     bestpractice: 'Ensure form field constraints and errors are associated with their corresponding field',
+    scenario: 'Errors are not announced upon focusing on the erroneous field'
+  },
+  {
+    violationid: 609,
+    media: 'Web',
+    bestpractice: 'Ensure form field constraints and errors are associated with their corresponding field',
     scenario: 'Form uses * to denote required fields, however this is not defined',
     codesnippet: '[Issue]\nThe _____ form uses an asterisk to denote which fields are required, however the form does not include an explanation of the asterisk.\n\n[Impact]\nWhen constraints are not defined, users with cognitive disabilities may not know what the minimum fields to complete are.\n\n[Code Sample]\n_____',
     issuedescription: '[Recommendation]\nDevelopers must ensure that form field requirements are clearly defined. Developers should add an explanation of what the asterisk indicates at the top of the form, for example "Required fields marked with an *".\n\n[Code Sample]\n_____'
@@ -480,8 +498,8 @@ const bestPractices = [
     media: 'Web',
     bestpractice: 'Ensure dialogs use proper structure',
     scenario: 'Dialog does not have a proper role',
-    codesnippet: '[Issue]\nThe _____ does not have a role="dialog" to indicate its boundaries on the screen.\n\n[Impact]\nUse of appropriate dialog role will allow users of screen reader users to know the beginning and ending boundaries of the dialog.',
-    issuedescription: '[Recommendation]\nAdd an attribute of role="region" to the container or use the <dialog> element.'
+    codesnippet: '[Issue]\nThe _____ does not have a role="dialog" to indicate its boundaries on the screen.\n\n[Impact]\nUse of appropriate dialog role will allow users of screen reader users to know the beginning and ending boundaries of the dialog.\n\n[Code Sample]\n_____',
+    issuedescription: '[Recommendation]\nAdd an attribute of role="dialog" to the container or use the <dialog> element.\n\n[Code Sample]\n_____'
   },
   {
     violationid: 887,
@@ -506,6 +524,14 @@ const bestPractices = [
     scenario: 'Alternative description for chart or graph differs from content',
     codesnippet: '[Issue]\nThe _____ provides a visible alternative description that differs from its content.\n\n[Impact]\nWhen the content of the alternative description for charts and graphs does not match their actual content, screen reader users will not be able to perceive the same information available to other users.\r\n\r\n[Code Sample]\n_____',
     issuedescription: '[Recommendation]\nThe _____ legend must match the contents of the image. Developers should change either the image or image description so that the content matches.\n\n[Code Sample]\n_____'
+  },
+  {
+    violationid: 952,
+    media: 'Web',
+    bestpractice: 'Ensure keyboard focus returns properly from dialogs',
+    scenario: 'Focus does not return after closing a dialog',
+    codesnippet: '[Issue]\nAfter closing the _____ dialog, focus does not return from the dialog element.\n\n[Impact]\nKeyboard-only users can lose their place on the page if keyboard focus does not move to an appropriate location.',
+    issuedescription: '[Recommendation]\nEnsure that dialog focus moves to the trigger that opened the dialog in the first place. This can be done by calling JavaScript .focus() method on the trigger element when the dialog is closed.'
   },
   {
     violationid: 971,
@@ -728,7 +754,7 @@ const bestPractices = [
     media: 'Web',
     bestpractice: 'Ensure that keyboard focus remains within modal dialogs',
     scenario: 'Items on page behind modal can receive keyboard focus',
-    codesnippet: "[Issue]\nThe page underlying the modal is blocked visually, however its contents still receives keyboard focus using the Tab key.\n\n[Impact]\nWhen focus is moved outside of the modal dialog, keyboard only users may be able to access content that is not active with the mouse but actionable from the keyboard via the screen reader's virtual cursor.",
+    codesnippet: "[Issue]\nThe page behind the _____ is blocked visually, however its content still receives keyboard focus using the Tab key.\n\n[Impact]\nWhen focus is moved outside of the modal dialog, keyboard only users may be able to access content that is not active with the mouse but actionable from the keyboard via the screen reader's virtual cursor.",
     issuedescription: '[Recommendation]\r\nDevelopers must ensure that when a modal dialog is open, focus remains within the dialog. This can be done by using onFocus and onBlur and other JavaScript techniques to manage the focus appropriately. There are many techniques that can be used to meet this best practices.\r\n\r\nDevelopers must ensure that tab and shift+tab are handled appropriately. Ideally focus should wrap from the last element to the first element. It may also be beneficial to hide the rest of the page content from the screen reader user by setting aria-hidden="true" on the other page content.'
   },
   {
