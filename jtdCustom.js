@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMP - JTD
 // @namespace    http://tampermonkey.net/
-// @version      0.803
+// @version      0.804
 // @author       James Thomas Davey
 // @description  Everybody who's anybody.
 // @match        *.levelaccess.net/public/reporting/view_module.php?module_id=*
@@ -311,6 +311,14 @@ const bestPractices = [{
     "issuedescription": "[Recommendation]\nFrames should contain meaningful and concise titles that directly reflect the content they represent and/or action to be performed by that frame.\n\n[Code Sample]\n_____"
   },
   {
+    "violationid": 523,
+    "media": "Web",
+    "bestpractice": "Ensure frame titles are meaningful",
+    "scenario": "Frame does not have a title",
+    "codesnippet": "[Issue]\nThe _____ <iframe> element does not have a title.\n\n[Impact]\nWhen frames are not titled or have non-meaningful titles, it becomes difficult for users of assistive technologies to move between frames in order to access the page content they wish to view.\n\n[Code Sample]\n_____",
+    "issuedescription": "[Recommendation]\nAdd a title attribute to the <iframe> to assign a meaningful title.\n\n[Code Sample]\n_____"
+  },
+  {
     "violationid": 524,
     "media": "Web",
     "bestpractice": "Avoid placing inactive elements in the focus order",
@@ -536,9 +544,17 @@ const bestPractices = [{
     "violationid": 971,
     "media": "Web",
     "bestpractice": "Indicate live regions for dynamically changing content",
-    "scenario": "Dynamically changing content is not indicated by live regions",
-    "codesnippet": "[Issue]\nThe _____ on the page updates dynamically without indication to screen readers through the use of live regions.\n\n[Impact]\nWhen developers don't specify which portions of a page are live regions, screen readers and other assistive technologies will not know which areas of the page to monitor for updates.",
-    "issuedescription": "[Recommendation]\nDevelopers must ensure that dynamically changing content is indicated to assistive technology. It is recommended to add an attribute of aria-live=\"polite\" to the container element of non-urgent dynamically changing content."
+    "scenario": "Dynamically changing content is not announced with screen readers",
+    "codesnippet": "[Issue]\nThe _____ on the page updates dynamically without indication from screen readers.\n\n[Impact]\nWhen developers don't specify which portions of a page are live regions, screen readers and other assistive technologies will not know which areas of the page to monitor for updates.\n\n[Code Sample]\r\n_____",
+    "issuedescription": "[Recommendation]\r\nDevelopers must ensure that dynamically changing content is indicated to assistive technology. It is recommended to add an attribute of aria-live=\"polite\" to the container element of non-urgent dynamically changing content.\r\n\r\nFor more information on correctly identifying live regions:\r\nhttps://www.w3.org/WAI/GL/wiki/Live_Region_Identification\r\n\r\n[Code Sample]\r\n_____"
+  },
+  {
+    "violationid": 971,
+    "media": "Web",
+    "bestpractice": "Indicate live regions for dynamically changing content",
+    "scenario": "Live search results are not announced with screen readers",
+    "codesnippet": "[Issue]\nThe _____ search results update dynamically without indication from screen readers.\n\n[Impact]\nWhen developers don't specify which portions of a page are live regions, screen readers and other assistive technologies will not know which areas of the page to monitor for updates.\n\n[Code Sample]\n_____",
+    "issuedescription": "[Recommendation]\r\nDevelopers must ensure that dynamically changing content is indicated to assistive technology. For content-heavy updates such as search results, developers can add an attribute of aria-live=\"polite\" to the span indicating the number of results.\r\n\r\nFor more information on correctly identifying live regions:\r\nhttps://www.w3.org/WAI/GL/wiki/Live_Region_Identification\r\n\r\n[Code Sample]\r\n_____"
   },
   {
     "violationid": 1143,
