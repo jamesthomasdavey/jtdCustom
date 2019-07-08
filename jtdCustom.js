@@ -100,6 +100,14 @@ const bestPractices = [
     issuedescription: '[Recommendation]\nHide this content from assistive technology by adding an attribute of aria-hidden="true".\n\n[Code Sample]\n_____'
   },
   {
+    violationid: 362,
+    media: 'Web',
+    bestpractice: 'Provide alternative text for images',
+    scenario: 'Decorative SVG without alt text is rendered to AT',
+    codesnippet: '[Issue]\nThe _____ SVG does not have an accessible name value.\n\n[Impact]\nWhen non-meaningful items are rendered to assistive technology, users may perceive unnecessary content which can hinder navigating and understanding content efficiently.\n\n[Code Sample]\n_____',
+    issuedescription: '[Recommendation]\nEnsure that decorative images are hidden from assistive technology. This can be done by adding an attribute of aria-hidden="true" to the SVG element. Developers should also add an attribute of focusable="false" for IE11 support.\n\n[Code Sample]\n_____'
+  },
+  {
     violationid: 368,
     media: 'Web',
     bestpractice: 'Ensure text and images of text provide sufficient contrast',
@@ -366,8 +374,8 @@ const bestPractices = [
     media: 'Web',
     bestpractice: 'Ensure implicit list markup is avoided',
     scenario: 'List does not use list markup',
-    codesnippet: '[Issue]\nThe _____ is utilized visually as a list, however it does not contain list markup.\n\n[Impact]\nWhen lists do not contain the proper list markup, screen reader users may not be able to efficiently understand and navigate their contents.\n\n[Code Sample]\n_____',
-    issuedescription: '[Recommendation]\nEnsure that all the list items are enclosed in <li> tags, and ensure that all of the <li> tags are contained within a _____.\n\n[Code Sample]\n_____'
+    codesnippet: '[Issue]\nThe _____ is utilized visually as an _____ list, however it does not contain list markup.\n\n[Impact]\nWhen lists do not contain the proper list markup, screen reader users may not be able to efficiently understand and navigate their contents.\n\n[Code Sample]\n_____',
+    issuedescription: '[Recommendation]\nEnsure that all the list items are enclosed in <li> tags, and ensure that all of the <li> tags are contained within a _____ element.\n\n[Code Sample]\n_____'
   },
   {
     violationid: 588,
