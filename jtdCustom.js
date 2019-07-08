@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMP - JTD
 // @namespace    http://tampermonkey.net/
-// @version      0.805
+// @version      0.806
 // @author       James Thomas Davey
 // @description  Everybody who's anybody.
 // @match        *.levelaccess.net/public/reporting/view_module.php?module_id=*
@@ -10,8 +10,7 @@
 
 'use strict';
 
-const bestPractices = [
-  {
+const bestPractices = [{
     violationid: 338,
     media: 'Web',
     bestpractice: 'Provide a valid label for form fields',
