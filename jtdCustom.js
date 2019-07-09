@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMP - JTD
 // @namespace    http://tampermonkey.net/
-// @version      0.806
+// @version      0.803
 // @author       James Thomas Davey
 // @description  Everybody who's anybody.
 // @match        *.levelaccess.net/public/reporting/view_module.php?module_id=*
@@ -10,7 +10,8 @@
 
 'use strict';
 
-const bestPractices = [{
+const bestPractices = [
+  {
     violationid: 338,
     media: 'Web',
     bestpractice: 'Provide a valid label for form fields',
@@ -143,7 +144,7 @@ const bestPractices = [{
     media: 'Web',
     bestpractice: 'Ensure color is not the sole means of communicating information',
     scenario: 'Link or other interactive element uses color as the only differentiation from surrounding text',
-    codesnippet: '[Issue]\nThe _____ is an interactive element that uses an insufficient difference in color as its only method of indication within its surrounding text. Besides the use of color, this item is stylistically similar and requires an additional visual indicator.\n\n[Impact]\nWhen color is used as the sole method for identifying an interactive element among its surrounding content, persons who are blind, color blind, or have low vision may find the web page unusable.\n\n[Code Sample]\n_____',
+    codesnippet: '[Issue]\nThe _____ uses an insufficient difference in color as its only method of indication within its surrounding text. Besides the use of color, this item is stylistically similar and requires an additional visual indicator.\n\n[Impact]\nWhen color is used as the sole method for identifying an interactive element among its surrounding content, persons who are blind, color blind, or have low vision may find the web page unusable.\n\n[Code Sample]\n_____',
     issuedescription: '[Recommendation]\nDevelopers must ensure that information communicated via color is also available through some other method. This provision does not prohibit the use of color to enhance the identification of interactive elements, however it is recommended to add additional visual indicators such as a border or underline.\n\nIf color is the sole means of indicating that an interactive element exists among its surrounding text, the color of the interactive element and its surrounding text must meet color contrast requirements.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/'
   },
   {
@@ -169,14 +170,6 @@ const bestPractices = [{
     scenario: 'Image of text does not have an accessible equivalent of that text',
     codesnippet: '[Issue]\nThe _____ image contains text with content that is not conveyed elsewhere on the page. Images of text should have alternative text that contains the same content.\n\n[Impact]\nWhen images of text do not contain accessible equivalents of that text, screen reader users will miss content that has been provided visually. All informative content that is provided visually must also be accessible to assistive technology.\n\n[Code Sample]\n_____',
     issuedescription: '[Recommendation]\nDevelopers must ensure that if there are any images of text, that textual content must be made accessible. This is either done with redundant information outside of the image element (in which case the image can be considered decorative), or by adding an alt attribute to the image containing the same textual information.\n\n[Code Sample]\n_____'
-  },
-  {
-    violationid: 370,
-    media: 'Web',
-    bestpractice: 'Ensure images provide informative alternative text',
-    scenario: 'Decorative text is rendered to screen readers',
-    codesnippet: '[Issue]\nThe _____ is rendered to screen readers, however it does not contain meaningful content.\n\n[Impact]\nDecorative text can confuse screen reader users that will not understand its purpose.\n\n[Code Sample]\n_____',
-    issuedescription: '[Recommendation]\nHide decorative text from screen readers by adding aria-hidden="true" to the element.\n\n[Code Sample]\n_____'
   },
   {
     violationid: 372,
@@ -205,10 +198,10 @@ const bestPractices = [{
   {
     violationid: 378,
     media: 'Web',
-    bestpractice: 'Avoid redundant alt text for images with adjacent text or links',
-    scenario: 'Image link has alternative text that is redundant with adjacent content',
-    codesnippet: "[Issue]\nThe _____ image link contains alt text that is redundant with its adjacent content.\n\n[Impact]\nThe image's alt text does not add value to the comprehension of the page. Screen readers will read the same information twice, resulting in impaired navigation.\n\n[Code Sample]\n_____",
-    issuedescription: '[Recommendation]\nDevelopers must ensure that screen readers do not perceive the same information twice by adding an attribute of alt="" to the image tag, and removing the link from the focus order by adding an attribute of tabindex="-1" to the anchor tag.\n\n[Code Sample]\n_____'
+    bestpractice: 'Avoid redundant alt text for imagse with adjacent text or links',
+    scenario: 'Image has alternative text that is redundant with adjacent content',
+    codesnippet: "[Issue]\nThe _____ image contains alt text that is redundant with its adjacent content.\n\n[Impact]\nThe image's alt text does not add value to the comprehension of the page. Screen readers will read the same information twice, resulting in impaired navigation.\n\n[Code Sample]\n_____",
+    issuedescription: '[Recommendation]\nEnsure that screen readers do not perceive the same information twice by adding an attribute of alt="" to the image tag.\n\n[Code Sample]\n_____'
   },
   {
     violationid: 387,
@@ -235,6 +228,14 @@ const bestPractices = [{
     issuedescription: '[Recommendation]\nDevelopers must ensure that _____ elements only contain _____ elements as direct children.\n\n[Code Sample]\n_____'
   },
   {
+    violationid: 396,
+    media: 'Web',
+    bestpractice: 'Ensure link text is meaningful when taken out of context',
+    scenario: 'Link text does not make sense when taken out of context',
+    codesnippet: '[Issue]\nThe _____ link text is not meaningful when taken out of context.\n\n[Impact]\nScreen reader users may utilize a list of link on the page to navigate. When link text is not meaningful when taken out of context, screen reader users will not be able to efficiently navigate with this method.\n\n[Code Sample]\n_____',
+    issuedescription: '[Recommendation]\nEnsure that link text is meaningful out of context by modifying the accessible name using SR-only text, or by adding an attribute of aria-describedby to reference the ID of a corresponding element that provides context.\n\n[Code Sample]\n_____'
+  },
+  {
     violationid: 409,
     media: 'Web',
     bestpractice: 'Ensure text can be resized',
@@ -255,8 +256,8 @@ const bestPractices = [{
     media: 'Web',
     bestpractice: 'Ensure the language of a document is set',
     scenario: 'The <html> element has no lang attribute',
-    codesnippet: '[Issue]\nThe language of this document is not set.\n\n[Impact]\nScreen readers and other assistive technology types must know what the default language type is to ensure they can appropriately switch between languages, in the case that a document contains multiple inline language choices.\n\n[Code Sample]\n_____',
-    issuedescription: '[Recommendation]\nDevelopers must ensure that the lang attribute is set within the html element. This is inherited by all other elements, and so will set a default language for the text in the document head element.\n\n[Code Sample]\n_____'
+    codesnippet: '[Issue]\nThe language of this document is not set.\n\n[Impact]\nScreen readers and other assistive technology types must know what the default language type is to ensure they can appropriately switch between languages, in the case that a document contains multiple inline language choices.\n\n[Code Sample]\n<html ...>...</html>',
+    issuedescription: '[Recommendation]\nDevelopers must ensure that the lang attribute is set within the html element. This is inherited by all other elements, and so will set a default language for the text in the document head element.\n\n[Code Sample]\n<html lang="en" ...>...</html>'
   },
   {
     violationid: 457,
@@ -286,14 +287,15 @@ const bestPractices = [{
     violationid: 476,
     media: 'Web',
     bestpractice: 'Ensure embedded elements and canvas elements provide a meaningful text equivalent',
-    scenario: '<video> element does not have an accessible name'
+    scenario: '<video> element does not have an accessible name',
+    codesnippet: '[Issue]\nThe _____ <video> element does not have an accessible name.'
   },
   {
     violationid: 479,
     media: 'Web',
     bestpractice: 'Ensure blockquote is used for long quotes',
     scenario: 'Long quote does not use the blockquote element',
-    codesnippet: '[Issue]\nThe _____ spans multiple lines and is not contained in a <blockquote> element.\n\n[Impact]\nBy using the <blockquote> element, assistive technology will convey the fact that its text content appears within the context of a quote.\n\n[Code Sample]\n_____',
+    codesnippet: '[Issue]\nThe _____ is not contained in a <blockquote> element.\n\n[Impact]\nBy using the <blockquote> element, assistive technology will convey the fact that its text content appears within the context of an externally sourced quote.\n\n[Code Sample]\n_____',
     issuedescription: "[Recommendation]\nEnsure that the quote's text content is contained within a <blockquote> element.\n\n[Code Sample]\n_____"
   },
   {
@@ -325,7 +327,7 @@ const bestPractices = [{
     media: 'Web',
     bestpractice: 'Ensure frame titles are meaningful',
     scenario: 'Frame title is not meaningful',
-    codesnippet: '[Issue]\nThe title for the _____ <iframe> element is _____, which does not meaningfully describe its content.\n\n[Impact]\nWhen frames are not titled or have non-meaningful titles, it becomes difficult for users of assistive technologies to move between frames in order to access the page content they wish to view.\n\n[Code Sample]\n_____',
+    codesnippet: '[Issue]\nThe title for the _____ <iframe> element is _____, which does not meaningfully describe its content.\n\n[Impact]\nWhen frames have non-meaningful titles, it becomes difficult for users of assistive technologies to move between frames in order to access the page content they wish to view.\n\n[Code Sample]\n_____',
     issuedescription: '[Recommendation]\nFrames should contain meaningful and concise titles that directly reflect the content they represent and/or action to be performed by that frame.\n\n[Code Sample]\n_____'
   },
   {
@@ -334,7 +336,7 @@ const bestPractices = [{
     bestpractice: 'Ensure frame titles are meaningful',
     scenario: 'Frame does not have a title',
     codesnippet: '[Issue]\nThe _____ <iframe> element does not have a title.\n\n[Impact]\nWhen frames are not titled or have non-meaningful titles, it becomes difficult for users of assistive technologies to move between frames in order to access the page content they wish to view.\n\n[Code Sample]\n_____',
-    issuedescription: '[Recommendation]\nAdd a title attribute to the <iframe> to assign a meaningful title.\n\n[Code Sample]\n_____'
+    issuedescription: '[Recommendation]\nAdd a title attribute to the <iframe> to assign a meaningful name.\n\n[Code Sample]\n_____'
   },
   {
     violationid: 524,
@@ -357,7 +359,7 @@ const bestPractices = [{
     media: 'Web',
     bestpractice: 'Ensure color is not the sole means of indicating error messages',
     scenario: 'Error messages are only indicated by their difference in color',
-    codesnippet: '[Issue]\nAfter triggering error messages with an invalid submission, the only distinction that these are error messages is their use of color.\n\n[Impact]\nThe purpose of these error messages may not be apparent to users who are color blind or have low vision.\n\n[Code Sample]\n_____',
+    codesnippet: '[Issue]\nAfter triggering error messages by _____, the only distinction that these are error messages is their use of color.\n\n[Impact]\nThe purpose of these error messages may not be apparent to users who are color blind or have low vision.\n\n[Code Sample]\n_____',
     issuedescription: '[Recommendation]\nAdd a secondary visual indication to the error message that is also programmatically available, such as a warning images with appropriate alternative text, or simply the text "Error: ".\r\n\n[Code Sample]\n_____'
   },
   {
@@ -428,8 +430,9 @@ const bestPractices = [{
     violationid: 602,
     media: 'Web',
     bestpractice: 'Ensure custom controls provide proper textual name, role, and state information',
-    scenario: 'Element does not communicate its state',
-    codesnippet: '[Issue]\nThe _____ does not programmatically indicate its _____ state.'
+    scenario: '(Generic) Element does not communicate its state',
+    codesnippet: '[Issue]\nThe _____ does not programmatically indicate its _____ state.\n\n[Impact]\nWhen elements do not programmatically indicate their current state, users of assistive technology may not know how to interact with the element.\n\n[Code Sample]\n_____',
+    issuedescription: '[Recommendation]\nEnsure that the correct state is provided for this element. Add an attribute of _____ and dynamically update its value depending on its visual state.\n\n[Code Sample]\n_____'
   },
   {
     violationid: 602,
