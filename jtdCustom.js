@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMP - JTD
 // @namespace    http://tampermonkey.net/
-// @version      0.810
+// @version      0.811
 // @author       James Thomas Davey
 // @description  Everybody who's anybody.
 // @match        *.levelaccess.net/public/reporting/view_module.php?module_id=*
@@ -234,6 +234,14 @@ const bestPractices = [
     scenario: 'Link text does not make sense when taken out of context',
     codesnippet: '[Issue]\nThe _____ link text is not meaningful when taken out of context.\n\n[Impact]\nScreen reader users may utilize a list of link on the page to navigate. When link text is not meaningful when taken out of context, screen reader users will not be able to efficiently navigate with this method.\n\n[Code Sample]\n_____',
     issuedescription: '[Recommendation]\nEnsure that link text is meaningful out of context by modifying the accessible name using SR-only text, or by adding an attribute of aria-describedby to reference the ID of a corresponding element that provides context.\n\n[Code Sample]\n_____'
+  },
+  {
+    violationid: 397,
+    media: 'Web',
+    bestpractice: 'Ensure the same link text for links with different targets is avoided',
+    scenario: 'Multiple links have the same accessible name value',
+    codesnippet: '[Issue]\n_____ links have share the same accessible name value of _____, even though they lead to different destinations.\n\n[Impact]\nWhen links with different destinations are given identical link text, this can produce confusion for users of assistive technology. When a list of links is presented to the user, they may not be aware that the links lead to different destinations.\n\n[Code Sample]\n_____',
+    issuedescription: "[Recommendation]\nAdd off-screen text to the links' inner text to provide context that may already be available visually.\n\n[Code Sample]\n_____"
   },
   {
     violationid: 409,
@@ -473,6 +481,14 @@ const bestPractices = [
     scenario: 'Error messages are displayed visually, however they are not programmatically associated with their corresponding inputs',
     codesnippet: "[Issue]\nThe _____ form field has an error message that appears after an invalid submission, however the error message and form field's association is not properly indicated to assistive technology.\n\n[Impact]\nWhen an error is not programmatically associated with a form field, users of assistive technology may not understand the relationship of the error to the field and may make the form unusable.\n\n[Code Sample]\n_____",
     issuedescription: '[Recommendation]\nDevelopers must ensure that errors are programmatically associated with their form field. Developers can add an aria-describedby attribute to the form field, with a value that matches the ID attribute of the error message.\n\n[Code Sample]\n_____'
+  },
+  {
+    violationid: 610,
+    media: 'Web',
+    bestpractice: 'Ensure form field labels are unique',
+    scenario: 'There are multiple buttons with the same accessible name',
+    codesnippet: '[Issue]\nThe _____ buttons share the same accessible name value.\n\n[Impact]\nUsers of assistive technology may have difficulty identifying the buttons when viewed without visual context.\n\n[Code Sample]\n_____',
+    issuedescription: '[Recommendation]\nProvide an aria-label attribute to provide context that would help users identify the buttons without visual context cues.\n\n[Code Sample]\n_____'
   },
   {
     violationid: 733,
@@ -846,6 +862,14 @@ const bestPractices = [
     violationid: 2440,
     media: 'Web',
     bestpractice: 'Avoid use of placeholder values to label or explain input',
+    scenario: 'Placeholder text is the same as label text',
+    codesnippet: "[Advisory]\n\n[Issue]\nThe _____ inputs contain placeholder text that is identical to the label content.\n\n[Impact]\nWhen placeholder text contains the exact same content as the label, users of assistive technology may be informed of redundant information, which can affect the user's efficiency while navigating through content.\n\n[Code Sample]\n_____",
+    issuedescription: '[Recommendation]\nUse the placeholder attribute to include input suggestions or examples for the user.\n\n[Code Sample]\n_____'
+  },
+  {
+    violationid: 2440,
+    media: 'Web',
+    bestpractice: 'Avoid use of placeholder values to label or explain input',
     scenario: 'Form field uses a placeholder as its only label',
     codesnippet: '[Issue]\nThe _____ uses a placeholder attribute as its only label. The placeholder text should be a short hint intended to aid the user with data entry.\n\n[Impact]\nThe placeholder may not be available to assistive technology and thus may not be relied upon to convey an accessible name.\n\n[Code Sample]\n_____',
     issuedescription: '[Recommendation]\nDevelopers must ensure that the placeholder attribute is not a replacement for a label. It is recommended that developers use a programmatically associated <label> element, using the FOR attribute with a value that matches the ID of its corresponding input. If the placeholder attribute is also used, it is advised that the placeholder text should not be identical or redundant to the label text.\n\n[Code Sample]\n_____'
@@ -927,7 +951,7 @@ const bestPractices = [
     media: 'Web',
     bestpractice: 'Provide synchronized audio description for video (which includes audio) or other multimedia',
     scenario: 'Video does not have any audio descriptions',
-    codesnippet: '[Issue]\nThe _____ video does not have synchronized audio descriptions available.\n\n[Impact]\nPeople who are blind or visually impaired rely on audio description to describe the actions that take place in the video portion of multimedia.',
+    codesnippet: '[Issue]\nThe _____ video does not have synchronized audio descriptions available.\n\n[Impact]\nUsers who are blind or visually impaired rely on audio description to describe the actions that take place in the video portion of multimedia.',
     issuedescription: '[Recommendation]\nDevelopers must include audio descriptions for all meaningful visual content in the multimedia presentation. Developers may find it useful to create a secondary audio track with these audio descriptions and the typical audio included, which can be enabled by one of the video controls.\n\nFor more information on synchronized audio descriptions:\nhttps://www.w3.org/TR/UNDERSTANDING-WCAG20/media-equiv-audio-desc-only.html'
   },
   {
