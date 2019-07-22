@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMP - JTD
 // @namespace    http://tampermonkey.net/
-// @version      0.811
+// @version      0.812
 // @author       James Thomas Davey
 // @description  Everybody who's anybody.
 // @match        *.levelaccess.net/public/reporting/view_module.php?module_id=*
@@ -87,6 +87,14 @@ const bestPractices = [
     violationid: 362,
     media: 'Web',
     bestpractice: 'Provide alternative text for images',
+    scenario: 'Informative SVG has no accessible name value',
+    codesnippet: '[Issue]\nThe _____ SVG does not have an accessible name value to be rendered to assistive technology.\n\n[Impact]\r\nWithout a textual alternative, screen reader users will not be informed of the content of the SVG.\n\n[Code Sample]\n_____',
+    issuedescription: '[Recommendation]\nAdd a <title> element as the first nested item inside the <svg> element. Add an attribute of role="img" to the <svg>, as well as aria-labelledby to reference its embedded <title>.\n\n[Code Sample]\n_____'
+  },
+  {
+    violationid: 362,
+    media: 'Web',
+    bestpractice: 'Provide alternative text for images',
     scenario: 'Decorative image without alt text is rendered to AT',
     codesnippet: '[Issue]\nThe _____ image does not have alternative text and is rendered to assistive technology.\n\n[Impact]\nWithout alternative text, screen reader users will not be aware of the content of the image, and may only be informed of its file name.\n\n[Code Sample]\n_____',
     issuedescription: '[Recommendation]\nEnsure that decorative images are hidden from assistive technology. This can be done by adding an attribute of alt="" to the image element.\n\n[Code Sample]\n_____'
@@ -137,7 +145,7 @@ const bestPractices = [
     bestpractice: 'Ensure color is not the sole means of communicating information',
     scenario: 'Content uses color as the only method of differentiating from surrounding content',
     codesnippet: '[Issue]\nThe _____ uses color as the only indication of differentiating from _____.\n\n[Impact]\nWhen color is used as the sole method for identifying different types of content among their surrounding content, persons who are blind, color blind, or have low vision may find the web page unusable.\n\n[Code Sample]\n_____',
-    issuedescription: '[Recommendation]\nDevelopers must ensure that information communicated via color is also available through some other method. This provision does not prohibit the use of color to enhance the identification of interactive elements, however it is recommended to add additional visual indicators such as a border or underline.\n\nDevelopers must also ensure that a textual indication also exists, for example by adding a heading, an aria-label, or SR-only text.'
+    issuedescription: '[Recommendation]\nDevelopers must ensure that information communicated via color is also available through some other method. This provision does not prohibit the use of color to enhance the identification of interactive elements, however it is recommended to add additional visual indicators such as a border or underline.\n\nDevelopers must also ensure that a textual indication also exists, for example by adding an aria-label or SR-only text.'
   },
   {
     violationid: 369,
@@ -478,6 +486,14 @@ const bestPractices = [
     violationid: 609,
     media: 'Web',
     bestpractice: 'Ensure form field constraints and errors are associated with their corresponding field',
+    scenario: 'Form fields have constraints that are not programmatically associated',
+    codesnippet: '[Issue]\nThe _____ elements with the text _____ are not programmatically associated with their adjacent inputs.\n\n[Impact]\nScreen reader users will not receive this information upon focusing on the input, and may skip the message altogether.\n\n[Code Sample]\n_____',
+    issuedescription: '[Recommendation]\nAdd an ariadescribedby attribute to the <input> elements, referencing the ID of the corresponding <p> element with the constraint message.\n\n[Code Sample]\n_____'
+  },
+  {
+    violationid: 609,
+    media: 'Web',
+    bestpractice: 'Ensure form field constraints and errors are associated with their corresponding field',
     scenario: 'Error messages are displayed visually, however they are not programmatically associated with their corresponding inputs',
     codesnippet: "[Issue]\nThe _____ form field has an error message that appears after an invalid submission, however the error message and form field's association is not properly indicated to assistive technology.\n\n[Impact]\nWhen an error is not programmatically associated with a form field, users of assistive technology may not understand the relationship of the error to the field and may make the form unusable.\n\n[Code Sample]\n_____",
     issuedescription: '[Recommendation]\nDevelopers must ensure that errors are programmatically associated with their form field. Developers can add an aria-describedby attribute to the form field, with a value that matches the ID attribute of the error message.\n\n[Code Sample]\n_____'
@@ -486,7 +502,7 @@ const bestPractices = [
     violationid: 610,
     media: 'Web',
     bestpractice: 'Ensure form field labels are unique',
-    scenario: 'There are multiple buttons with the same accessible name',
+    scenario: 'Multiple buttons share the same accessible name',
     codesnippet: '[Issue]\nThe _____ buttons share the same accessible name value.\n\n[Impact]\nUsers of assistive technology may have difficulty identifying the buttons when viewed without visual context.\n\n[Code Sample]\n_____',
     issuedescription: '[Recommendation]\nProvide an aria-label attribute to provide context that would help users identify the buttons without visual context cues.\n\n[Code Sample]\n_____'
   },
@@ -699,9 +715,9 @@ const bestPractices = [
     issuedescription: '[Recommendation]\nDevelopers must ensure that each reference attribute contains a unique ID of a corresponding element.'
   },
   {
-    violationid: 1626,
+    violationid: 1871,
     media: 'Web',
-    bestpractice: 'Ensure ARIA roles, states, and properties are valid',
+    bestpractice: 'Avoid inappropriate use of ARIA roles, states, and properties',
     scenario: 'Non-heading element has role="heading"',
     codesnippet: '[Issue]\nThe _____ text has a role of "heading", which is not valid for this element. The _____ text is not utilized properly as a heading.\n\n[Impact]\nWhen a non-heading element has a role of "heading", that element may be rendered by assistive technology as a heading element. Headings may provide the user with a way to navigate section-by-section through content. By applying headings incorrectly, users of assistive technology may be stripped of this useful navigation technique.\n\n[Code Sample]\n_____',
     issuedescription: '[Recommendation]\r\nDevelopers must ensure that the role attribute corresponds with the element\'s purpose. Developers should remove the role="heading" attribute for all elements that do not function as a heading.\n\n[Code Sample]\n_____'
@@ -734,9 +750,25 @@ const bestPractices = [
     violationid: 1871,
     media: 'Web',
     bestpractice: 'Avoid inappropriate use of ARIA roles, states, and properties',
-    scenario: 'Informative image is hidden with aria-hidden="true"',
-    codesnippet: '[Issue]\r\nThe _____ image is hidden from assistive technology using the aria-hidden attribute. This image contains information that is neither decorative nor redundant, and should be available to assistive technology.\r\n\r\n[Impact]\r\nWhen this image is hidden from assistive technology, screen reader users will not be made aware of the image or its contents. Any information conveyed on screen must also be rendered to assistive technology.\r\n\r\n[Code Sample]\r\n_____',
-    issuedescription: '[Recommendation]\r\nDevelopers must ensure that all information intended for all users is also rendered to assistive technology. For any informative images, developers should remove the aria-hidden="true" attribute to ensure that screen reader users are able to access the alternative text.\r\n\r\n[Code Sample]\r\n_____'
+    scenario: 'Non-heading element has role="heading"',
+    codesnippet: '[Issue]\nThe _____ text has a role of "heading", which is not valid for this element. The _____ text is not utilized properly as a heading.\n\n[Impact]\nWhen a non-heading element has a role of "heading", that element may be rendered by assistive technology as a heading element. Headings may provide the user with a way to navigate section-by-section through content. By applying headings incorrectly, users of assistive technology may be stripped of this useful navigation technique.\n\n[Code Sample]\n_____',
+    issuedescription: '[Recommendation]\r\nDevelopers must ensure that the role attribute corresponds with the element\'s purpose. Developers should remove the role="heading" attribute for all elements that do not function as a heading.\n\n[Code Sample]\n_____'
+  },
+  {
+    violationid: 1871,
+    media: 'Web',
+    bestpractice: 'Avoid inappropriate use of ARIA roles, states, and properties',
+    scenario: '(Generic) Element has an uncessary and incorrect role applied',
+    codesnippet: '[Issue]\nThe _____ is marked up as a _____, however it has an attribute of role="_____".\n\n[Impact]\r\nIncorrect roles can be misleading for users of assistive technology who depend on roles to understand an element\'s purpose. Users of assistive technology may expect this element to _____ instead of _____.\n\n[Code Sample]\n_____',
+    issuedescription: '[Recommendation]\nUtilize the role that is included in _____ by default by removing the current role attribute altogether.\n\n[Code Sample]\n_____'
+  },
+  {
+    violationid: 1871,
+    media: 'Web',
+    bestpractice: 'Avoid inappropriate use of ARIA roles, states, and properties',
+    scenario: '(Generic) Element has an incorrect role applied',
+    codesnippet: '[Issue]\nThe _____ has an attribute of role="_____" which does not accurately reflect its function of _____.\n\n[Impact]\nIncorrect roles can be misleading for users of assistive technology who depend on roles to understand an element\'s purpose. Users of assistive technology may expect this element to _____ instead of _____.\n\n[Code Sample]\n_____',
+    issuedescription: "[Recommendation]\nChange the role to _____ to more accurately indicate the element's purpose.\n\n[Code Sample]\n_____"
   },
   {
     violationid: 1893,
@@ -863,7 +895,7 @@ const bestPractices = [
     media: 'Web',
     bestpractice: 'Avoid use of placeholder values to label or explain input',
     scenario: 'Placeholder text is the same as label text',
-    codesnippet: "[Advisory]\n\n[Issue]\nThe _____ inputs contain placeholder text that is identical to the label content.\n\n[Impact]\nWhen placeholder text contains the exact same content as the label, users of assistive technology may be informed of redundant information, which can affect the user's efficiency while navigating through content.\n\n[Code Sample]\n_____",
+    codesnippet: '[Advisory]\n\n[Issue]\nThe _____ inputs contain placeholder text that is identical to the label content.\n\n[Impact]\nUsing placeholder text with the exact same content as the label can cause issues with assistive technology and inform users of redundant information, possibly hindering their efficiency while navigating the page.\n\n[Code Sample]\n_____',
     issuedescription: '[Recommendation]\nUse the placeholder attribute to include input suggestions or examples for the user.\n\n[Code Sample]\n_____'
   },
   {
