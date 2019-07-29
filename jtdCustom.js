@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMP - JTD
 // @namespace    http://tampermonkey.net/
-// @version      0.812
+// @version      0.813
 // @author       James Thomas Davey
 // @description  Everybody who's anybody.
 // @match        *.levelaccess.net/public/reporting/view_module.php?module_id=*
@@ -17,7 +17,7 @@ const bestPractices = [
     bestpractice: 'Provide a valid label for form fields',
     scenario: 'Input has corresponding label element, however they are not programmatically associated',
     codesnippet: '[Issue]\nThe _____ field has a corresponding <label> element, however they are not programmatically associated with each other.\n\n[Impact]\nWhen form fields do not have a programmatically associated label, assistive technologies may incorrectly render the label or provide no label at all to users. When labels are not present or are incorrect, users of assistive technologies may not be able to complete a form.\n\n[Code Sample]\n_____',
-    issuedescription: "[Recommendation]\nDevelopers must provide an accessible label for all form fields. To associate a <label> element with a form field, the <label> must have a FOR attribute with the same value as the input's ID attribute.\n\n[Code Sample]\n_____"
+    issuedescription: "[Recommendation]\nDevelopers must provide an accessible label for all form fields. To associate a <label> element with a form field, the <label> must have a FOR attribute with the same value as the form field's ID attribute.\n\n[Code Sample]\n_____"
   },
   {
     violationid: 338,
@@ -25,7 +25,7 @@ const bestPractices = [
     bestpractice: 'Provide a valid label for form fields',
     scenario: 'Input has text that functions visually as a label, however they are not programmatically associated',
     codesnippet: '[Issue]\nThe _____ field uses a _____ element that functions visually as a label, however their association is not rendered to assistive technology.\n\n[Impact]\nWhen form fields do not have a programmatically associated label, assistive technologies may incorrectly render the label or provide no label at all to users.\n\n[Code Sample]\n_____',
-    issuedescription: "[Recommendation]\nDevelopers must provide an accessible label for all form fields. To associate a non-label element to a form field, developers can add an aria-labelledby attribute to the input with the same value as the visual label's ID attribute.\n\n[Code Sample]\n_____"
+    issuedescription: "[Recommendation]\nConvert the _____ into a <label> element, and associate the label and form field element by adding a FOR attribute with the same value as the form field's ID attribute.\n\n[Code Sample]\n_____"
   },
   {
     violationid: 338,
@@ -34,6 +34,14 @@ const bestPractices = [
     scenario: 'Button does not have a proper textual name',
     codesnippet: '[Issue]\nThe _____ button does not have a proper textual name available for assistive technology.\n\n[Impact]\nWhen buttons do not expose identifying information, users of assistive technology may not be able to identify and interact with the element.\n\n[Code Sample]\n_____',
     issuedescription: '[Recommendation]\nDevelopers must ensure that proper identifying information is provided for buttons. When buttons do not have visible inner text, developers should add a textual name by either adding SR-only text to the inner text or adding an appropriate aria-label attribute to the button.\n\n[Code Sample]\n_____'
+  },
+  {
+    violationid: 341,
+    media: 'Web',
+    bestpractice: 'Provide fieldsets for groups of form controls',
+    scenario: 'Related form controls are not contained in a fieldset element',
+    codesnippet: '[Issue]\nThe _____ form controls are related to each toerh, however they are not grouped together within a <fielset> element.\n\n[Impact]\nBy grouping all of the elements in one category users of assistive technologies can understand the relationship of the elements.\n\n[Code Sample]\n_____',
+    issuedescription: '[Recommendation]\nDevelopers must group related form fields together into a <fieldset> element, and ensure that a <legend> element is defined as the first child of the <fieldset>. If desired, CSS may be used to modify or suppress the default rectangle appearance of fieldsets and visual position of the legend text.\r\n\r\nMore information on fieldsets and legends:\r\nhttps://www.w3.org/TR/WCAG20-TECHS/H71.html\r\n\r\n[Code Sample]\r\n_____'
   },
   {
     violationid: 341,
@@ -103,17 +111,17 @@ const bestPractices = [
     violationid: 362,
     media: 'Web',
     bestpractice: 'Provide alternative text for images',
-    scenario: 'Decorative text is rendered to AT',
-    codesnippet: '[Issue]\nThe _____ on the page is decorative and is rendered to assistive technology.\n\n[Impact]\nWhen non-meaningful items are rendered to assistive technology, users may perceive unnecessary content which can hinder navigating and understanding content efficiently.\n\n[Code Sample]\n_____',
-    issuedescription: '[Recommendation]\nHide this content from assistive technology by adding an attribute of aria-hidden="true".\n\n[Code Sample]\n_____'
+    scenario: 'Decorative SVG without alt text is rendered to AT',
+    codesnippet: '[Issue]\nThe _____ SVG does not have an accessible name value.\n\n[Impact]\nWhen non-meaningful items are rendered to assistive technology, users may perceive unnecessary content which can hinder navigating and understanding content efficiently.\n\n[Code Sample]\n_____',
+    issuedescription: '[Recommendation]\nEnsure that decorative images are hidden from assistive technology. This can be done by adding an attribute of aria-hidden="true" to the SVG element. Developers should also add an attribute of focusable="false" for IE11 support.\n\n[Code Sample]\n_____'
   },
   {
     violationid: 362,
     media: 'Web',
     bestpractice: 'Provide alternative text for images',
-    scenario: 'Decorative SVG without alt text is rendered to AT',
-    codesnippet: '[Issue]\nThe _____ SVG does not have an accessible name value.\n\n[Impact]\nWhen non-meaningful items are rendered to assistive technology, users may perceive unnecessary content which can hinder navigating and understanding content efficiently.\n\n[Code Sample]\n_____',
-    issuedescription: '[Recommendation]\nEnsure that decorative images are hidden from assistive technology. This can be done by adding an attribute of aria-hidden="true" to the SVG element. Developers should also add an attribute of focusable="false" for IE11 support.\n\n[Code Sample]\n_____'
+    scenario: 'Decorative text is rendered to AT',
+    codesnippet: '[Issue]\nThe _____ on the page is decorative and is rendered to assistive technology.\n\n[Impact]\nWhen non-meaningful items are rendered to assistive technology, users may perceive unnecessary content which can hinder navigating and understanding content efficiently.\n\n[Code Sample]\n_____',
+    issuedescription: '[Recommendation]\nHide this content from assistive technology by adding an attribute of aria-hidden="true".\n\n[Code Sample]\n_____'
   },
   {
     violationid: 368,
@@ -281,7 +289,7 @@ const bestPractices = [
     bestpractice: 'Avoid the use of implicit headings',
     scenario: 'Heading is displayed visually but does not have heading markup',
     codesnippet: '[Issue]\nThe _____ text is utilized visually as a heading, however it does not have the correct heading markup.\n\n[Impact]\nSince some users skim through a document by navigating its headings, it is important to use headings appropriately to convey document structure. When heading content is not created with proper markup the meaning conveyed by presentation will be lost when style sheets are turned off.\n\n[Code Sample]\n_____',
-    issuedescription: '[Recommendation]\nDevelopers must ensure that headers with proper markup are employed for any elements that solely use visual effect to convey a content/section heading. HTML heading elements such as h1,h2,h3,h4,h5, and h6 must be used to specifically mark up page content that visually appears as a heading.\r\n\r\n[Code Sample]\n_____'
+    issuedescription: '[Recommendation]\nDevelopers must ensure that headers with proper markup are employed for any elements that solely use visual effect to convey a content/section heading. HTML heading elements such as h1,h2,h3,h4,h5, and h6 must be used to specifically mark up page content that visually appears as a heading.\n\n[Code Sample]\n_____'
   },
   {
     violationid: 464,
@@ -515,6 +523,14 @@ const bestPractices = [
     issuedescription: '[Recommendation]\nDevelopers must ensure that content that is intended to be hidden from all users is not rendered by assistive technology. Developers can set the display property to "none" in CSS, rather than simply hiding items with opacity, z-index, or absolute positioning.'
   },
   {
+    violationid: 733,
+    media: 'Web',
+    bestpractice: 'Ensure content that is intended to be hidden from all users is not rendered by assistive technology',
+    scenario: 'Content behind modal is rendered to the virtual cursor',
+    codesnippet: '[Issue]\r\nThe page behind the modal is blocked visually, however its content is still rendered to screen readers when using the virtual cursor.\r\n\r\n[Impact]\r\nWhen the virtual cursor can access content from behind modals, screen reader users may become confused when viewing content outside of the intended context.',
+    issuedescription: '[Recommendation]\r\nDevelopers must ensure that when a modal dialog is open, content behind the modal is not rendered to assistive technology. Developers can do this by setting aria-hidden="true" on page content not within the modal.'
+  },
+  {
     violationid: 794,
     media: 'Web',
     bestpractice: 'Avoid using event handlers that trigger focus or context changes on user input',
@@ -567,7 +583,7 @@ const bestPractices = [
     media: 'Web',
     bestpractice: 'Ensure dialogs use proper structure',
     scenario: 'Dialog does not have a proper role',
-    codesnippet: '[Issue]\nThe _____ does not have a role="dialog" to indicate its boundaries on the screen.\n\n[Impact]\nUse of appropriate dialog role will allow users of screen reader users to know the beginning and ending boundaries of the dialog.\n\n[Code Sample]\n_____',
+    codesnippet: '[Issue]\nThe _____ does not have a role="dialog" to indicate its boundaries on the screen.\n\n[Impact]\nUse of appropriate dialog role will allow assistive technology users to know the beginning and ending boundaries of the dialog.\n\n[Code Sample]\n_____',
     issuedescription: '[Recommendation]\nAdd an attribute of role="dialog" to the container or use the <dialog> element.\n\n[Code Sample]\n_____'
   },
   {
@@ -616,7 +632,7 @@ const bestPractices = [
     bestpractice: 'Indicate live regions for dynamically changing content',
     scenario: 'Live search results are not announced with screen readers',
     codesnippet: '[Issue]\nThe _____ search results update dynamically without indication from screen readers.\n\n[Impact]\nScreen reader users will not be notified of the updated search results.\n\n[Code Sample]\n_____',
-    issuedescription: '[Recommendation]\nDevelopers must ensure that dynamically changing content is indicated to assistive technology. For content-heavy updates such as search results, developers can add an attribute of aria-live="polite" to the span indicating the number of results.\n\nFor more information on correctly identifying live regions:\nhttps://www.w3.org/TR/wai-aria-1.1/#aria-live\n\n[Code Sample]\n_____'
+    issuedescription: '[Recommendation]\nDevelopers must ensure that dynamically changing content is indicated to assistive technology. For content-heavy updates such as search results, developers can add an attribute of aria-live="polite" to the span indicating the number of results and ensure that scripting is used to dynamically update the content inside this span.\n\nThis element can be hidden visually, as the search suggestions are already available visually.\n\nFor more information on live regions:\nhttps://www.w3.org/TR/wai-aria-1.1/#aria-live\n\n[Code Sample]\n_____'
   },
   {
     violationid: 1143,
@@ -856,7 +872,7 @@ const bestPractices = [
     bestpractice: 'Ensure that keyboard focus remains within modal dialogs',
     scenario: 'Items on page behind modal can receive keyboard focus',
     codesnippet: "[Issue]\nThe page behind the _____ is blocked visually, however its content still receives keyboard focus using the Tab key.\n\n[Impact]\nWhen focus is moved outside of the modal dialog, keyboard only users may be able to access content that is not active with the mouse but actionable from the keyboard via the screen reader's virtual cursor.",
-    issuedescription: '[Recommendation]\r\nDevelopers must ensure that when a modal dialog is open, focus remains within the dialog. This can be done by using onFocus and onBlur and other JavaScript techniques to manage the focus appropriately. There are many techniques that can be used to meet this best practices.\r\n\r\nDevelopers must ensure that tab and shift+tab are handled appropriately. Ideally focus should wrap from the last element to the first element. It may also be beneficial to hide the rest of the page content from the screen reader user by setting aria-hidden="true" on the other page content.'
+    issuedescription: '[Recommendation]\nDevelopers must ensure that when a modal dialog is open, focus remains within the dialog. This can be done by using onFocus and onBlur and other JavaScript techniques to manage the focus appropriately. There are many techniques that can be used to meet this best practices.\n\nDevelopers must ensure that tab and shift+tab are handled appropriately. Ideally focus should wrap from the last element to the first element.'
   },
   {
     violationid: 2426,
