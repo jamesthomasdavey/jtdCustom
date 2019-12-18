@@ -220,6 +220,14 @@ const bestPractices = [
         "issuedescription": "[Recommendation]\nEnsure that screen readers do not perceive the same information twice by adding an attribute of alt=\"\" to the image tag.\n\n[Compliant Code Example]\n_____"
     },
     {
+        "violationid": 380,
+        "media": "Web",
+        "bestpractice": "Ensure accessible usage of time based sessions and timed responses",
+        "scenario": "Session expires without warning the user",
+        "codesnippet": "[Issue]\n_____\n\n[User Impact]\nWhen sessions time out without notifying users when this timeout occurs, users may spend unnecessary time entering form information that will become discarded. Additionally, when timeout warnings do not appear, users will not know that there is a time limit nor will they be able to extend this time limit.",
+        "issuedescription": "[Recommendation]\nProvide a warning before the session expires, prompting the users with the option to extend their session. Ensure that the user is given at least 20 seconds to respond to this warning."
+    },
+    {
         "violationid": 387,
         "media": "Web",
         "bestpractice": "Ensure heading level matches the heading's visual importance/level",
@@ -687,7 +695,7 @@ const bestPractices = [
         "media": "Web",
         "bestpractice": "Ensure text is used instead of images of text when technology allows unless it is essential",
         "scenario": "Images of text are used in place where there could be regular text",
-        "codesnippet": "[Issue]\nThe _____ images contain text which can be replaced by regular text to be rendered by assistive technology and adjustable to custom styles.\n\n[User Impact]\nSome people require a particular visual presentation of text and this can not be adjusted when an image contains text. For example, some users may need to adjust the font family, font size, or color.\n\n[Code Reference]\n_____",
+        "codesnippet": "[Issue]\nThe _____ images contain text which can be replaced by regular text to be rendered by assistive technology and adjustable to custom styles.\n\n[User Impact]\nSome people require a particular visual presentation of text and this can not be adjusted when an image contains text. For example, some users may need to adjust the font family, font size, or color. Additionally, when using assistive technology to zoom in on content, images of text appear blurry compared to regular text.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nDevelopers must ensure to convert images that contain text to text and style the text using CSS unless the images of text are essential. If the technology platform does not allow the same presentation of the text as it would appear in an image, the image of text can remain."
     },
     {
@@ -769,6 +777,14 @@ const bestPractices = [
         "scenario": "Text larger than 18pt has insufficient contrast",
         "codesnippet": "[Issue]\nThe _____ does not provide sufficient contrast against its background color. Text above 18pt in size must have a contrast ratio of 3:1.\n\nForeground color: _____\nBackground color: _____\nContrast ratio: _____\n\n[User Impact]\nSufficient contrast ensures that people with low vision, people who are color blind, users viewing the page without color, and users of monochrome screens can understand page content.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all informative text and images of informative text. Developers should modify the foreground and/or background color so that a sufficient contrast ratio is attained, including focused and hover states as well.\n\nStandard text smaller than 18pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/"
+    },
+    {
+        "violationid": 1589,
+        "media": "iOS",
+        "bestpractice": "Ensure assistive technologies are aware of content changes in real time",
+        "scenario": "Live search results are not announced by VoiceOver",
+        "codesnippet": "[Issue]\nThe _____ search results update dynamically without indication from VoiceOver.\n\n[User Impact]\nVoiceOver users will not be notified of the updated search results.",
+        "issuedescription": "[Recommendation]\nUsers must be made aware of changes in on-screen content in real time without disrupting their use of the screen. For content-heavy updates such as search results, ensure that VoiceOver indicates the number of results as the user updates the search query and these results become available."
     },
     {
         "violationid": 1598,
@@ -865,6 +881,14 @@ const bestPractices = [
         "scenario": "Element that conveys meaning does not have a textual equivalent",
         "codesnippet": "[Issue]\nThe _____ is an element that conveys meaning, however it does not provide a textual equivalent.\n\n[User Impact]\nWhen an accessible label is not provided for the _____, users who cannot view the _____ will not understand the purpose of it.",
         "issuedescription": "[Recommendation]\nAll non-decorative objects must have 'Accessibility Enabled' within the xCode development environment and minimally have an accessibilityLabel attribute assigned."
+    },
+    {
+        "violationid": 1911,
+        "media": "iOS",
+        "bestpractice": "Ensure element traits (role and state) are correct",
+        "scenario": "Control does not indicate that it is actionable",
+        "codesnippet": "[Issue]\nThe _____ is actionable, however when receiving VoiceOver focus, it only announces as \"_____\" and does not indicate that it is actionable.\n\n[User Impact]\nVoiceOver users may not know that they can interact with this item.",
+        "issuedescription": "[Recommendation]\nUse the applicable UI element when placing custom elements whenever possible. An accessible element must have a trait to define the element's type, state, or behavior. When receiving focus, the _____ control should announce as \"_____\"."
     },
     {
         "violationid": 1928,
@@ -1033,6 +1057,14 @@ const bestPractices = [
         "scenario": "Link text larger than 18pt has insufficient contrast",
         "codesnippet": "[Issue]\nThe _____ link does not provide sufficient contrast against its background color. Link text above 18pt in size must have a contrast ratio of 3:1, including focus and hover states.\n\nForeground color: _____\nBackground color: _____\nContrast ratio: _____\n\n[User Impact]\nSufficient contrast ensures that people with low vision, people who are color blind, users viewing the page without color, and users of monochrome screens can understand page content.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all link text. Developers should modify the foreground and/or background color so that a sufficient contrast ratio is attained, including focused and hover states as well.\n\nStandard text smaller than 18pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/"
+    },
+    {
+        "violationid": 2493,
+        "media": "iOS",
+        "bestpractice": "Ensure headings are denoted through structure and note implicitly",
+        "scenario": "Heading is displayed visually but does not indicate itself as a heading",
+        "codesnippet": "[Issue]\nThe _____ text is utilized visually as a heading, however it does not indicate itself as a heading.\n\n[User Impact]\nSince some users skim through a document by navigating its headings, it is important to use headings appropriately to convey document structure.",
+        "issuedescription": "[Recommendation]\nAdd the Headers accessibility trait to any elements that solely use visual effect to convey a content/section heading."
     },
     {
         "violationid": 2519,
