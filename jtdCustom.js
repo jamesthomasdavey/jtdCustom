@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMP - JTD
 // @namespace    http://tampermonkey.net/
-// @version      0.816
+// @version      0.817
 // @author       James Thomas Davey
 // @description  Everybody who's anybody.
 // @match        *.levelaccess.net/public/reporting/view_module.php?module_id=*
@@ -88,7 +88,7 @@ const bestPractices = [
         "media": "Web",
         "bestpractice": "Provide alternative text for images",
         "scenario": "Informative image has no alternative text",
-        "codesnippet": "[Issue]\nThe _____ image does not have a textual equivalent to convey its information.\n\n[User Impact]\nWithout alternative text, screen reader users will not be aware of the content of the image, and may only be informed of its file name.\n\n[Code Reference]\n_____",
+        "codesnippet": "[Issue]\nThe _____ image does not have a textual equivalent to convey its information.\n\n[User Impact]\nWhen image elements do not provide alternative text, screen reader users will not be aware of their contents, and may only be informed of their file names.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nDevelopers must add an appropriate alt attribute for meaningful images. An alt attribute should be a concise and meaningful replacement for the image.\n\n[Compliant Code Example]\n_____"
     },
     {
@@ -96,7 +96,7 @@ const bestPractices = [
         "media": "Web",
         "bestpractice": "Provide alternative text for images",
         "scenario": "Informative SVG has no accessible name value",
-        "codesnippet": "[Issue]\nThe _____ SVG does not have an accessible name value to be rendered to assistive technology.\n\n[User Impact]\r\nWithout a textual alternative, screen reader users will not be informed of the content of the SVG.\n\n[Code Reference]\n_____",
+        "codesnippet": "[Issue]\nThe _____ SVG does not have an accessible name value to be rendered to assistive technology.\n\n[User Impact]\nWhen SVG elements do not provide textual alternative, screen reader users will not be informed of the SVG's content.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nAdd a <title> element as the first nested item inside the <svg> element, as well as aria-labelledby to the <svg> element to reference its embedded <title>.\n\nTo ensure browser consistency, developers should add an attribute of focusable=\"false\" to the <svg> to disable automatic focusing in IE. Developers should also add an attribute of role=\"img\" so that the SVG is not mapped to the group role by some browsers.\n\n[Compliant Code Example]\n_____"
     },
     {
@@ -104,16 +104,24 @@ const bestPractices = [
         "media": "Web",
         "bestpractice": "Provide alternative text for images",
         "scenario": "Decorative image without alt text is rendered to AT",
-        "codesnippet": "[Issue]\nThe _____ image does not have alternative text and is rendered to assistive technology.\n\n[User Impact]\nWithout alternative text, screen reader users will not be aware of the content of the image, and may only be informed of its file name.\n\n[Code Reference]\n_____",
+        "codesnippet": "[Issue]\nThe _____ image is decorative and exposed to assistive technology.\n\n[User Impact]\nWhen non-meaningful image are rendered to assistive technology, users may perceive unnecessary content which can hinder navigating and understanding content efficiently. When images do not have alternative text, screen reader users may only be informed of its file name.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nEnsure that decorative images are hidden from assistive technology. This can be done by adding an attribute of alt=\"\" to the image element.\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 362,
         "media": "Web",
         "bestpractice": "Provide alternative text for images",
-        "scenario": "Decorative SVG without alt text is rendered to AT",
-        "codesnippet": "[Issue]\nThe _____ SVG does not have an accessible name value.\n\n[User Impact]\nWhen non-meaningful items are rendered to assistive technology, users may perceive unnecessary content which can hinder navigating and understanding content efficiently.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nEnsure that decorative images are hidden from assistive technology. This can be done by adding an attribute of aria-hidden=\"true\" to the SVG element. Developers should also add an attribute of focusable=\"false\" for IE11 support.\n\n[Compliant Code Example]\n_____"
+        "scenario": "Decorative image with alt text is rendered to AT",
+        "codesnippet": "[Issue]\nThe _____ image is decorative and exposed to assistive technology.\n\n[User Impact]\nWhen non-meaningful image are rendered to assistive technology, users may perceive unnecessary content which can hinder navigating and understanding content efficiently.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nEnsure that decorative images are hidden from assistive technology. This can be done by replacing the image element's current alt attribute with alt=\"\".\n\n[Compliant Code Example]\n_____"
+    },
+    {
+        "violationid": 362,
+        "media": "Web",
+        "bestpractice": "Provide alternative text for images",
+        "scenario": "Decorative SVG without an accessible name value is rendered to AT",
+        "codesnippet": "[Issue]\nThe _____ SVG is decorative and exposed to assistive technology.\n\n[User Impact]\nWhen non-meaningful items are rendered to assistive technology, users may perceive unnecessary content which can hinder navigating and understanding content efficiently.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nEnsure that decorative SVGs are hidden from assistive technology. This can be done by adding an attribute of aria-hidden=\"true\" to the SVG element. Developers should also add an attribute of focusable=\"false\" for IE11 support.\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 362,
@@ -486,25 +494,41 @@ const bestPractices = [
         "violationid": 602,
         "media": "Web",
         "bestpractice": "Ensure custom controls provide proper textual name, role, and state information",
-        "scenario": "(Generic) Element does not communicate its state",
-        "codesnippet": "[Issue]\nThe _____ does not programmatically indicate its _____ state.\n\n[User Impact]\nWhen elements do not programmatically indicate their current state, users of assistive technology may not know how to interact with the element.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nEnsure that the correct state is provided for this element. Add an attribute of _____ and dynamically update its value depending on its visual state.\n\n[Compliant Code Example]\n_____"
+        "scenario": "button-like control does not expose a role",
+        "codesnippet": "[Issue]\nThe _____ does not programmatically indicate that it is an actionable control.\n\n[User Impact]\nWhen actionable controls do not expose role information, users of assistive technology may not be aware that they are itneractive.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nUsing the <button> element for button-like controls will automatically have an implicit role of \"button\" and is generally recommended, as the <button> element includes expected behaviors such as receiving keyboard focus and Enter and Spacebar functionality.\n\nTo ensure that non-button elements are announced to screen readers as buttons, developers must add an attribute of role=\"button\".\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 602,
         "media": "Web",
         "bestpractice": "Ensure custom controls provide proper textual name, role, and state information",
-        "scenario": "Generic element is a custom control and does not have a proper textual name",
-        "codesnippet": "[Issue]\nThe _____ control does not have a proper textual name available for assistive technology.\n\n[User Impact]\nWhen custom controls do not expose identifying information, users of assistive technology may not be able to identify and interact with the element.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nDevelopers must ensure that proper identifying information is provided for custom components. When controls do not have visible inner text, developers should add a textual name by either adding SR-only text to the inner text or adding an appropriate aria-label attribute to the control.\n\n[Compliant Code Example]\n_____"
+        "scenario": "ambiguous control does not expose a role",
+        "codesnippet": "[Issue]\nThe _____ does not programmatically indicate its role as a _____.\n\n[User Impact]\nWhen interactive elements do not expose role information, users of assistive technology may not know that the controls are interactive or how to interact with them.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nProvide role information to this element by adding an attribute of role=\"_____\".\n\n[Compliant Code Example]\n_____"
+    },
+    {
+        "violationid": 602,
+        "media": "Web",
+        "bestpractice": "Ensure custom controls provide proper textual name, role, and state information",
+        "scenario": "control does not communicate its state",
+        "codesnippet": "[Issue]\nThe _____ does not programmatically indicate its _____ state.\n\n[User Impact]\nWhen elements do not programmatically indicate their current state, users of assistive technology may not know how to interact with the element.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nEnsure that the correct state is provided for this element. Add an attribute of _____ and dynamically update its value depending on its functional state.\n\n[Compliant Code Example]\n_____"
+    },
+    {
+        "violationid": 602,
+        "media": "Web",
+        "bestpractice": "Ensure custom controls provide proper textual name, role, and state information",
+        "scenario": "custom control does not have a proper textual name",
+        "codesnippet": "[Issue]\nThe _____ does not have a proper textual name available for assistive technology.\n\n[User Impact]\nWhen custom controls do not expose identifying information, users of assistive technology may not be able to identify and interact with them.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nDevelopers must ensure that proper identifying information is provided for custom controls. This can be done by providing an appropriate aria-label or aria-labelledby attribute to the element.\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 602,
         "media": "Web",
         "bestpractice": "Ensure custom controls provide proper textual name, role, and state information",
         "scenario": "<a> element is used as a button and without role=\"button\"",
-        "codesnippet": "[Issue]\nThe _____ control was coded using an <a> element, which has an implicit role of \"link\" and announces to assistive technology as such.\n\n[User Impact]\nUsing an <a> element as a button can be confusing for screen reader users. Anchor elements have an implicit role of \"link\", indicating to screen reader users that activating this element will redirect them to a new URL or otherwise change the browser context. This can be disorienting when the element does not behave as expected.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nDevelopers must ensure that all custom controls provide an accurate textual role for assistive technology. Using the <button> element for button-like controls will automatically have an implicit role of \"button\" and is generally recommended.\n\nTo ensure that <a> elements are announced to screen readers as buttons, developers must add the attribute role=\"button\" to the anchor element.\n\n[Compliant Code Example]\n_____"
+        "codesnippet": "[ADVISORY]\n\n[Issue]\nThe _____ control was coded using an <a> element, which has an implicit role of \"link\" and announces to assistive technology as such.\n\n[User Impact]\nUsing an <a> element as a button can be confusing for screen reader users. Anchor elements have an implicit role of \"link\", indicating to screen reader users that activating this element will redirect them to a new URL or otherwise change the browser context. This can be disorienting when the element does not behave as expected.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nDevelopers must ensure that all custom controls provide an accurate textual role for assistive technology. Using the <button> element for button-like controls will automatically have an implicit role of \"button\" and is generally recommended, as the <button> element includes expected behaviors such as receiving keyboard focus and Enter and Spacebar functionality.\n\nTo ensure that <a> elements are announced to screen readers as buttons, developers must add the attribute role=\"button\" to the anchor element.\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 602,
@@ -544,7 +568,7 @@ const bestPractices = [
         "bestpractice": "Ensure form field labels are unique",
         "scenario": "Multiple buttons share the same accessible name",
         "codesnippet": "[Issue]\nThe _____ buttons share the same accessible name value.\n\n[User Impact]\nUsers of assistive technology may have difficulty identifying the buttons when viewed without visual context.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\r\nEnsure that buttons provide visual and explicit labels that are unique on the page. When the visual text of the button cannot be changed, provide an attribute such title, aria-label, aria-labelledby, or aria-describedby to create a unique accessible name.\r\n\r\nAlternatively, if the button is grouped with other form controls within a <fieldset> and has a unique accessible name within that fieldset, it does not need to be unique within the scope of the page."
+        "issuedescription": "[Recommendation]\nEnsure that buttons provide visual and explicit labels that are unique on the page. When the visual text of the button cannot be changed, provide an attribute such title, aria-label, aria-labelledby, or aria-describedby to create a unique accessible name.\n\nAlternatively, if the button is grouped with other form controls within a <fieldset> and has a unique accessible name within that fieldset, it does not need to be unique within the scope of the page."
     },
     {
         "violationid": 616,
@@ -1102,57 +1126,57 @@ const bestPractices = [
         "violationid": 2607,
         "media": "Web",
         "bestpractice": "Provide text equivalents for icon fonts",
-        "scenario": "meaningful icon does not have a textual equivalent and is exposed to AT",
-        "codesnippet": "[Issue]\nThe _____ icon is exposed to assistive technology and conveys information that is not presented elsewhere.\n\n[User Impact]\nScreen reader users will not have access to information conveyed by icons without textual equivalents. When icons are used, they may not be seen at all by assistive technology as CSS is purposely presentational and should not be used to provide content.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nDevelopers must address the accessibility of the icon for all users with disabilities. When an icon conveys meaning, developers should add a textual alternative with the use of off-screen text.\n\nThe icon itself should be hidden from assistive technology to avoid redundant or improper prioritization of announcements. This can be done by adding an attribute of aria-hidden=\"true\".\n\n[Compliant Code Example]\n_____"
+        "scenario": "exposed meaningful icon does not have a textual equivalent",
+        "codesnippet": "[Issue]\nThe _____ conveys information that is not presented elsewhere.\n\n[User Impact]\nScreen reader users will not have access to information conveyed by icons or symbols without textual equivalents. They may announce oddly or make no announcement at all.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nDevelopers must address the accessibility of icons and symbols for all users with disabilities. When an icon conveys meaning, developers should add a textual alternative with the use of off-screen text.\n\nThe icon itself should be hidden from assistive technology to avoid redundant or improper prioritization of announcements. This can be done by adding an attribute of aria-hidden=\"true\".\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 2607,
         "media": "Web",
         "bestpractice": "Provide text equivalents for icon fonts",
-        "scenario": "meaningful icon does not have a textual equivalent and is hidden from AT",
-        "codesnippet": "[Issue]\nThe _____ icon conveys information that is not presented elsewhere.\n\n[User Impact]\nScreen reader users will not have access to the information conveyed by icons without textual equivalents.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nDevelopers must address the accessibility of the icon for all users with disabilities. When an icon conveys meaning, developers should add a textual alternative with the use of off-screen text.\n\n[Compliant Code Example]"
+        "scenario": "unexposed meaningful icon does not have a textual equivalent",
+        "codesnippet": "[Issue]\nThe _____ conveys information that is not presented elsewhere.\n\n[User Impact]\nScreen reader users will not have access to the information conveyed by icons or symbols without textual equivalents.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nDevelopers must address the accessibility of icons and symbols for all users with disabilities. When an icon conveys meaning, developers should add a textual alternative with the use of off-screen text.\n\n[Compliant Code Example]"
     },
     {
         "violationid": 2607,
         "media": "Web",
         "bestpractice": "Provide text equivalents for icon fonts",
-        "scenario": "decorative icon is exposed to AT",
-        "codesnippet": "[Issue]\nThe _____ icon is decorative and exposed to assistive technology.\n\n[User Impact]\nWhen screen readers encounter icons that are exposed to assistive technology, they may announce oddly or make no announcement at all. Screen reader users will not know when icons are intended to be decorative.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nDevelopers must address the accessibility of the icon for all users with disabilities. When icons do not convey meaning, developers should hide the icon by adding an attribute of aria-hidden=\"true\".\n\n[Compliant Code Example]\n_____"
+        "scenario": "decorative icon is exposed",
+        "codesnippet": "[Issue]\nThe _____ is decorative and exposed to assistive technology.\n\n[User Impact]\nWhen screen readers encounter icons or symbols that are exposed to assistive technology, they may announce oddly or make no announcement at all. Screen reader users will not know when icons are intended to be decorative.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nDevelopers must address the accessibility of icons and symbols for all users with disabilities. When icons do not convey meaning, developers should hide the icon by adding an attribute of aria-hidden=\"true\".\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 2607,
         "media": "Web",
         "bestpractice": "Provide text equivalents for icon fonts",
-        "scenario": "redundant icon is exposed to AT",
-        "codesnippet": "[Issue]\nThe _____ icon visually provides content that is already exposed textually. Redundant elements should not be exposed to assistive technology.\n\n[User Impact]\nWhen screen readers encounter icons that are exposed to assistive technology, they may announce oddly or make no announcement at all. Screen reader users will not know when icons are intended to be decorative.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nDevelopers must address the accessibility of the icon for all users with disabilities. When icons visually convey redundant meaning, developers should hide the icon by adding an attribute of aria-hidden=\"true\".\n\n[Compliant Code Example]\n_____"
+        "scenario": "redundant icon is exposed",
+        "codesnippet": "[Issue]\nThe _____ visually provides content that is already textually available. Redundant elements should not be exposed to assistive technology.\n\n[User Impact]\nWhen screen readers encounter icons that are exposed to assistive technology, they may announce oddly or make no announcement at all. Screen reader users will not know when icons are redundant.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nDevelopers must address the accessibility of icons and symbols for all users with disabilities. When icons visually convey redundant meaning, developers should hide the icon by adding an attribute of aria-hidden=\"true\".\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 2607,
         "media": "Web",
         "bestpractice": "Provide text equivalents for icon fonts",
-        "scenario": "<a> or <button> element uses an icon as its visual label, however the <a> or <button> has no textual label",
-        "codesnippet": "[Issue]\nThe _____ uses an icon as its visual label. There is no textual equivalent provided to label this element.\n\n[User Impact]\nWhen icons are used, they may not be seen at all by assistive technology as CSS is purposely presentational and should not be used to provide content. When icons are used to label links or buttons, screen reader users may not know how to interact with these elements.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nDevelopers must address the accessibility of the icon for all users with disabilities. When an icon is used to visually label a button or link, developers should add a title, aria-label, or off-screen text to the interactive element to provide a textual name for assistive technology.\n\nThe icon itself should be hidden from assistive technology to avoid redundant or improper prioritization of announcements. This can be done by adding an attribute of aria-hidden=\"true\".\n\n[Compliant Code Example]\n_____"
+        "scenario": "<a> or <button> element without a textual label uses an exposed icon as its visual label",
+        "codesnippet": "[Issue]\nThe _____ uses an icon as its visual label. There is no textual equivalent provided to label this element.\n\n[User Impact]\nWhen screen readers encounter icons or symbols that are exposed to assistive technology, they may announce oddly or make no announcement at all. When icons are used to label links or buttons, screen reader users may not know how to interact with these elements.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nDevelopers must address the accessibility of icons and symbols for all users with disabilities. When an icon is used to visually label a button or link, developers should add a title, aria-label, or off-screen text to the interactive element to provide a textual name for assistive technology.\n\nThe icon itself should be hidden from assistive technology to avoid redundant or improper prioritization of announcements. This can be done by adding an attribute of aria-hidden=\"true\".\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 2607,
         "media": "Web",
         "bestpractice": "Provide text equivalents for icon fonts",
-        "scenario": "custom control uses an icon as its visual label, however the custom control has no textual label",
-        "codesnippet": "[Issue]\nThe _____ uses an icon as its visual label. There is no textual equivalent provided to label this element.\n\n[User Impact]\nWhen icons are used, they may not be seen at all by assistive technology as CSS is purposely presentational and should not be used to provide content. When icons are used to label controls, screen reader users may not know how to interact with these elements.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nDevelopers must address the accessibility of the icon for all users with disabilities. When an icon is used to visually label an interactive element, developers should add an aria-label to the interactive element to provide a textual name for assistive technology.\n\nThe icon itself should be hidden from assistive technology to avoid redundant or improper prioritization of announcements. This can be done by adding an attribute of aria-hidden=\"true\".\n\n[Compliant Code Example]\n_____"
+        "scenario": "custom control without a textual label uses an exposed icon as its visual label",
+        "codesnippet": "[Issue]\nThe _____ uses an icon as its visual label. There is no textual equivalent provided to label this element.\n\n[User Impact]\nWhen screen readers encounter icons or symbols that are exposed to assistive technology, they may announce oddly or make no announcement at all. When icons are used to label controls, screen reader users may not know how to interact with these elements.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nDevelopers must address the accessibility of icons and symbols for all users with disabilities. When an icon is used to visually label an interactive element, developers should add an aria-label to the interactive element to provide a textual name for assistive technology.\n\nThe icon itself should be hidden from assistive technology to avoid redundant or improper prioritization of announcements. This can be done by adding an attribute of aria-hidden=\"true\".\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 2607,
         "media": "Web",
         "bestpractice": "Provide text equivalents for icon fonts",
-        "scenario": "control with a textual label uses an icon as its visual label that is exposed to AT",
+        "scenario": "control with a textual label uses an exposed icon as its visual label",
         "codesnippet": "[Issue]\nThe _____ is labelled visually by an icon that is exposed to assistive technology. This control already has a textual label.\n\n[User Impact]\nWhen icons are used within controls, screen readers may attempt to announce the content of the icon in addition or or instead of the control's accessible name value.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nDevelopers must address the accessibility of the icon for all users with disabilities. The icon should be hidden from assistive technology to avoid redundant or improper prioritization of announcements. This can be done by adding an attribute of aria-hidden=\"true\".\n\n[Compliant Code Example]\n_____"
+        "issuedescription": "[Recommendation]\nDevelopers must address the accessibility of icons and symbols for all users with disabilities. The icon should be hidden from assistive technology to avoid redundant or improper prioritization of announcements. This can be done by adding an attribute of aria-hidden=\"true\".\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 2891,
