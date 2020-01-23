@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMP - JTD
 // @namespace    http://tampermonkey.net/
-// @version      0.817
+// @version      0.818
 // @author       James Thomas Davey
 // @description  Everybody who's anybody.
 // @match        *.levelaccess.net/public/reporting/view_module.php?module_id=*
@@ -1166,9 +1166,25 @@ const bestPractices = [
         "violationid": 2607,
         "media": "Web",
         "bestpractice": "Provide text equivalents for icon fonts",
+        "scenario": "<a> or <button> element without a textual label uses an unexposed icon as its visual label",
+        "codesnippet": "[Issue]\nThe _____ uses an icon as its visual label. There is no textual equivalent provided to label this element.\n\n[User Impact]\nWhen icons are used to label links or buttons, screen reader users may not know how to interact with these elements.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nDevelopers must address the accessibility of icons and symbols for all users with disabilities. When an icon is used to visually label a button or link, developers should add a title, aria-label, or off-screen text to the interactive element to provide a textual name for assistive technology.\n\n[Compliant Code Example]\n_____"
+    },
+    {
+        "violationid": 2607,
+        "media": "Web",
+        "bestpractice": "Provide text equivalents for icon fonts",
         "scenario": "custom control without a textual label uses an exposed icon as its visual label",
         "codesnippet": "[Issue]\nThe _____ uses an icon as its visual label. There is no textual equivalent provided to label this element.\n\n[User Impact]\nWhen screen readers encounter icons or symbols that are exposed to assistive technology, they may announce oddly or make no announcement at all. When icons are used to label controls, screen reader users may not know how to interact with these elements.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nDevelopers must address the accessibility of icons and symbols for all users with disabilities. When an icon is used to visually label an interactive element, developers should add an aria-label to the interactive element to provide a textual name for assistive technology.\n\nThe icon itself should be hidden from assistive technology to avoid redundant or improper prioritization of announcements. This can be done by adding an attribute of aria-hidden=\"true\".\n\n[Compliant Code Example]\n_____"
+    },
+    {
+        "violationid": 2607,
+        "media": "Web",
+        "bestpractice": "Provide text equivalents for icon fonts",
+        "scenario": "custom control without a textual label uses an unexposed icon as its visual label",
+        "codesnippet": "[Issue]\nThe _____ uses an icon as its visual label. There is no textual equivalent provided to label this element.\n\n[User Impact]\nWhen icons are used to label controls, screen reader users may not know how to interact with these elements.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nDevelopers must address the accessibility of icons and symbols for all users with disabilities. When an icon is used to visually label an interactive element, developers should add an aria-label to the interactive element to provide a textual name for assistive technology.\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 2607,
