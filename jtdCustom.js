@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMP - JTD
 // @namespace    http://tampermonkey.net/
-// @version      0.818
+// @version      0.819
 // @author       James Thomas Davey
 // @description  Everybody who's anybody.
 // @match        *.levelaccess.net/public/reporting/view_module.php?module_id=*
@@ -31,8 +31,8 @@ const bestPractices = [
         "violationid": 338,
         "media": "Web",
         "bestpractice": "Provide a valid label for form fields",
-        "scenario": "Button does not have a proper textual name",
-        "codesnippet": "[Issue]\nThe _____ button does not have a proper textual name available for assistive technology.\n\n[User Impact]\nWhen buttons do not expose identifying information, users of assistive technology may not be able to identify and interact with the element.\n\n[Code Reference]\n_____",
+        "scenario": "button does not have a name",
+        "codesnippet": "[Issue]\nThe _____ button does not have a proper textual name exposed to assistive technology.\n\n[User Impact]\nWhen buttons do not expose identifying information, users of assistive technology may not be able to identify or understand the purpose of the button.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nDevelopers must ensure that proper identifying information is provided for buttons. When buttons do not have visible inner text, developers should add a textual name by either adding SR-only text to the inner text or adding an appropriate aria-label attribute to the button.\n\n[Compliant Code Example]\n_____"
     },
     {
@@ -68,14 +68,6 @@ const bestPractices = [
         "issuedescription": "[Recommendation]\nDevelopers must include a mechanism allowing users to skip past content. When links appear at the top of the page, the skip link should be the first before repetitive content on the page (generally the first tab stop), and its target should be the beginning of the main content area that is unique to that page."
     },
     {
-        "violationid": 359,
-        "media": "Web",
-        "bestpractice": "Avoid the sole use of device-dependent event handlers",
-        "scenario": "Interactive generic element receives focus but cannot be activated with the keyboard",
-        "codesnippet": "[Issue]\nThe _____ receives keyboard focus with the Tab key, however it cannot be activated with the keyboard.\n\n[User Impact]\nWhen interactive elements cannot be operated with the keyboard, users who rely on the keyboard such as mobility-impaired users and screen reader users may not be able to perform the intended function.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nDevelopers must ensure that all interactive elements can be operated with the keyboard. Standard HTML elements such as input fields, buttons, and anchor tags will automatically be operable by keyboard, and are generally recommended when creating interactive elements.\n\nTo make a generic container element operable by keyboard, developers must add an additional handler for keyboard events. Developers must also ensure to add a proper role attribute to the element to be announced properly to assistive technology.\n\n[Compliant Code Example]\n_____"
-    },
-    {
         "violationid": 361,
         "media": "Web",
         "bestpractice": "Ensure headers and cells are properly associated",
@@ -104,7 +96,7 @@ const bestPractices = [
         "media": "Web",
         "bestpractice": "Provide alternative text for images",
         "scenario": "Decorative image without alt text is rendered to AT",
-        "codesnippet": "[Issue]\nThe _____ image is decorative and exposed to assistive technology.\n\n[User Impact]\nWhen non-meaningful image are rendered to assistive technology, users may perceive unnecessary content which can hinder navigating and understanding content efficiently. When images do not have alternative text, screen reader users may only be informed of its file name.\n\n[Code Reference]\n_____",
+        "codesnippet": "[Issue]\nThe _____ image is decorative and exposed to assistive technology.\n\n[User Impact]\nWhen non-meaningful images are rendered to assistive technology, users may perceive unnecessary content which can hinder navigating and understanding content efficiently. When images do not have alternative text, screen reader users may only be informed of its file name.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nEnsure that decorative images are hidden from assistive technology. This can be done by adding an attribute of alt=\"\" to the image element.\n\n[Compliant Code Example]\n_____"
     },
     {
@@ -112,7 +104,7 @@ const bestPractices = [
         "media": "Web",
         "bestpractice": "Provide alternative text for images",
         "scenario": "Decorative image with alt text is rendered to AT",
-        "codesnippet": "[Issue]\nThe _____ image is decorative and exposed to assistive technology.\n\n[User Impact]\nWhen non-meaningful image are rendered to assistive technology, users may perceive unnecessary content which can hinder navigating and understanding content efficiently.\n\n[Code Reference]\n_____",
+        "codesnippet": "[Issue]\nThe _____ image is decorative and exposed to assistive technology.\n\n[User Impact]\nWhen non-meaningful images are rendered to assistive technology, users may perceive unnecessary content which can hinder navigating and understanding content efficiently.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nEnsure that decorative images are hidden from assistive technology. This can be done by replacing the image element's current alt attribute with alt=\"\".\n\n[Compliant Code Example]\n_____"
     },
     {
@@ -120,7 +112,7 @@ const bestPractices = [
         "media": "Web",
         "bestpractice": "Provide alternative text for images",
         "scenario": "Decorative SVG without an accessible name value is rendered to AT",
-        "codesnippet": "[Issue]\nThe _____ SVG is decorative and exposed to assistive technology.\n\n[User Impact]\nWhen non-meaningful items are rendered to assistive technology, users may perceive unnecessary content which can hinder navigating and understanding content efficiently.\n\n[Code Reference]\n_____",
+        "codesnippet": "[Issue]\nThe _____ SVG is decorative and exposed to assistive technology.\n\n[User Impact]\nWhen non-meaningful SVG elements are rendered to assistive technology, users may perceive unnecessary content which can hinder navigating and understanding content efficiently.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nEnsure that decorative SVGs are hidden from assistive technology. This can be done by adding an attribute of aria-hidden=\"true\" to the SVG element. Developers should also add an attribute of focusable=\"false\" for IE11 support.\n\n[Compliant Code Example]\n_____"
     },
     {
@@ -355,30 +347,6 @@ const bestPractices = [
         "issuedescription": "[Recommendation]\nEnsure that the quote's text content is contained within a <blockquote> element.\n\n[Compliant Code Example]\n_____"
     },
     {
-        "violationid": 490,
-        "media": "Web",
-        "bestpractice": "Ensure all active elements receive keyboard focus or can be activated with the keyboard",
-        "scenario": "Anchor element does not receive keyboard focus but could be activated by keyboard",
-        "codesnippet": "[Issue]\nThe _____ does not receive keyboard focus with the Tab key.\n\n[User Impact]\nWhen anchor elements cannot be operated with the keyboard, users who rely on the keyboard such as mobility-impaired users and screen reader users may not be able to perform the intended function.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nAnchor elements require an HREF attribute to receive keyboard focus. Ensure that no scripts are causing focus to skip over this element.\n\n[Compliant Code Example]\n_____"
-    },
-    {
-        "violationid": 490,
-        "media": "Web",
-        "bestpractice": "Ensure all active elements receive keyboard focus or can be activated with the keyboard",
-        "scenario": "Interactive generic element does not receive keyboard focus but could be activated by keyboard",
-        "codesnippet": "[Issue]\nThe _____ does not receive keyboard focus with the Tab key.\n\n[User Impact]\nWhen interactive elements do not receive keyboard focus, users who rely on the keyboard such as mobility-impaired users and screen reader users may not be able to perform the intended function.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nEnsure that all interactive elements are focusable by keyboard. Standard HTML elements such as <button> and <a> are automatically focusable by keyboard, and are generally recommended when creating interactive elements.\n\nTo allow keyboard focus on a generic container element, developers must add an attribute of tabindex=\"0\" to the element.\n\n[Compliant Code Example]\n_____"
-    },
-    {
-        "violationid": 490,
-        "media": "Web",
-        "bestpractice": "Ensure all active elements receive keyboard focus or can be activated with the keyboard",
-        "scenario": "Interactive generic element does not receive keyboard focus and cannot be activated with the keyboard",
-        "codesnippet": "[Issue]\nThe _____ does not receive keyboard focus with the Tab key and cannot be activated with the keyboard.\n\n[User Impact]\nWhen interactive elements cannot be operated with the keyboard, users who rely on the keyboard such as mobility-impaired users and screen reader users may not be able to perform the intended function.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nEnsure that all interactive elements are focusable and operable by keyboard. Standard HTML elements such as <button> and <a> are automatically focusable and operable by keyboard, and are generally recommended when creating interactive elements.\n\nTo allow keyboard focus on a generic container element, developers must add an attribute of tabindex=\"0\" to the element. To allow keyboard activation on this element, developers must also add an additional event handler for keyboard events.\n\n[Compliant Code Example]\n_____"
-    },
-    {
         "violationid": 523,
         "media": "Web",
         "bestpractice": "Ensure frame titles are meaningful",
@@ -495,7 +463,7 @@ const bestPractices = [
         "media": "Web",
         "bestpractice": "Ensure custom controls provide proper textual name, role, and state information",
         "scenario": "button-like control does not expose a role",
-        "codesnippet": "[Issue]\nThe _____ does not programmatically indicate that it is an actionable control.\n\n[User Impact]\nWhen actionable controls do not expose role information, users of assistive technology may not be aware that they are itneractive.\n\n[Code Reference]\n_____",
+        "codesnippet": "[Issue]\nThe _____ does not programmatically indicate that it is an actionable control.\n\n[User Impact]\nWhen actionable controls do not expose role information, users of assistive technology may not be aware that they are interactive.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nUsing the <button> element for button-like controls will automatically have an implicit role of \"button\" and is generally recommended, as the <button> element includes expected behaviors such as receiving keyboard focus and Enter and Spacebar functionality.\n\nTo ensure that non-button elements are announced to screen readers as buttons, developers must add an attribute of role=\"button\".\n\n[Compliant Code Example]\n_____"
     },
     {
@@ -750,6 +718,12 @@ const bestPractices = [
         "violationid": 1248,
         "media": "Web",
         "bestpractice": "Ensure headings and labels are descriptive and unique",
+        "scenario": "label on the page is not descriptive"
+    },
+    {
+        "violationid": 1248,
+        "media": "Web",
+        "bestpractice": "Ensure headings and labels are descriptive and unique",
         "scenario": "Headings on page are not unique",
         "codesnippet": "[Issue]\nThere are multiple occurences of headings with the same name of \"_____\".\n\n[User Impact]\nWhen headings are not unique, users with visual impairments may have difficulty skimming the material to determine the correct section to review.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nEnsure that the headings are descriptive and describe the section or field in unique terms.\n\n[Compliant Code Example]\n_____"
@@ -777,6 +751,12 @@ const bestPractices = [
         "scenario": "Interactive element does not have visual indication of keyboard focus",
         "codesnippet": "[Issue]\nThe _____ receives keyboard focus with the Tab key without any visual indication of this.\n\n[User Impact]\nProviding a visual indication of the focus is particularly necessary for keyboard-only users who do not use the mouse and cannot simply click to place focus where they think it should be. The user must rely on the visual indication of focus to determine where an action will occur or determine what keystrokes to perform to move focus to the desired field.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nDevelopers must ensure that keyboard focus is displayed visually to all interactive elements. Typically the browser will provide keyboard focus for all standard interactive HTML elements, however developers can use custom visual indicators such as outlines or underlines using the focus pseudo-class. Avoid the use of CSS \"outline: none\" property."
+    },
+    {
+        "violationid": 1301,
+        "media": "Web",
+        "bestpractice": "Ensure link text is meaningful within context",
+        "scenario": "multiple links have the same name"
     },
     {
         "violationid": 1352,
@@ -1019,30 +999,6 @@ const bestPractices = [
         "issuedescription": "[Recommendation]\nEnsure that the _____ does not receive VoiceOver focus while it is visually fixed."
     },
     {
-        "violationid": 2426,
-        "media": "Web",
-        "bestpractice": "Ensure sufficient contrast is provided when background images are not available",
-        "scenario": "Text smaller than 14pt has insufficient contrast when background image is disabled",
-        "codesnippet": "[Issue]\nThe _____ does not provide sufficient contrast against its background color when its background image is not available. Text below 14pt in size must meet a minimum contrast ratio of 4.5:1.\n\nForeground color: _____\nBackground color: _____\nContrast ratio: _____\n\n[User Impact]\nSufficient contrast ensures that people with low vision, people who are color blind, users viewing the page without color, and users of monochrome screens can understand page content.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all informative text and images of informative text. Developers should modify the foreground and/or background color so that a sufficient contrast ratio is attained if images are disabled..\n\nStandard text smaller than 18pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/"
-    },
-    {
-        "violationid": 2426,
-        "media": "Web",
-        "bestpractice": "Ensure sufficient contrast is provided when background images are not available",
-        "scenario": "Text between 14pt and 18pt has insufficient contrast when background image is disabled",
-        "codesnippet": "[Issue]\nThe _____ does not provide sufficient contrast against its background color when its background image is not available. Text between 14pt and 18pt in size must have a contrast ratio of 4.5:1 or be bold with a contrast ratio of 3:1.\n\nForeground color: _____\nBackground color: _____\nContrast ratio: _____\n\n[User Impact]\nSufficient contrast ensures that people with low vision, people who are color blind, users viewing the page without color, and users of monochrome screens can understand page content.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all informative text and images of informative text. Developers should modify the foreground and/or background color so that a sufficient contrast ratio is attained if images are disabled..\n\nStandard text smaller than 18pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/"
-    },
-    {
-        "violationid": 2426,
-        "media": "Web",
-        "bestpractice": "Ensure sufficient contrast is provided when background images are not available",
-        "scenario": "Text larger than 18pt has insufficient contrast when background image is disabled",
-        "codesnippet": "[Issue]\nThe _____ does not provide sufficient contrast against its background color when its background image is not available. Text above 18pt in size must have a contrast ratio of 3:1.\n\nForeground color: _____\nBackground color: _____\nContrast ratio: _____\n\n[User Impact]\nSufficient contrast ensures that people with low vision, people who are color blind, users viewing the page without color, and users of monochrome screens can understand page content.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all informative text and images of informative text. Developers should modify the foreground and/or background color so that a sufficient contrast ratio is attained if images are disabled..\n\nStandard text smaller than 18pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/"
-    },
-    {
         "violationid": 2435,
         "media": "Web",
         "bestpractice": "Provide a mechanism for skipping past repetitive links by means of visible links",
@@ -1278,9 +1234,49 @@ const bestPractices = [
         "violationid": 3159,
         "media": "Web",
         "bestpractice": "Ensure all interactive functionality is operable with the keyboard",
-        "scenario": "Interactive generic element receives focus but cannot be activated with the keyboard",
-        "codesnippet": "[Issue]\nThe _____ receives keyboard focus with the Tab key, however it does not function as expected upon keyboard activation.\n\n[User Impact]\nWhen interactive elements cannot be operated with the keyboard, users who rely on the keyboard such as mobility-impaired users and screen reader users may not be able to perform the intended function.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nDevelopers must ensure that all interactive elements can be operated with the keyboard. Standard HTML elements such as input fields, buttons, and anchor tags will automatically be operable by keyboard, and are generally recommended when creating interactive elements.\n\nTo make a generic container element operable by keyboard, developers must add an additional handler for keyboard events. Developers must also ensure to add a proper role attribute to the element to be announced properly to assistive technology.\n\n[Compliant Code Example]\n_____"
+        "scenario": "actionable custom control is not focusable",
+        "codesnippet": "[Issue]\nThe _____ is actionable with the mouse, however it does not receive keyboard focus with the Tab key.\n\n[User Impact]\nWhen actionable elements do not receive keyboard focus, keyboard-only users such as mobility-impaired users and screen reader users may not be able to perform the intended function.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nEnsure that all actionable elements are focusable and operable by keyboard. Standard HTML elements such as <button> and <a> are automatically focusable and operable by keyboard and are generally recommended when creating actionable elements.\n\nTo allow keyboard focus on this element, developers must add an attribute of tabindex=\"0\". To allow keyboard activation on this element, developers must also add an additional keyboard event handler.\n\n[Compliant Code Example]\n_____"
+    },
+    {
+        "violationid": 3159,
+        "media": "Web",
+        "bestpractice": "Ensure all interactive functionality is operable with the keyboard",
+        "scenario": "actionable custom control is focusable but not keyboard-operable",
+        "codesnippet": "[Issue]\nThe _____ receives keyboard focus with the Tab key, however it cannot be activated with the keyboard.\n\n[User Impact]\nWhen actionable elements cannot be operated with the keyboard, keyboard-only users such as mobility-impaired users and screen reader users may not be able to perform the intended function.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nEnsure that all interactive elements can be operated with the keyboard. Standard HTML elements such as <button> and <a> are automatically operable by keyboard and are generally recommended when creating actionable elements.\n\nTo allow keyboard activation on this element, developers must add an additional keyboard event handler.\n\n[Compliant Code Example]\n_____"
+    },
+    {
+        "violationid": 3159,
+        "media": "Web",
+        "bestpractice": "Ensure all interactive functionality is operable with the keyboard",
+        "scenario": "actionable custom control is not spacebar-operable as expected",
+        "codesnippet": "[Issue]\nThe _____ has a role of _____, however it cannot be activated with the Spacebar.\n\n[User Impact]\nWhen elements with a role of _____ cannot be activated with the Spacebar, this can be confusing for keyboard-only users. The Spacebar is often the preferred method to activate controls of this type, as the Enter key may incidentally trigger form submissions within certain contexts.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nEnsure that all elements with a role of _____ can be activated with the Spacebar. Certain HTML elements such as <button> and <input> are automatically operable with the Spacebar and are generally recommended when creating _____.\n\nTo allow Spacebar activation on this element, developers must modify the keyboard event handler to allow this functionality.\n\n[Compliant Code Example]\n_____"
+    },
+    {
+        "violationid": 3159,
+        "media": "Web",
+        "bestpractice": "Ensure all interactive functionality is operable with the keyboard",
+        "scenario": "anchor element is not focusable",
+        "codesnippet": "[Issue]\nThe _____ does not receive keyboard focus with the Tab key.\n\n[User Impact]\nWhen anchor elements do not receive keyboard focus, keyboard-only users such as mobility-impaired users and screen reader users may not be able to perform the intended function.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nAnchor elements require an HREF attribute to receive keyboard focus. Ensure that no scripts cause focus to skip over this element.\n\n[Compliant Code Example]\n_____"
+    },
+    {
+        "violationid": 3159,
+        "media": "Web",
+        "bestpractice": "Ensure all interactive functionality is operable with the keyboard",
+        "scenario": "anchor element with role=\"button\" is not spacebar-operable",
+        "codesnippet": "[Issue]\nThe _____ has a role of \"button\", however it cannot be activated with the Spacebar.\n\n[User Impact]\nWhen elements with a role of \"button\" cannot be activated with the Spacebar, this can be confusing for keyboard-only users. The Spacebar is often the preferred method to activate controls of this type, as the Enter key may incidentally trigger form submissions within certain contexts.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\r\nEnsure that all elements with a role of \"button\" can be activated with the Spacebar. The HTML <button> element is automatically operable with the Spacebar and is generally recommended when creating buttons.\r\n\r\nTo allow Spacebar activation on <a> elements, developers must modify the keyboard event handler to allow this functionality.\r\n\r\n[Compliant Code Example]\r\n_____"
+    },
+    {
+        "violationid": 3159,
+        "media": "Web",
+        "bestpractice": "Ensure all interactive functionality is operable with the keyboard",
+        "scenario": "other control type is not operable with the keyboard",
+        "codesnippet": "[Issue]\nThe _____ contains interactive functionality that is only possible when using the mouse. _____.\n\n[User Impact]\nWhen any functionality is not operable by keyboard, keyboard-only users such as mobility-impaired users and screen reader users may not be able to perform this intended function.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nEnsure that all interactive functionality is operable with the keyboard. _____.\n\n[Code Reference]\n_____"
     }
 ];
 
