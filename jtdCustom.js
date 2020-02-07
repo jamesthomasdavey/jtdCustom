@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMP - JTD
 // @namespace    http://tampermonkey.net/
-// @version      0.819
+// @version      0.820
 // @author       James Thomas Davey
 // @description  Everybody who's anybody.
 // @match        *.levelaccess.net/public/reporting/view_module.php?module_id=*
@@ -15,17 +15,25 @@ const bestPractices = [
         "violationid": 338,
         "media": "Web",
         "bestpractice": "Provide a valid label for form fields",
-        "scenario": "Input has corresponding label element, however they are not programmatically associated",
-        "codesnippet": "[Issue]\nThe _____ field has a corresponding <label> element, however they are not programmatically associated with each other.\n\n[User Impact]\nWhen form fields do not have a programmatically associated label, assistive technologies may incorrectly render the label or provide no label at all to users. When labels are not present or are incorrect, users of assistive technologies may not be able to complete a form.\n\n[Code Reference]\n_____",
+        "scenario": "field has a label element but they are not associated",
+        "codesnippet": "[Issue]\nThe _____ field has a corresponding <label> element, however they are not programmatically associated with each other.\n\n[User Impact]\nWhen fields do not have a programmatically associated label, assistive technologies may incorrectly render the label or provide no label at all to users. When labels are not present or are incorrect, users of assistive technologies may not be able to complete a form.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nDevelopers must provide an accessible label for all form fields. To associate a <label> element with a form field, the <label> must have a FOR attribute with the same value as the form field's ID attribute.\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 338,
         "media": "Web",
         "bestpractice": "Provide a valid label for form fields",
-        "scenario": "Input has text that functions visually as a label, however they are not programmatically associated",
-        "codesnippet": "[Issue]\nThe _____ field uses a _____ element that functions visually as a label, however their association is not rendered to assistive technology.\n\n[User Impact]\nWhen form fields do not have a programmatically associated label, assistive technologies may incorrectly render the label or provide no label at all to users.\n\n[Code Reference]\n_____",
+        "scenario": "field has a visual label but they are not associated",
+        "codesnippet": "[Issue]\nThe _____ field uses a _____ element that functions visually as a label, however their association is not rendered to assistive technology.\n\n[User Impact]\nWhen fields do not have a programmatically associated label, assistive technologies may incorrectly render the label or provide no label at all to users.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nConvert the _____ into a <label> element, and associate the label and form field element by adding a FOR attribute with the same value as the form field's ID attribute.\n\n[Compliant Code Example]\n_____"
+    },
+    {
+        "violationid": 338,
+        "media": "Web",
+        "bestpractice": "Provide a valid label for form fields",
+        "scenario": "field uses placeholder text as only label",
+        "codesnippet": "[Issue]\nThe _____ uses placeholder text as its only label. The placeholder text should be a short hint intended to aid the user with data entry.\n\n[User Impact]\nThe placeholder attribute may not be available to assistive technology and thus may not be relied upon to convey an accessible name. Additionally, placeholder text is not visually available once the user has inputted data into the field.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nProvide a proper label for all fields. It is recommended that developers use a programmatically associated <label> element, using the FOR attribute with a value that matches the ID of its corresponding input. If the placeholder attribute is also used, it is advised that the placeholder text should not be identical or redundant to the label text.\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 338,
@@ -276,14 +284,6 @@ const bestPractices = [
         "issuedescription": "[Recommendation]\nEnsure that link text is meaningful out of context by modifying the accessible name using SR-only text, or by adding an attribute of aria-describedby to reference the ID of a corresponding element that provides context.\n\n[Compliant Code Example]\n_____"
     },
     {
-        "violationid": 397,
-        "media": "Web",
-        "bestpractice": "Ensure the same link text for links with different targets is avoided",
-        "scenario": "Multiple links have the same accessible name value",
-        "codesnippet": "[Issue]\n_____ links have share the same accessible name value of _____, even though they lead to different destinations.\n\n[User Impact]\nWhen links with different destinations are given identical link text, this can produce confusion for users of assistive technology. When a list of links is presented to the user, they may not be aware that the links lead to different destinations.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nAdd off-screen text to the links' inner text to provide context that may already be available visually.\n\n[Compliant Code Example]\n_____"
-    },
-    {
         "violationid": 409,
         "media": "Web",
         "bestpractice": "Ensure text can be resized",
@@ -462,15 +462,15 @@ const bestPractices = [
         "violationid": 602,
         "media": "Web",
         "bestpractice": "Ensure custom controls provide proper textual name, role, and state information",
-        "scenario": "button-like control does not expose a role",
-        "codesnippet": "[Issue]\nThe _____ does not programmatically indicate that it is an actionable control.\n\n[User Impact]\nWhen actionable controls do not expose role information, users of assistive technology may not be aware that they are interactive.\n\n[Code Reference]\n_____",
+        "scenario": "actionable control is missing a role",
+        "codesnippet": "[Issue]\nThe _____ does not programmatically indicate that it is an actionable.\n\n[User Impact]\nWhen actionable controls do not expose role information, users of assistive technology may not be aware that they are interactive.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nUsing the <button> element for button-like controls will automatically have an implicit role of \"button\" and is generally recommended, as the <button> element includes expected behaviors such as receiving keyboard focus and Enter and Spacebar functionality.\n\nTo ensure that non-button elements are announced to screen readers as buttons, developers must add an attribute of role=\"button\".\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 602,
         "media": "Web",
         "bestpractice": "Ensure custom controls provide proper textual name, role, and state information",
-        "scenario": "ambiguous control does not expose a role",
+        "scenario": "other control is missing a role",
         "codesnippet": "[Issue]\nThe _____ does not programmatically indicate its role as a _____.\n\n[User Impact]\nWhen interactive elements do not expose role information, users of assistive technology may not know that the controls are interactive or how to interact with them.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nProvide role information to this element by adding an attribute of role=\"_____\".\n\n[Compliant Code Example]\n_____"
     },
@@ -480,7 +480,7 @@ const bestPractices = [
         "bestpractice": "Ensure custom controls provide proper textual name, role, and state information",
         "scenario": "control does not communicate its state",
         "codesnippet": "[Issue]\nThe _____ does not programmatically indicate its _____ state.\n\n[User Impact]\nWhen elements do not programmatically indicate their current state, users of assistive technology may not know how to interact with the element.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nEnsure that the correct state is provided for this element. Add an attribute of _____ and dynamically update its value depending on its functional state.\n\n[Compliant Code Example]\n_____"
+        "issuedescription": "[Recommendation]\nEnsure that the correct state is provided for this element. Add an attribute of _____ and dynamically update its value between \"_____\" and \"_____\" depending on its functional state.\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 602,
@@ -494,17 +494,25 @@ const bestPractices = [
         "violationid": 602,
         "media": "Web",
         "bestpractice": "Ensure custom controls provide proper textual name, role, and state information",
-        "scenario": "<a> element is used as a button and without role=\"button\"",
-        "codesnippet": "[ADVISORY]\n\n[Issue]\nThe _____ control was coded using an <a> element, which has an implicit role of \"link\" and announces to assistive technology as such.\n\n[User Impact]\nUsing an <a> element as a button can be confusing for screen reader users. Anchor elements have an implicit role of \"link\", indicating to screen reader users that activating this element will redirect them to a new URL or otherwise change the browser context. This can be disorienting when the element does not behave as expected.\n\n[Code Reference]\n_____",
+        "scenario": "<a> element used as a button is missing role=\"button\"",
+        "codesnippet": "[ADVISORY]\n\n[Issue]\nThe _____ was coded using an <a> element, which has an implicit role of \"link\" and announces to assistive technology as such.\n\n[User Impact]\nUsing an <a> element as a button can be confusing for screen reader users. Anchor elements have an implicit role of \"link\", indicating to screen reader users that activating this element will redirect them to a new URL or otherwise change the browser context. This can be disorienting when the element does not behave as expected.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nDevelopers must ensure that all custom controls provide an accurate textual role for assistive technology. Using the <button> element for button-like controls will automatically have an implicit role of \"button\" and is generally recommended, as the <button> element includes expected behaviors such as receiving keyboard focus and Enter and Spacebar functionality.\n\nTo ensure that <a> elements are announced to screen readers as buttons, developers must add the attribute role=\"button\" to the anchor element.\n\n[Compliant Code Example]\n_____"
     },
     {
-        "violationid": 602,
+        "violationid": 605,
         "media": "Web",
-        "bestpractice": "Ensure custom controls provide proper textual name, role, and state information",
-        "scenario": "Custom control that expands content does not indicate the fact",
-        "codesnippet": "[Issue]\nThe _____ control expands content but does not properly indicate this information to assistive technology.\n\n[User Impact]\nWithout any indication of a custom control's expanded state, screen reader users will not be made aware that the element is intended to expand or collapse content upon activation, nor will they be made aware whether or not the content is currently in its expanded state.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nDevelopers must ensure that custom controls which expand and collapse content upon activation provide the proper state information to describe its current expanded status. Developers should add an aria-expanded attribute to the element and dynamically toggle the value between \"true\" and \"false\", depending on its current state.\n\n[Compliant Code Example]\n_____"
+        "bestpractice": "Ensure content updates define focus updates appropriately",
+        "scenario": "focus does not proceed into opened dialog",
+        "codesnippet": "[Issue]\nAfter the _____ dialog opens, focus does not move into the dialog element.\n\n[User Impact]\nWhen focus does not move into opened dialogs, keyboard-only users may not be able to interact with the dialog and screen reader users may not be able to view the dialog.",
+        "issuedescription": "[Recommendation]\nUse scripting to direct focus to the recently-opened dialog. Appropriate focus targets include the dialog's heading or the dialog's first control. Developers can add an attribute of tabindex=\"-1\" on any non-focusable element to allow managed focus (using the JavaScript .focus() method)."
+    },
+    {
+        "violationid": 605,
+        "media": "Web",
+        "bestpractice": "Ensure content updates define focus updates appropriately",
+        "scenario": "focus does not return from closed dialog",
+        "codesnippet": "[Issue]\nAfter the _____ dialog closes, focus does not return from the dialog element.\n\n[User Impact]\nWhen focus does not return from closed dialogs, keyboard-only users may have to traverse to their prior location and screen reader users may not be aware that the dialog has closed.",
+        "issuedescription": "[Recommendation]\nUse scripting to direct focus from the recently-closed dialog. Usually the most appropriate focus target is the control that originally spawned the dialog. This can be achieved using the JavaScript .focus() method."
     },
     {
         "violationid": 609,
@@ -550,17 +558,33 @@ const bestPractices = [
         "violationid": 733,
         "media": "Web",
         "bestpractice": "Ensure content that is intended to be hidden from all users is not rendered by assistive technology",
-        "scenario": "Visually hidden items receive Tab focus",
-        "codesnippet": "[Issue]\nThe _____ is hidden visually, however it still receives keyboard focus using the Tab key.\n\n[User Impact]\nHaving the wrong content rendered may cause users to read incorrect information or even activate links that are off screen. This can lead to confusion and incorrect results.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nDevelopers must ensure that content that is intended to be hidden from all users is not rendered by assistive technology. Developers can set the display property to \"none\" in CSS, rather than simply hiding items with opacity, z-index, or absolute positioning."
+        "scenario": "controls behind modal are focusable",
+        "codesnippet": "[Issue]\nThe page behind the _____ is blocked visually, however its controls still receive keyboard focus using the Tab key.\n\n[User Impact]\nWhen content behind modal dialogs receives keboard focus, keyboard-only users may be able to access content that is not available with the mouse.",
+        "issuedescription": "[Recommendation]\nEnsure that focus remains within open modal dialogs. This can be done by using onFocus and onBlur and other JavaScript techniques to manage the focus appropriately. There are many techniques that can be used to meet this best practices.\n\nEnsure that the Tab and Shift + Tab keystrokes are handled appropriately. Ideally, focus should wrap from the last element to the first element and vice versa."
     },
     {
         "violationid": 733,
         "media": "Web",
         "bestpractice": "Ensure content that is intended to be hidden from all users is not rendered by assistive technology",
-        "scenario": "Content behind modal is rendered to the virtual cursor",
-        "codesnippet": "[Issue]\r\nThe page behind the modal is blocked visually, however its content is still rendered to screen readers when using the virtual cursor.\r\n\r\n[User Impact]\r\nWhen the virtual cursor can access content from behind modals, screen reader users may become confused when viewing content outside of the intended context.",
-        "issuedescription": "[Recommendation]\r\nDevelopers must ensure that when a modal dialog is open, content behind the modal is not rendered to assistive technology. Developers can do this by setting aria-hidden=\"true\" on page content not within the modal."
+        "scenario": "content behind modal is exposed to AT",
+        "codesnippet": "[Issue]\nThe page behind the _____is blocked visually, however its content is still rendered to screen readers when using the virtual cursor.\n\n[User Impact]\nWhen the virtual cursor can access content from behind modal dialogs, screen reader users may become confused when viewing content outside of the intended context.",
+        "issuedescription": "[Recommendation]\nHide the page content behind the _____ from assistive technology. This may be achieved by adding an attribute of aria-modal=\"true\" to the modal dialog, however due to a lack of univseral support it is recommended to instead set aria-hidden=\"true\" to all page content not within the modal dialog."
+    },
+    {
+        "violationid": 733,
+        "media": "Web",
+        "bestpractice": "Ensure content that is intended to be hidden from all users is not rendered by assistive technology",
+        "scenario": "collapsed component's controls are focusable",
+        "codesnippet": "[Issue]\nWhile the _____ is in its collapsed state, its controls still receive keyboard focus with the Tab key.\n\n[User Impact]\nWhen hidden controls receive keyboard focus, this can lead to confusion and incorrect results such as activates controls that are off screen.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nRemove the controls from the focus order while the _____ is in its collapsed state. This can be achieved by adding an attribute of tabindex=\"-1\" to these controls.\n\n[Compliant Code Example]\n_____"
+    },
+    {
+        "violationid": 733,
+        "media": "Web",
+        "bestpractice": "Ensure content that is intended to be hidden from all users is not rendered by assistive technology",
+        "scenario": "collapsed component's content is exposed to AT",
+        "codesnippet": "[Issue]\nWhile the _____ is in its collapsed state, its content is still rendered to screen readers when using the virtual cursor.\n\n[User Impact]\nWhen the virtual cursor can access content of collapsed components, screen reader users may become confused when viewing content outside of the intended context.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nHide the content of collapsed _____ from assistive technology. This can be achieved by hiding content entirely using \"display: none\" within CSS or by adding an attribute of aria-hidden=\"true\" to content that is intended to be hidden from all users.\n\n[Compliant Code Example]"
     },
     {
         "violationid": 794,
@@ -574,9 +598,9 @@ const bestPractices = [
         "violationid": 796,
         "media": "Web",
         "bestpractice": "Ensure the focus order of interactive elements on the page is logical",
-        "scenario": "Interactive elements do not focus in a logical order",
-        "codesnippet": "[Issue]\nWhen using the Tab key to focus on different items on the page, focus _____.\n\n[User Impact]\nWhen the tab order of the page is illogical, filling out forms or navigating through the page can be confusing for screen reader users and other keyboard users.",
-        "issuedescription": "[Recommendation]\nDevelopers must ensure that the focus order of interactive elements on the page matches the visual layout of the page, or at least follows a logical order."
+        "scenario": "elements receive focus in an illogical order",
+        "codesnippet": "[Issue]\nWhile using the Tab key to focus on different items on the page, focus _____.\n\n[User Impact]\nWhen the tab order of the page is illogical, filling out forms or navigating through the page can be confusing for keyboard-only users.",
+        "issuedescription": "[Recommendation]\nDevelopers must ensure that the focus order of interactive elements on the page matches the visual layout of the page, or at least follows a logical order. This is most easily achieved by placing all elements in a logical order within the DOM and only using scripting to manage focus when absolutely necessary."
     },
     {
         "violationid": 808,
@@ -614,9 +638,25 @@ const bestPractices = [
         "violationid": 886,
         "media": "Web",
         "bestpractice": "Ensure dialogs use proper structure",
-        "scenario": "Dialog does not have a proper role",
-        "codesnippet": "[Issue]\nThe _____ does not have a role=\"dialog\" to indicate its boundaries on the screen.\n\n[User Impact]\nUse of appropriate dialog role will allow assistive technology users to know the beginning and ending boundaries of the dialog.\n\n[Code Reference]\n_____",
+        "scenario": "dialog is missing proper role",
+        "codesnippet": "[Issue]\nThe _____ does not have a role=\"dialog\" to indicate its boundaries on the screen.\n\n[User Impact]\nWhen dialogs do not have a proper role, screen reader users may not know the beginning and ending boundaries of the dialog.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nAdd an attribute of role=\"dialog\" to the container or use the <dialog> element.\n\n[Compliant Code Example]\n_____"
+    },
+    {
+        "violationid": 886,
+        "media": "Web",
+        "bestpractice": "Ensure dialogs use proper structure",
+        "scenario": "dialog has no name",
+        "codesnippet": "[Issue]\nThe _____ dialog does not have an accessible name value.\n\n[User Impact]\nWhen dialogs do not have an assigned name, screen reader users may not understand the purpose of the dialog even if it is visually apparent.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\r\nProvide an accessible name value to this dialog using the aria-label or aria-labelledby attributes.\r\n\r\n[Compliant Code Example]\r\n_____"
+    },
+    {
+        "violationid": 886,
+        "media": "Web",
+        "bestpractice": "Ensure dialogs use proper structure",
+        "scenario": "expandable content is missing proper role",
+        "codesnippet": "[Issue]\nWhile the _____ is in its expanded state, its content is not contained within a named region to indicate its boundaries on the screen.\n\n[User Impact]\nWhen expanded content does not indicate its boundaries, screen reader users may not know the beginning and ending boundaries of the component.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nProvide a role of \"_____\" to the container element to indicate the boundaries of this expanded content. Ensure to also provide a name to this container element, which can be achieved using the aria-label or aria-labelledby attributes.\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 887,
@@ -625,14 +665,6 @@ const bestPractices = [
         "scenario": "Link elements open a dialog without indicating this to screen reader users",
         "codesnippet": "[Issue]\nThe _____ link spawns a dialog without indicating this information to users of assistive technology.\n\n[User Impact]\nLink elements indicate to screen reader users that they will be redirected to a different page, or will experience a context change. Using links to open a dialog without informing screen reader users is unexpected and can be disorienting.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nDevelopers must ensure that all links that open a dialog indicate this fact to screen reader users. Developers should add text to the link alerting users that a dialog will be opened when the link is activated by adding a title attribute to supplement the current accessible name.\n\n[Compliant Code Example]\n_____"
-    },
-    {
-        "violationid": 889,
-        "media": "Web",
-        "bestpractice": "Ensure that when dialogs are activated focus moves appropriately",
-        "scenario": "Focus does not move into dialog after it has been opened",
-        "codesnippet": "[Issue]\nAfter the _____ dialog opens, focus does not move into the dialog element.\n\n[User Impact]\nWhen focus is not moved appropriately, screen reader users may not be able to efficiently locate the new content or may miss portions of the dialog's content.",
-        "issuedescription": "[Recommendation]\nDevelopers must ensure that when a dialog is opened, focus moves appropriately to the first content element inside the dialog or to the first control. Developers can use the tabindex attribute with a value of -1 on any non-focusable element that contains the content to set focus (using the javaScript focus() method)."
     },
     {
         "violationid": 937,
@@ -649,14 +681,6 @@ const bestPractices = [
         "scenario": "Alternative description for chart or graph differs from content",
         "codesnippet": "[Issue]\nThe _____ provides a visible alternative description that differs from its content.\n\n[User Impact]\nWhen the content of the alternative description for charts and graphs does not match their actual content, screen reader users will not be able to perceive the same information available to other users.\r\n\r\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nThe _____ legend must match the contents of the image. Developers should change either the image or image description so that the content matches.\n\n[Compliant Code Example]\n_____"
-    },
-    {
-        "violationid": 952,
-        "media": "Web",
-        "bestpractice": "Ensure keyboard focus returns properly from dialogs",
-        "scenario": "Focus does not return after closing a dialog",
-        "codesnippet": "[Issue]\nAfter closing the _____ dialog, focus does not return from the dialog element.\n\n[User Impact]\nKeyboard-only users can lose their place on the page if keyboard focus does not move to an appropriate location.",
-        "issuedescription": "[Recommendation]\nEnsure that dialog focus moves to the trigger that opened the dialog in the first place. This can be done by calling JavaScript .focus() method on the trigger element when the dialog is closed."
     },
     {
         "violationid": 959,
@@ -718,31 +742,49 @@ const bestPractices = [
         "violationid": 1248,
         "media": "Web",
         "bestpractice": "Ensure headings and labels are descriptive and unique",
-        "scenario": "label on the page is not descriptive"
+        "scenario": "labels are not unique",
+        "codesnippet": "[Issue]\nThere are multiple occurences of labels with the same name of \"_____\".\n\n[User Impact]\nWhen labels are not unique, users with visual impairments have difficulty identifying the unique purposes of their corresponding _____.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nEnsure that labels are unique by providing context through the use of <fieldset> and <legend> elements or other grouping, or by modifying the labels' accessible names through the use of off-screen text or attributes such as aria-describedby.\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 1248,
         "media": "Web",
         "bestpractice": "Ensure headings and labels are descriptive and unique",
-        "scenario": "Headings on page are not unique",
+        "scenario": "label is not descriptive",
+        "codesnippet": "[Issue]\nThe _____ label does not sufficiently describe its corresponding _____'s purpose.\n\n[User Impact]\nWhen labels are not descriptive, users with cognitive impairments may have trouble finding the correct _____. Users with visual impairments may have difficulty skimming the material to determine the corresponding _____'s purpose.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nModify the _____ label so that it uniquely describes its corresponding _____'s purpose, or provide a description and associate this description to the _____ using the aria-describedby attribute.\n\n[Compliant Code Example]\n_____"
+    },
+    {
+        "violationid": 1248,
+        "media": "Web",
+        "bestpractice": "Ensure headings and labels are descriptive and unique",
+        "scenario": "headings are not unique",
         "codesnippet": "[Issue]\nThere are multiple occurences of headings with the same name of \"_____\".\n\n[User Impact]\nWhen headings are not unique, users with visual impairments may have difficulty skimming the material to determine the correct section to review.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nEnsure that the headings are descriptive and describe the section or field in unique terms.\n\n[Compliant Code Example]\n_____"
+        "issuedescription": "[Recommendation]\nEnsure that headings are unique by providing additional heading structure to provide differentiating context for the headings, or by modifying headings so that they uniquely describe their corresponding content.\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 1248,
         "media": "Web",
         "bestpractice": "Ensure headings and labels are descriptive and unique",
-        "scenario": "Heading on page is not descriptive",
-        "codesnippet": "[Issue]\nThe _____ heading on the page does not sufficiently describe its content.\n\n[User Impact]\nWhen headings are not descriptive, users with cognitive impairments may have trouble finding the correct section. Users with visual impairments may have difficulty skimming the material to determine the correct section to review.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nEnsure that the headings are descriptive and describe the section or field in unique terms.\n\n[Compliant Code Example]\n_____"
+        "scenario": "heading is not descriptive",
+        "codesnippet": "[Issue]\nThe _____ heading does not sufficiently describe its corresponding content.\n\n[User Impact]\nWhen headings are not descriptive, users with cognitive impairments may have trouble finding the correct section. Users with visual impairments may have difficulty skimming the material to determine the correct section to review.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nModify the _____ heading so that it uniquely describes its corresponding content.\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 1248,
         "media": "Web",
         "bestpractice": "Ensure headings and labels are descriptive and unique",
-        "scenario": "Button on page is not descriptive",
-        "codesnippet": "[Issue]\nThe _____ button has a name value that does not sufficiently describe its functionality. When focusing on this item, the screen reader announces it as _____.\n\n[User Impact]\nScreen reader users will not understand the purpose of this control when taken out of context. When focusing on these elements using the Tab key, users may have to traverse through nearby elements to understand the purpose of the control.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]"
+        "scenario": "control names are not unique",
+        "codesnippet": "[Issue]\nThere are multiple occurences of _____s with the same name of \"_____\".\n\n[User Impact]\nWhen control names are not unique, users with visual impairments have difficulty identifying their unique purposes.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nEnsure that controls are unique by modifying their names or by providing descriptions and associating these descriptions with their controls using the aria-describedby attribute.\n\n[Compliant Code Example]\n_____"
+    },
+    {
+        "violationid": 1248,
+        "media": "Web",
+        "bestpractice": "Ensure headings and labels are descriptive and unique",
+        "scenario": "control name is not descriptive",
+        "codesnippet": "[Issue]\nThe _____'s name value does not sufficiently describe its purpose.\n\n[User Impact]\nWhen control names are not descriptive, users with cognitive impairments may have trouble finding the correct control. Users with visual impairments may have difficulty skimming the material to determine the control's purpose.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nModify the _____'s name so that it uniquely describes the control's purpose, or provide a description and associate this description to this control using the aria-describedby attribute.\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 1249,
@@ -756,7 +798,9 @@ const bestPractices = [
         "violationid": 1301,
         "media": "Web",
         "bestpractice": "Ensure link text is meaningful within context",
-        "scenario": "multiple links have the same name"
+        "scenario": "multiple links have the same name",
+        "codesnippet": "[Issue]\n_____ links have share the same accessible name value of _____, even though they lead to different destinations.\n\n[User Impact]\nWhen links with different destinations have identical names, this can produce confusion for users of assistive technology. When a list of links is presented to the user, they may not be aware that the links lead to different destinations.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nAdd additional context to these links to aid in identifying their purpose. This can be achieved using many possible methods, such as by providing heading structure around each link or by modifying the name value of each link through the use of off-screen text or an aria-describedby attribute.\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 1352,
@@ -879,14 +923,6 @@ const bestPractices = [
         "issuedescription": "[Recommendation]\nChange the role to _____ to more accurately indicate the element's purpose.\n\n[Compliant Code Example]\n_____"
     },
     {
-        "violationid": 1893,
-        "media": "Web",
-        "bestpractice": "Provide a descriptive dialog title",
-        "scenario": "Dialog element or element with role=\"dialog\" does not have an aria-label or aria-labelledby attribute",
-        "codesnippet": "[Issue]\nThe _____ dialog does not have an accessible title.\n\n[User Impact]\nThe dialog's purpose may be visually apparent but can be difficult to understand using assistive technology such as screen readers.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nEnsure that all elements with a role of \"dialog\" have an appropriate aria-label or aria-labelledby attribute to provide an accessible title.\n\n[Compliant Code Example]\n_____"
-    },
-    {
         "violationid": 1908,
         "media": "iOS",
         "bestpractice": "Ensure non-decorative images provide informative alternative text",
@@ -983,14 +1019,6 @@ const bestPractices = [
         "issuedescription": "[Recommendation]\nDevelopers must ensure that video provide the equivalent synchronized alternatives for all speech and other important audio. Ensure open or closed captioning is used for any presentations containing audio and video."
     },
     {
-        "violationid": 2051,
-        "media": "Web",
-        "bestpractice": "Ensure that keyboard focus remains within modal dialogs",
-        "scenario": "Items on page behind modal can receive keyboard focus",
-        "codesnippet": "[Issue]\nThe page behind the _____ is blocked visually, however its content still receives keyboard focus using the Tab key.\n\n[User Impact]\nWhen focus is moved outside of the modal dialog, keyboard only users may be able to access content that is not active with the mouse but actionable from the keyboard via the screen reader's virtual cursor.",
-        "issuedescription": "[Recommendation]\nDevelopers must ensure that when a modal dialog is open, focus remains within the dialog. This can be done by using onFocus and onBlur and other JavaScript techniques to manage the focus appropriately. There are many techniques that can be used to meet this best practices.\n\nDevelopers must ensure that tab and shift+tab are handled appropriately. Ideally focus should wrap from the last element to the first element."
-    },
-    {
         "violationid": 2349,
         "media": "iOS",
         "bestpractice": "Ensure the focus order of interactive elements on the page is logical",
@@ -1018,16 +1046,8 @@ const bestPractices = [
         "violationid": 2440,
         "media": "Web",
         "bestpractice": "Avoid use of placeholder values to label or explain input",
-        "scenario": "Form field uses a placeholder as its only label",
-        "codesnippet": "[Issue]\nThe _____ uses a placeholder attribute as its only label. The placeholder text should be a short hint intended to aid the user with data entry.\n\n[User Impact]\nThe placeholder may not be available to assistive technology and thus may not be relied upon to convey an accessible name.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nDevelopers must ensure that the placeholder attribute is not a replacement for a label. It is recommended that developers use a programmatically associated <label> element, using the FOR attribute with a value that matches the ID of its corresponding input. If the placeholder attribute is also used, it is advised that the placeholder text should not be identical or redundant to the label text.\n\n[Compliant Code Example]\n_____"
-    },
-    {
-        "violationid": 2440,
-        "media": "Web",
-        "bestpractice": "Avoid use of placeholder values to label or explain input",
         "scenario": "Form field uses placeholder text for a description.",
-        "codesnippet": "[Issue]\nThe _____ uses a placeholder attribute as a description. The placeholding text should be a short hint intended to aid the user with data entry.\n\n[User Impact]\nThe placeholder may not be available to assistive technology and thus may not be relied upon to convey an accessible description.\n\n[Code Reference]\n_____",
+        "codesnippet": "[Issue]\nThe _____ uses a placeholder attribute as a description. The placeholder text should be a short hint intended to aid the user with data entry.\n\n[User Impact]\nThe placeholder may not be available to assistive technology and thus may not be relied upon to convey an accessible description.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nDevelopers must ensure that the placeholder attribute does not contain a description. To include a description, it is recommended that developers either include a short description in the label element or include the description text in its own element. Descriptions must be programmatically associated with their inputs. This is done by adding an aria-describedby attribute to the input, with a value that matches the ID attribute of its corresponding description.\n\n[Compliant Code Example]\n_____"
     },
     {
