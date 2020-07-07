@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AMP - JTD
 // @namespace    http://tampermonkey.net/
-// @version      0.820
+// @version      0.821
 // @author       James Thomas Davey
 // @description  Everybody who's anybody.
 // @match        *.levelaccess.net/public/reporting/view_module.php?module_id=*
@@ -57,7 +57,7 @@ const bestPractices = [
         "bestpractice": "Provide fieldsets for groups of form controls",
         "scenario": "Related form controls are not contained in a fieldset element",
         "codesnippet": "[Issue]\nThe _____ form controls are related to each other, however they are not grouped together within a <fieldset> element.\n\n[User Impact]\nBy grouping all of the elements in one category users of assistive technologies can understand the relationship of the elements.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nDevelopers must group related form fields together into a <fieldset> element, and ensure that a <legend> element is defined as the first child of the <fieldset>. If desired, CSS may be used to modify or suppress the default rectangle appearance of fieldsets and visual position of the legend text.\r\n\r\nMore information on fieldsets and legends:\r\nhttps:
+        "issuedescription": "[Recommendation]\nDevelopers must group related form fields together into a <fieldset> element, and ensure that a <legend> element is defined as the first child of the <fieldset>. If desired, CSS may be used to modify or suppress the default rectangle appearance of fieldsets and visual position of the legend text.\r\n\r\nMore information on fieldsets and legends:\nhttps://www.w3.org/TR/WCAG20-TECHS/H71.html\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 341,
