@@ -41,7 +41,15 @@ const bestPractices = [
         "bestpractice": "Provide a valid label for form fields",
         "scenario": "button does not have a name",
         "codesnippet": "[Issue]\nThe _____ button does not have a proper textual name exposed to assistive technology.\n\n[User Impact]\nWhen buttons do not expose identifying information, users of assistive technology may not be able to identify or understand the purpose of the button.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nDevelopers must ensure that proper identifying information is provided for buttons. When buttons do not have visible inner text, developers should add a textual name by either adding SR-only text to the inner text or adding an appropriate aria-label attribute to the button.\n\n[Compliant Code Example]\n_____"
+        "issuedescription": "[Recommendation]\nProvide proper identifying information for all buttons. When buttons do not have visible inner text, developers should add a textual name by either adding SR-only text to the inner text or adding an appropriate aria-label attribute to the button.\n\n[Compliant Code Example]\n_____"
+    },
+    {
+        "violationid": 338,
+        "media": "Web",
+        "bestpractice": "Provide a valid label for form fields",
+        "scenario": "select list does not have a name",
+        "codesnippet": "[Issue]\nThe _____ select list does not have an accessible name value to be calculated by assistive technology.\n\n[User Impact]\nWhen select lists do not have names, screen reader users may have difficulty understanding their purpose.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nIf possible, provide a corresponding <label> element, and associate the label and <select> element by adding a FOR attribute with the same value as the <select> element's ID attribute.\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 341,
@@ -49,7 +57,7 @@ const bestPractices = [
         "bestpractice": "Provide fieldsets for groups of form controls",
         "scenario": "Related form controls are not contained in a fieldset element",
         "codesnippet": "[Issue]\nThe _____ form controls are related to each other, however they are not grouped together within a <fieldset> element.\n\n[User Impact]\nBy grouping all of the elements in one category users of assistive technologies can understand the relationship of the elements.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nDevelopers must group related form fields together into a <fieldset> element, and ensure that a <legend> element is defined as the first child of the <fieldset>. If desired, CSS may be used to modify or suppress the default rectangle appearance of fieldsets and visual position of the legend text.\r\n\r\nMore information on fieldsets and legends:\r\nhttps://www.w3.org/TR/WCAG20-TECHS/H71.html\r\n\r\n[Compliant Code Example]\r\n_____"
+        "issuedescription": "[Recommendation]\nDevelopers must group related form fields together into a <fieldset> element, and ensure that a <legend> element is defined as the first child of the <fieldset>. If desired, CSS may be used to modify or suppress the default rectangle appearance of fieldsets and visual position of the legend text.\r\n\r\nMore information on fieldsets and legends:\r\nhttps:
     },
     {
         "violationid": 341,
@@ -71,9 +79,9 @@ const bestPractices = [
         "violationid": 345,
         "media": "Web",
         "bestpractice": "Provide a mechanism for skipping past repetitive content",
-        "scenario": "There is no skip link",
-        "codesnippet": "[Issue]\nThere is no mechanism to skip past the repetitive content of the page.\n\n[User Impact]\nEach time a keyboard user accesses a new page in the site, the user would be forced to tab through all of these navigation links and other content before getting to the main content area of the page. This makes it difficult to access the page's unique information efficiently.",
-        "issuedescription": "[Recommendation]\nDevelopers must include a mechanism allowing users to skip past content. When links appear at the top of the page, the skip link should be the first before repetitive content on the page (generally the first tab stop), and its target should be the beginning of the main content area that is unique to that page."
+        "scenario": "no skip link",
+        "codesnippet": "[Issue]\nThere is no mechanism to skip past the repetitive content of the page.\n\n[User Impact]\nWhen there is no skip link available, keyboard users would be forced to tab through all of these navigation links and other content before each time they access a page. This makes it difficult to access the page's unique information efficiently.",
+        "issuedescription": "[Recommendation]\nInclude a mechanism allowing users to skip past content. When links appear at the top of the page, the skip link should be the first before repetitive content on the page (generally the first tab stop), and its target should be the beginning of the main content area that is unique to that page."
     },
     {
         "violationid": 361,
@@ -87,7 +95,7 @@ const bestPractices = [
         "violationid": 362,
         "media": "Web",
         "bestpractice": "Provide alternative text for images",
-        "scenario": "Informative image has no alternative text",
+        "scenario": "informative image is missing alternative text",
         "codesnippet": "[Issue]\nThe _____ image does not have a textual equivalent to convey its information.\n\n[User Impact]\nWhen image elements do not provide alternative text, screen reader users will not be aware of their contents, and may only be informed of their file names.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nDevelopers must add an appropriate alt attribute for meaningful images. An alt attribute should be a concise and meaningful replacement for the image.\n\n[Compliant Code Example]\n_____"
     },
@@ -95,7 +103,7 @@ const bestPractices = [
         "violationid": 362,
         "media": "Web",
         "bestpractice": "Provide alternative text for images",
-        "scenario": "Informative SVG has no accessible name value",
+        "scenario": "informative SVG is missing an accessible name value",
         "codesnippet": "[Issue]\nThe _____ SVG does not have an accessible name value to be rendered to assistive technology.\n\n[User Impact]\nWhen SVG elements do not provide textual alternative, screen reader users will not be informed of the SVG's content.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nAdd a <title> element as the first nested item inside the <svg> element, as well as aria-labelledby to the <svg> element to reference its embedded <title>.\n\nTo ensure browser consistency, developers should add an attribute of focusable=\"false\" to the <svg> to disable automatic focusing in IE. Developers should also add an attribute of role=\"img\" so that the SVG is not mapped to the group role by some browsers.\n\n[Compliant Code Example]\n_____"
     },
@@ -103,7 +111,7 @@ const bestPractices = [
         "violationid": 362,
         "media": "Web",
         "bestpractice": "Provide alternative text for images",
-        "scenario": "Decorative image without alt text is rendered to AT",
+        "scenario": "decorative image without alt text is rendered to AT",
         "codesnippet": "[Issue]\nThe _____ image is decorative and exposed to assistive technology.\n\n[User Impact]\nWhen non-meaningful images are rendered to assistive technology, users may perceive unnecessary content which can hinder navigating and understanding content efficiently. When images do not have alternative text, screen reader users may only be informed of its file name.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nEnsure that decorative images are hidden from assistive technology. This can be done by adding an attribute of alt=\"\" to the image element.\n\n[Compliant Code Example]\n_____"
     },
@@ -111,49 +119,33 @@ const bestPractices = [
         "violationid": 362,
         "media": "Web",
         "bestpractice": "Provide alternative text for images",
-        "scenario": "Decorative image with alt text is rendered to AT",
-        "codesnippet": "[Issue]\nThe _____ image is decorative and exposed to assistive technology.\n\n[User Impact]\nWhen non-meaningful images are rendered to assistive technology, users may perceive unnecessary content which can hinder navigating and understanding content efficiently.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nEnsure that decorative images are hidden from assistive technology. This can be done by replacing the image element's current alt attribute with alt=\"\".\n\n[Compliant Code Example]\n_____"
-    },
-    {
-        "violationid": 362,
-        "media": "Web",
-        "bestpractice": "Provide alternative text for images",
-        "scenario": "Decorative SVG without an accessible name value is rendered to AT",
+        "scenario": "decorative SVG without an accessible name value is rendered to AT",
         "codesnippet": "[Issue]\nThe _____ SVG is decorative and exposed to assistive technology.\n\n[User Impact]\nWhen non-meaningful SVG elements are rendered to assistive technology, users may perceive unnecessary content which can hinder navigating and understanding content efficiently.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nEnsure that decorative SVGs are hidden from assistive technology. This can be done by adding an attribute of aria-hidden=\"true\" to the SVG element. Developers should also add an attribute of focusable=\"false\" for IE11 support.\n\n[Compliant Code Example]\n_____"
     },
     {
-        "violationid": 362,
-        "media": "Web",
-        "bestpractice": "Provide alternative text for images",
-        "scenario": "Decorative text is rendered to AT",
-        "codesnippet": "[Issue]\nThe _____ on the page is decorative and is rendered to assistive technology.\n\n[User Impact]\nWhen non-meaningful items are rendered to assistive technology, users may perceive unnecessary content which can hinder navigating and understanding content efficiently.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nHide this content from assistive technology by adding an attribute of aria-hidden=\"true\".\n\n[Compliant Code Example]\n_____"
-    },
-    {
         "violationid": 368,
         "media": "Web",
         "bestpractice": "Ensure text and images of text provide sufficient contrast",
-        "scenario": "Text smaller than 14pt has insufficient contrast",
+        "scenario": "text smaller than 14pt has insufficient contrast",
         "codesnippet": "[Issue]\nThe _____ does not provide sufficient contrast against its background color. Text below 14pt in size must meet a minimum contrast ratio of 4.5:1.\n\nForeground color: _____\nBackground color: _____\nContrast ratio: _____\n\n[User Impact]\nSufficient contrast ensures that people with low vision, people who are color blind, users viewing the page without color, and users of monochrome screens can understand page content.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all informative text and images of informative text. Developers should modify the foreground and/or background color so that a sufficient contrast ratio is attained, including focused and hover states as well.\n\nStandard text smaller than 18pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/"
+        "issuedescription": "[Recommendation]\nProvide sufficient contrast for all informative text and images of informative text. Developers should modify the foreground and/or background color so that a sufficient contrast ratio is attained, including focused and hover states as well.\n\nStandard text smaller than 18pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/"
     },
     {
         "violationid": 368,
         "media": "Web",
         "bestpractice": "Ensure text and images of text provide sufficient contrast",
-        "scenario": "Text between 14pt and 18pt has insufficient contrast",
+        "scenario": "text between 14pt and 18pt has insufficient contrast",
         "codesnippet": "[Issue]\nThe _____ does not provide sufficient contrast against its background color. Text between 14pt and 18pt in size must have a contrast ratio of 4.5:1 or be bold with a contrast ratio of 3:1.\n\nForeground color: _____\nBackground color: _____\nContrast ratio: _____\n\n[User Impact]\nSufficient contrast ensures that people with low vision, people who are color blind, users viewing the page without color, and users of monochrome screens can understand page content.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all informative text and images of informative text. Developers should modify the foreground and/or background color so that a sufficient contrast ratio is attained, including focused and hover states as well.\n\nStandard text smaller than 18pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/"
+        "issuedescription": "[Recommendation]\nProvide sufficient contrast for all informative text and images of informative text. Developers should modify the foreground and/or background color so that a sufficient contrast ratio is attained, including focused and hover states as well.\n\nStandard text smaller than 18pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/"
     },
     {
         "violationid": 368,
         "media": "Web",
         "bestpractice": "Ensure text and images of text provide sufficient contrast",
-        "scenario": "Text larger than 18pt has insufficient contrast",
+        "scenario": "text larger than 18pt has insufficient contrast",
         "codesnippet": "[Issue]\nThe _____ does not provide sufficient contrast against its background color. Text above 18pt in size must have a contrast ratio of 3:1.\n\nForeground color: _____\nBackground color: _____\nContrast ratio: _____\n\n[User Impact]\nSufficient contrast ensures that people with low vision, people who are color blind, users viewing the page without color, and users of monochrome screens can understand page content.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nDevelopers must ensure that sufficient contrast is provided for all informative text and images of informative text. Developers should modify the foreground and/or background color so that a sufficient contrast ratio is attained, including focused and hover states as well.\n\nStandard text smaller than 18pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/"
+        "issuedescription": "[Recommendation]\nProvide sufficient contrast for all informative text and images of informative text. Developers should modify the foreground and/or background color so that a sufficient contrast ratio is attained, including focused and hover states as well.\n\nStandard text smaller than 18pt must have a contrast ratio of 4.5:1 or higher. Text larger than 18pt or bold text larger than 14pt must have a contrast ratio of 3:1 or higher.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/"
     },
     {
         "violationid": 369,
@@ -168,7 +160,7 @@ const bestPractices = [
         "media": "Web",
         "bestpractice": "Ensure color is not the sole means of communicating information",
         "scenario": "Link or other interactive element uses color as the only differentiation from surrounding text",
-        "codesnippet": "[Issue]\nThe _____ uses an insufficient difference in color as its only method of indication within its surrounding text. Besides the use of color, this item is stylistically similar and requires an additional visual indicator.\n\n[User Impact]\nWhen color is used as the sole method for identifying an interactive element among its surrounding content, persons who are blind, color blind, or have low vision may find the web page unusable.\n\n[Code Reference]\n_____",
+        "codesnippet": "[Issue]\nThe _____ uses an insufficient difference in color as its only method of indication within its surrounding text. Besides the use of color, this item is stylistically similar and requires an additional visual indicator.\n\n[User Impact]\nWhen color is used as the sole method for identifying an interactive element among its surrounding content, persons who are color blind or have low vision may find the web page unusable.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nDevelopers must ensure that information communicated via color is also available through some other method. This provision does not prohibit the use of color to enhance the identification of interactive elements, however it is recommended to add additional visual indicators such as a border or underline.\n\nIf color is the sole means of indicating that an interactive element exists among its surrounding text, the color of the interactive element and its surrounding text must meet color contrast requirements.\n\nConsider viewing the Color Contrast Checker:\nhttps://www.levelaccess.com/color-contrast-checker/"
     },
     {
@@ -184,8 +176,24 @@ const bestPractices = [
         "media": "Web",
         "bestpractice": "Ensure color is not the sole means of communicating information",
         "scenario": "The current item of a list uses color as the only visual differentiation from other items, but is indicated programmatically",
-        "codesnippet": "[Issue]\nWithin the _____, the current _____ is only visually differentiated from its surrounding items by a difference in color. Besides the use of color, this item is stylistically similar and requires an additional visual indicator.\n\n[User Impact]\nWhen color is used as the sole method for identifying the current item within a list, persons who are blind, color blind, or have low vision may find the web page unusable.\n\n[Code Reference]\n_____",
+        "codesnippet": "[Issue]\nWithin the _____, the current _____ is only visually differentiated from its surrounding items by a difference in color. Besides the use of color, this item is stylistically similar and requires an additional visual indicator.\n\n[User Impact]\nWhen color is used as the sole method for visually identifying the current item within a list, persons who are color blind or have low vision may find the web page unusable.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nDevelopers must ensure that information communicated via color is also available through some other method. This provision does not prohibit the use of color to enhance the identification of the current item, however it is recommended to add additional visual indicators such as a border or underline."
+    },
+    {
+        "violationid": 370,
+        "media": "Web",
+        "bestpractice": "Ensure images provide informative alternative text",
+        "scenario": "decorative image with alt text is rendered to AT",
+        "codesnippet": "[Issue]\nThe _____ image is decorative and exposed to assistive technology.\n\n[User Impact]\nWhen non-meaningful images are rendered to assistive technology, users may perceive unnecessary content which can hinder navigating and understanding content efficiently.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nEnsure that decorative images are hidden from assistive technology. This can be done by replacing the image element's current alt attribute with alt=\"\".\n\n[Compliant Code Example]\n_____"
+    },
+    {
+        "violationid": 370,
+        "media": "Web",
+        "bestpractice": "Provide alternative text for images",
+        "scenario": "decorative text is rendered to AT",
+        "codesnippet": "[Issue]\nThe _____ on the page is decorative and is rendered to assistive technology.\n\n[User Impact]\nWhen non-meaningful items are rendered to assistive technology, users may perceive unnecessary content which can hinder navigating and understanding content efficiently.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nHide this content from assistive technology by adding an attribute of aria-hidden=\"true\".\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 370,
@@ -212,26 +220,18 @@ const bestPractices = [
         "issuedescription": "[Recommendation]\nDevelopers must ensure the image has alt text which effectively describes the target of the link.\n\n[Compliant Code Example]\n_____"
     },
     {
-        "violationid": 373,
-        "media": "Web",
-        "bestpractice": "Provide valid, concise, and meaningful alternative text for image buttons",
-        "scenario": "<button> element uses an image as its visual label, however it has no textual label",
-        "codesnippet": "[Issue]\nThe _____ is an interactive element that uses an image as its visual label. There is no textual equivalent provided to label this element.\n\n[User Impact]\nScreen reader users will not have access to the information conveyed by the image without text equivalents. When images are used as identifiers for buttons, screen reader users may not know how to interact with this element.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nDevelopers must address the accessibility of buttons for all users with disabilities. When an image is used to visually label a button, developers should add the appropriate alt attribute to the image to explain the button's purpose.\n\n[Compliant Code Example]\n_____"
-    },
-    {
         "violationid": 378,
         "media": "Web",
         "bestpractice": "Avoid redundant alt text for imagse with adjacent text or links",
-        "scenario": "Image has alternative text that is redundant with adjacent content",
+        "scenario": "image has alt that is redundant with adjacent content",
         "codesnippet": "[Issue]\nThe _____ image contains alt text that is redundant with its adjacent content.\n\n[User Impact]\nThe image's alt text does not add value to the comprehension of the page. Screen readers will read the same information twice, resulting in impaired navigation.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nEnsure that screen readers do not perceive the same information twice by adding an attribute of alt=\"\" to the image tag.\n\n[Compliant Code Example]\n_____"
+        "issuedescription": "[Recommendation]\nEnsure that screen readers do not perceive the same information twice by replacing the image element's current alt attribute with alt=\"\".\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 380,
         "media": "Web",
         "bestpractice": "Ensure accessible usage of time based sessions and timed responses",
-        "scenario": "Session expires without warning the user",
+        "scenario": "session expires without warning the user",
         "codesnippet": "[Issue]\n_____\n\n[User Impact]\nWhen sessions time out without notifying users when this timeout occurs, users may spend unnecessary time entering form information that will become discarded. Additionally, when timeout warnings do not appear, users will not know that there is a time limit nor will they be able to extend this time limit.",
         "issuedescription": "[Recommendation]\nProvide a warning before the session expires, prompting the users with the option to extend their session. Ensure that the user is given at least 20 seconds to respond to this warning."
     },
@@ -258,6 +258,14 @@ const bestPractices = [
         "scenario": "Heading levels do not increase",
         "codesnippet": "[Issue]\r\nThe _____ heading is an _____ element, while the headings that follow are also _____ elements. The heading levels should increase to communicate their structure.\r\n\r\n[User Impact]\r\nHeadings can be used to communicate structure for assistive technology. When levels do not increase properly, users may not understand the relationship of content.\r\n\r\n[Code Reference]\r\n_____",
         "issuedescription": "[Recommendation]\r\nDevelopers must ensure that heading levels match the heading's visual importance/level. Developers should change the _____ headings from _____ to _____.\r\n\r\n[Compliant Code Example]\r\n_____"
+    },
+    {
+        "violationid": 389,
+        "media": "Web",
+        "bestpractice": "Ensure changes in natural language are identified inline",
+        "scenario": "element is in a different language",
+        "codesnippet": "[Issue]\nThe _____ is in _____, whereas the preceding content is in _____. There is no programmatic indication of this language change.\n\n[User Impact]\nWhen language changes are not identified inline, screen readers will likely incorrectly pronounce content, hindering the user's potential understanding.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nProvide an appropriate lang attribute and value for any element that represents content with a language change.\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 393,
@@ -350,15 +358,15 @@ const bestPractices = [
         "violationid": 523,
         "media": "Web",
         "bestpractice": "Ensure frame titles are meaningful",
-        "scenario": "Frame title is not meaningful",
+        "scenario": "frame title is non-meaningful",
         "codesnippet": "[Issue]\nThe title for the _____ <iframe> element is _____, which does not meaningfully describe its content.\n\n[User Impact]\nWhen frames have non-meaningful titles, it becomes difficult for users of assistive technologies to move between frames in order to access the page content they wish to view.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nFrames should contain meaningful and concise titles that directly reflect the content they represent and/or action to be performed by that frame.\n\n[Compliant Code Example]\n_____"
+        "issuedescription": "[Recommendation]\nFrames must contain meaningful and concise titles that directly reflect the content they represent and/or action to be performed by that frame.\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 523,
         "media": "Web",
         "bestpractice": "Ensure frame titles are meaningful",
-        "scenario": "Frame does not have a title",
+        "scenario": "frame has no title",
         "codesnippet": "[Issue]\nThe _____ <iframe> element does not have a title.\n\n[User Impact]\nWhen frames are not titled or have non-meaningful titles, it becomes difficult for users of assistive technologies to move between frames in order to access the page content they wish to view.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nAdd a title attribute to the <iframe> to assign a meaningful name.\n\n[Compliant Code Example]\n_____"
     },
@@ -366,17 +374,33 @@ const bestPractices = [
         "violationid": 524,
         "media": "Web",
         "bestpractice": "Avoid placing inactive elements in the focus order",
-        "scenario": "Inactive elements receive keyboard focus (not including <button> or <a> elements)",
-        "codesnippet": "[Issue]\nSome inactive elements receive Tab keyboard focus, despite not featuring any interactive functionality. This can be seen _____.\n\n[User Impact]\nProviding focus to non-active elements may give users of assistive technology the impression that the element is interactive and cause keyboard users to have to use extra keystrokes to navigate.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nDevelopers must ensure that generally only interactive elements receive Tab keyboard focus. Elements that are inactive by default and are not intended to be active should not have a tabindex attribute. There should also be no scripts that direct keyboard focus to these elements.\n\n[Compliant Code Example]\n_____"
+        "scenario": "inactive element receives keyboard focus",
+        "codesnippet": "[Issue]\nThe _____ receives Tab keyboard focus, despite not featuring any interactive functionality.\n\n[User Impact]\nProviding focus to non-active elements may give users of assistive technology the impression that the element is interactive and cause keyboard users to have to use extra keystrokes to navigate.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nRemove this element from the Tab order. Elements that are inactive by default and are not intended to be active should not have a tabindex attribute except for focus management. Ensure that scripting does not direct focus to this element and thereby inadvertantly including it in the Tab order.\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 524,
         "media": "Web",
         "bestpractice": "Avoid placing inactive elements in the focus order",
-        "scenario": "Inactive links or buttons receive keyboard focus",
-        "codesnippet": "[Issue]\nSome inactive elements receive Tab keyboard focus, despite not featuring any interactive functionality. This can be seen _____.\n\n[User Impact]\nProviding focus to non-active elements may give users of assistive technology the impression that the element is interactive and cause keyboard users to have to use extra keystrokes to navigate.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nDevelopers must ensure that generally only interactive elements receive Tab keyboard focus. For interactive elements that are in the focus order but rendered inactive, tabindex=\"-1\" can be used to remove them from the focus order. There should also be no scripts that direct keyboard focus to these elements.\n\n[Compliant Code Example]\n_____"
+        "scenario": "multiple inactive elements receive keyboard focus",
+        "codesnippet": "[Issue]\nSome inactive elements receive Tab keyboard focus, despite not featuring any interactive functionality.\n\nExamples include:\n- _____\n\n[User Impact]\nProviding focus to non-active elements may give users of assistive technology the impression that the element is interactive and cause keyboard users to have to use extra keystrokes to navigate.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nRemove inactive elements from the Tab order. Elements that are inactive by default and are not intended to be active should not have a tabindex attribute except for focus management. Ensure that scripting does not direct focus to these elements and thereby inadvertantly including them in the Tab order.\n\n[Compliant Code Example]\n_____"
+    },
+    {
+        "violationid": 524,
+        "media": "Web",
+        "bestpractice": "Avoid placing inactive elements in the focus order",
+        "scenario": "inactive link or button receives keyboard focus",
+        "codesnippet": "[Issue]\nThe inactive _____ receives Tab keyboard focus, despite not featuring any interactive functionality.\n\n[User Impact]\nProviding focus to non-active elements may give users of assistive technology the impression that the element is interactive and cause keyboard users to have to use extra keystrokes to navigate.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nRemove this element from the Tab order. For interactive elements that are in the Tab order but rendered inactive, tabindex=\"-1\" can be used to remove them from the Tab order. Ensure that scripting does not direct focus to this element and thereby inadvertantly including it in the Tab order.\n\n[Compliant Code Example]\n_____"
+    },
+    {
+        "violationid": 524,
+        "media": "Web",
+        "bestpractice": "Avoid placing inactive elements in the focus order",
+        "scenario": "multiple inactive links or buttons receive keyboard focus",
+        "codesnippet": "[Issue]\nSome inactive controls receive Tab keyboard focus, despite not featuring any interactive functionality.\n\nExamples include:\n_____\n\n[User Impact]\nProviding focus to non-active elements may give users of assistive technology the impression that the element is interactive and cause keyboard users to have to use extra keystrokes to navigate.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nRemove inactive elements from the Tab order. For interactive elements that are in the Tab order but rendered inactive, tabindex=\"-1\" can be used to remove them from the Tab order. Ensure that scripting does not direct focus to these elements and thereby inadvertantly including them in the Tab order.\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 525,
@@ -390,9 +414,9 @@ const bestPractices = [
         "violationid": 542,
         "media": "Web",
         "bestpractice": "Provide an informative context-sensitive page title",
-        "scenario": "Page title is not specific",
+        "scenario": "vague page title",
         "codesnippet": "[Issue]\nThe document page title, _____ does not specifically indicate the current page location.\n\n[User Impact]\nAssistive technologies utilize the page title to indicate the current page location to users without the user having to navigate within the page.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\r\nDevelopers must ensure that the value for the title element is updated as the page content changes.\r\n\r\n[Compliant Code Example]\r\n_____"
+        "issuedescription": "[Recommendation]\nUpdate the <title> element to reflect changes in page content.\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 566,
@@ -406,15 +430,15 @@ const bestPractices = [
         "violationid": 588,
         "media": "Web",
         "bestpractice": "Avoid unnecessary use of heading elements",
-        "scenario": "Non-heading elements have heading markup",
-        "codesnippet": "[Issue]\nThe _____ text has heading markup, which is not valid for this element. The _____ text is not utilized properly as a heading.\n\n[User Impact]\nWhen a non-heading element uses heading markup, that element may be rendered by assistive technology as a heading element. Headings may provide the user with a way to navigate section-by-section through content. By applying headings incorrectly, users of assistive technology may be stripped of this useful navigation technique.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nDevelopers must ensure that non-heading elements to not have heading markup for presentation purposes. Developers should remove the current heading markup and use generic containers instead.\n\n[Compliant Code Example]\n_____"
+        "scenario": "non-heading has heading markup",
+        "codesnippet": "[Issue]\nThe _____ has heading markup, which is not valid for this element as it does not function as a heading.\n\n[User Impact]\nHeadings may provide the user with a way to navigate section-by-section through content. By applying headings incorrectly, users of assistive technology may be stripped of this useful navigation technique.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nRemove this element's heading markup.\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 594,
         "media": "Web",
         "bestpractice": "Ensure fields indicate attached menus",
-        "scenario": "Element that opens a menu does not indicate this fact",
+        "scenario": "menu trigger does not indicate that it opens a menu",
         "codesnippet": "[Issue]\nThe _____ does not indicate to assistive technology that it has an attached menu.\n\n[User Impact]\nScreen reader users will not be aware that a menu will be opened upon activating the element.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nAdd the attribute aria-haspopup=\"true\" to indicate that this element opens a menu upon activation.\n\n[Compliant Code Example]\n_____"
     },
@@ -455,7 +479,7 @@ const bestPractices = [
         "media": "Web",
         "bestpractice": "Ensure sortable headers include proper text alternatives",
         "scenario": "Table headers do not include text alternatives to indicate their sorting functionality or their current sorted state",
-        "codesnippet": "[Issue]\nThe _____ table contains sortable headers that do not provide a textual indication to indicate their sorting functionality or their current sorted state.\n\n[User Impact]\nWhen proper sort information is not communicated users of assistive technology may not be aware of the sort functionality or order.\r\n\r\n[Code Reference]\n_____",
+        "codesnippet": "[Issue]\nThe _____ table contains sortable headers that do not textually indicate their sorting functionality or their current sorted state.\n\n[User Impact]\nWhen proper sort information is not communicated users of assistive technology may not be aware of the sort functionality or order.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nApply the aria-sort attribute to all sortable <th> elements. The value of aria sort should dynamically be set to either \"ascending\" or \"descending\" while active, or \"none\" while inactive.\n\n[Compliant Code Example]\n_____"
     },
     {
@@ -463,7 +487,7 @@ const bestPractices = [
         "media": "Web",
         "bestpractice": "Ensure custom controls provide proper textual name, role, and state information",
         "scenario": "actionable control is missing a role",
-        "codesnippet": "[Issue]\nThe _____ does not programmatically indicate that it is an actionable.\n\n[User Impact]\nWhen actionable controls do not expose role information, users of assistive technology may not be aware that they are interactive.\n\n[Code Reference]\n_____",
+        "codesnippet": "[Issue]\nThe _____ does not programmatically indicate that it is actionable.\n\n[User Impact]\nWhen actionable controls do not expose role information, users of assistive technology may not be aware that they are interactive.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nUsing the <button> element for button-like controls will automatically have an implicit role of \"button\" and is generally recommended, as the <button> element includes expected behaviors such as receiving keyboard focus and Enter and Spacebar functionality.\n\nTo ensure that non-button elements are announced to screen readers as buttons, developers must add an attribute of role=\"button\".\n\n[Compliant Code Example]\n_____"
     },
     {
@@ -567,8 +591,8 @@ const bestPractices = [
         "media": "Web",
         "bestpractice": "Ensure content that is intended to be hidden from all users is not rendered by assistive technology",
         "scenario": "content behind modal is exposed to AT",
-        "codesnippet": "[Issue]\nThe page behind the _____is blocked visually, however its content is still rendered to screen readers when using the virtual cursor.\n\n[User Impact]\nWhen the virtual cursor can access content from behind modal dialogs, screen reader users may become confused when viewing content outside of the intended context.",
-        "issuedescription": "[Recommendation]\nHide the page content behind the _____ from assistive technology. This may be achieved by adding an attribute of aria-modal=\"true\" to the modal dialog, however due to a lack of univseral support it is recommended to instead set aria-hidden=\"true\" to all page content not within the modal dialog."
+        "codesnippet": "[Issue]\nThe page behind the _____ is blocked visually, however its content is still rendered to screen readers when using the virtual cursor.\n\n[User Impact]\nWhen the virtual cursor can access content from behind modal dialogs, screen reader users may become confused when viewing content outside of the intended context.",
+        "issuedescription": "[Recommendation]\nHide the page content behind the _____ from assistive technology. This may be achieved by adding an attribute of aria-modal=\"true\" to the modal dialog, however due to a lack of universal support it is recommended to instead set aria-hidden=\"true\" to all page content not within the modal dialog."
     },
     {
         "violationid": 733,
@@ -623,7 +647,7 @@ const bestPractices = [
         "media": "Web",
         "bestpractice": "Ensure CSS background images that convey meaning have textual and visible equivalents",
         "scenario": "CSS background image conveys meaning and has no visual equivalent",
-        "codesnippet": "[Issue]\nThe _____ uses a background image which conveys meaning to the user. There is no visual equivalent for this background image.\n\n[User Impact]\nThe meaning conveyed by the background image will not be conveyed to wsers with low vision such as those who turn on high contrast mode or turn off web page colors. \n\n[Code Reference]\n_____",
+        "codesnippet": "[Issue]\nThe _____ uses a background image which conveys meaning to the user. There is no visual equivalent for this background image.\n\n[User Impact]\nThe meaning conveyed by the background image will not be conveyed to users with low vision such as those who turn on high contrast mode or turn off web page colors. \n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nDevelopers must ensure that background images conveying meaning contain visual alternatives, because background images are unavailable during high contrast mode or when web page colors are disabled. Visual alternatives would need to be added in nearby content of the page or imposed where the image is using CSS.\n\nIt is often recommended to use <img> elements for meaningful images, because <img> elements persist during high contrast mode and when web page colors are disabled.\n\n[Compliant Code Example]\n_____"
     },
     {
@@ -790,9 +814,17 @@ const bestPractices = [
         "violationid": 1249,
         "media": "Web",
         "bestpractice": "Ensure keyboard focus is indicated visually",
-        "scenario": "Interactive element does not have visual indication of keyboard focus",
+        "scenario": "interactive element does not have visual indication of keyboard focus",
         "codesnippet": "[Issue]\nThe _____ receives keyboard focus with the Tab key without any visual indication of this.\n\n[User Impact]\nProviding a visual indication of the focus is particularly necessary for keyboard-only users who do not use the mouse and cannot simply click to place focus where they think it should be. The user must rely on the visual indication of focus to determine where an action will occur or determine what keystrokes to perform to move focus to the desired field.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nDevelopers must ensure that keyboard focus is displayed visually to all interactive elements. Typically the browser will provide keyboard focus for all standard interactive HTML elements, however developers can use custom visual indicators such as outlines or underlines using the focus pseudo-class. Avoid the use of CSS \"outline: none\" property."
+        "issuedescription": "[Recommendation]\nProvide a visual indication of focus to all interactive elements. Typically the browser will provide keyboard focus for all standard interactive HTML elements, however developers can use custom visual indicators such as outlines or underlines using the focus pseudo-class. Avoid the use of CSS \"outline: none\" property."
+    },
+    {
+        "violationid": 1254,
+        "media": "Web",
+        "bestpractice": "Provide visual labels or instructions for user input",
+        "scenario": "form field's placeholder text is the only visual label",
+        "codesnippet": "[Issue]\nThe _____ field uses placeholder text as its only visual label. Once the user has inputted data into this field, there is no visual label present.\n\n[User Impact]\nCertain sighted users may need to re-identify fields after they have inputted data. When fields use placeholder text as their only visual label, these users must remove their inputted data to re-identify these fields.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nProvide a label for all form fields that persists visually even after the user has entered data.\n\n[Code Reference]\n_____"
     },
     {
         "violationid": 1301,
@@ -809,6 +841,14 @@ const bestPractices = [
         "scenario": "Multiple elements have the same ID",
         "codesnippet": "[Issue]\nElements on the page contain ID attributes that are not unique. Specific examples include the IDs: _____.\n\n[User Impact]\nWhen IDs are not unique, this can cause errors in reference attributes which assistive technology may depend on to render content properly.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nDevelopers must ensure that the value of each ID attribute is unique on any given page."
+    },
+    {
+        "violationid": 1564,
+        "media": "iOS",
+        "bestpractice": "Ensure focus is logically set when a module opens and when pop-up alerts close",
+        "scenario": "focus does not set in or return from opened module",
+        "codesnippet": "[Issue]\nFocus is not logically set when this module opens or closes.\n\n[User Impact]\nNon-sighted VoiceOver users can become disoriented when focus is not managed properly.",
+        "issuedescription": "[Recommendation]\r\nWhen a module is opened, focus should be placed at the top of the opened module. When the module is closed, focus should be placed back on the component that triggered the module to be opened."
     },
     {
         "violationid": 1581,
@@ -849,6 +889,14 @@ const bestPractices = [
         "scenario": "Form element has a label visually but not programmatically",
         "codesnippet": "[Issue]\nThe _____ does not provide an accessible label.\n\n[User Impact]\nWhen form fields are not properly labeled, their identity will not be rendered properly by assistive technology to users with visual disabilities. The user may interact with the wrong form element or may not know which form field to interact with.",
         "issuedescription": "[Recommendation]\nDevelopers must ensure that accessibility labels provided for form elements are clear and concise. The accessibility label should generally match the visual label associated with input control. The accessibilityLabel property must be used to set the accessibility label."
+    },
+    {
+        "violationid": 1626,
+        "media": "Web",
+        "bestpractice": "Ensure ARIA roles, states, and properties are valid",
+        "scenario": "meaningful element has aria-hidden",
+        "codesnippet": "[Issue]\nThe _____ is hidden from assistive technology with the attribute aria-hidden=\"true\".\n\n[User Impact]\nNon-visual users will not be able to view this element.\n\n[Code Reference]\n_____",
+        "issuedescription": "[Recommendation]\nRemove the aria-hidden=\"true\" attribute from this element.\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 1626,
@@ -1222,7 +1270,7 @@ const bestPractices = [
         "violationid": 2909,
         "media": "Web",
         "bestpractice": "Ensure active user interface components have sufficient contrast",
-        "scenario": "Interface component does not have enough contrast against background",
+        "scenario": "interface component has insufficient contrast against background",
         "codesnippet": "[Issue]\nThe _____ is an active interface component that does not provide sufficient contrast against the adjacent background color.\n\nComponent color: _____\nAdjacent background color: _____\nContrast ratio: _____\n\n[User Impact]\nSufficient contrast ensures that people with low vision, people who are color blind, users viewing the page without color, and users of monochrome screens can understand page content.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nDevelopers must give identifying portions of active user interface components a contrast ratio of at least 3:1 with adjacent colors, including states such as focus, hover, selected, and current item. It is not required that controls have a visual boundary indicating the hit area, but that if there is an indicator, then it must have sufficient contrast."
     },
@@ -1256,7 +1304,7 @@ const bestPractices = [
         "bestpractice": "Ensure all interactive functionality is operable with the keyboard",
         "scenario": "actionable custom control is not focusable",
         "codesnippet": "[Issue]\nThe _____ is actionable with the mouse, however it does not receive keyboard focus with the Tab key.\n\n[User Impact]\nWhen actionable elements do not receive keyboard focus, keyboard-only users such as mobility-impaired users and screen reader users may not be able to perform the intended function.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nEnsure that all actionable elements are focusable and operable by keyboard. Standard HTML elements such as <button> and <a> are automatically focusable and operable by keyboard and are generally recommended when creating actionable elements.\n\nTo allow keyboard focus on this element, developers must add an attribute of tabindex=\"0\". To allow keyboard activation on this element, developers must also add an additional keyboard event handler.\n\n[Compliant Code Example]\n_____"
+        "issuedescription": "[Recommendation]\nEnsure that all actionable elements are focusable and operable by keyboard. Standard HTML controls such as <button> and <a> are automatically focusable and operable by keyboard and are generally recommended when creating actionable elements.\n\nTo allow keyboard focus on this element as is, developers must add an attribute of tabindex=\"0\". To additionally allow keyboard activation on this element, developers must also add a keyboard event handler.\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 3159,
@@ -1264,7 +1312,7 @@ const bestPractices = [
         "bestpractice": "Ensure all interactive functionality is operable with the keyboard",
         "scenario": "actionable custom control is focusable but not keyboard-operable",
         "codesnippet": "[Issue]\nThe _____ receives keyboard focus with the Tab key, however it cannot be activated with the keyboard.\n\n[User Impact]\nWhen actionable elements cannot be operated with the keyboard, keyboard-only users such as mobility-impaired users and screen reader users may not be able to perform the intended function.\n\n[Code Reference]\n_____",
-        "issuedescription": "[Recommendation]\nEnsure that all interactive elements can be operated with the keyboard. Standard HTML elements such as <button> and <a> are automatically operable by keyboard and are generally recommended when creating actionable elements.\n\nTo allow keyboard activation on this element, developers must add an additional keyboard event handler.\n\n[Compliant Code Example]\n_____"
+        "issuedescription": "[Recommendation]\nEnsure that all interactive elements can be operated with the keyboard. Standard HTML controls such as <button> and <a> are automatically operable by keyboard and are generally recommended when creating actionable elements.\n\nTo allow keyboard activation on this element as is, developers must add an additional keyboard event handler.\n\n[Compliant Code Example]\n_____"
     },
     {
         "violationid": 3159,
@@ -1273,6 +1321,12 @@ const bestPractices = [
         "scenario": "actionable custom control is not spacebar-operable as expected",
         "codesnippet": "[Issue]\nThe _____ has a role of _____, however it cannot be activated with the Spacebar.\n\n[User Impact]\nWhen elements with a role of _____ cannot be activated with the Spacebar, this can be confusing for keyboard-only users. The Spacebar is often the preferred method to activate controls of this type, as the Enter key may incidentally trigger form submissions within certain contexts.\n\n[Code Reference]\n_____",
         "issuedescription": "[Recommendation]\nEnsure that all elements with a role of _____ can be activated with the Spacebar. Certain HTML elements such as <button> and <input> are automatically operable with the Spacebar and are generally recommended when creating _____.\n\nTo allow Spacebar activation on this element, developers must modify the keyboard event handler to allow this functionality.\n\n[Compliant Code Example]\n_____"
+    },
+    {
+        "violationid": 3159,
+        "media": "Web",
+        "bestpractice": "Ensure all interactive functionality is operable with the keyboard",
+        "scenario": "design pattern lacks keystroke functionality"
     },
     {
         "violationid": 3159,
