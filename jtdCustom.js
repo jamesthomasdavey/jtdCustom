@@ -583,7 +583,7 @@ const bestPractices = [
         "media": "Web",
         "bestpractice": "Ensure content that is intended to be hidden from all users is not rendered by assistive technology",
         "scenario": "controls behind modal are focusable",
-        "codesnippet": "[Issue]\nThe page behind the _____ is blocked visually, however its controls still receive keyboard focus using the Tab key.\n\n[User Impact]\nWhen content behind modal dialogs receives keboard focus, keyboard-only users may be able to access content that is not available with the mouse.",
+        "codesnippet": "[Issue]\nThe page behind the _____ is blocked visually, however its controls still receive keyboard focus using the Tab key.\n\n[User Impact]\nWhen content behind modal dialogs receives keyboard focus, keyboard-only users may be able to access content that is not available with the mouse.",
         "issuedescription": "[Recommendation]\nEnsure that focus remains within open modal dialogs. This can be done by using onFocus and onBlur and other JavaScript techniques to manage the focus appropriately. There are many techniques that can be used to meet this best practices.\n\nEnsure that the Tab and Shift + Tab keystrokes are handled appropriately. Ideally, focus should wrap from the last element to the first element and vice versa."
     },
     {
